@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuBar>
+	
+    <!-- ********************************************************************************** -->
+    <!-- *** Application menu ************************************************** -->
+    <!-- ********************************************************************************** -->
+
+    <Menu name="Application" title="☰">
+        <MenuItem category="Help" name="About" title="About $APPNAME"/>
+        
+		<MenuSeparator/>
+		
+		<MenuPlaceholder name="Appearance"/>
+				
+		<MenuSeparator/>
+		
+		<MenuItem category="File" name="Quit"/>
+    </Menu>
+	
+</MenuBar>

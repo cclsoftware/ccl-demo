@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+	<Forms>
+	
+		<Form name="Experimental.Skin Content.Summary" attach="all">
+			<Label title="Inspect Neutral Design skin package."/>
+		</Form>
+
+		<Form name="Experimental.Skin Content" attach="all">
+			<Vertical attach="all" options="unifysizes">
+				<Label title="Icons"/>
+				<ListView name="icons" viewtype="icons" options="selection exclusive" scrolloptions="autohideboth" with="250" height="150" attach="all"/>
+				
+				<Label title="Colors"/>
+				<ListView name="colors" viewtype="details" options="selection exclusive" scrolloptions="autohideboth" with="250" height="150" attach="all"/>
+
+				<Label title="Styles"/>
+				<ListView name="styles" viewtype="details" options="selection exclusive" scrolloptions="autohideboth" with="250" height="150" attach="all"/>
+			</Vertical>
+		</Form>
+
+	</Forms>
+</Skin>
+

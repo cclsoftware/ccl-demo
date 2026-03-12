@@ -1,0 +1,60 @@
+{
+	"width": 400,
+	"height": 80,
+	"children" :
+	[
+		{
+			"type": "ImageView",
+			"width": 400,
+			"height": 80,
+			"options": "colorize",
+			"style": {"backcolor": "#999999"},
+			"children":
+			[
+				{
+					"type": "Label",
+					"size": "20,15,360,20",
+					"name": "text",
+					"title": "{Alert text goes here}",
+					"style": {"textalign": "center"}
+				},
+				{
+					"type": "VariantView", 
+					"size": "130,45,140,20",
+					"name": "buttonCount", 
+					"children":
+					[
+						{
+							"type": "Button",
+							"size": "40,0,60,20",
+							"name": "firstButton",
+							"title": "{First}",
+							"style": {"textalign": "center"}
+						},
+						{
+							"width": 140,
+							"height": 20, 
+							"children":
+							[
+								{
+									"type": "Button",
+									"size": "0,0,60,20",
+									"name": "firstButton",
+									"title": "{First}",
+									"style": {"textalign": "center"}
+								},
+								{
+									"type": "Button",
+									"size": "80,0,60,20",
+									"name": "secondButton",
+									"title": "{Second}",
+									"style": {"textalign": "center"}
+								}								
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+
+	<Resources>
+		<Model3D name="DemoModel" url="3d/demo.obj"/>
+		<Image name="DemoTexture" url="images/Voodoo.png"/>
+		<Image name="OutlineTexture" url="images/outline.png"/>		
+	</Resources>
+
+	<Styles>
+		<Style name="DemoScene">
+			<String name="camera" value="cam1"/>
+			<Metric name="multisamplingfactor" value="8"/>
+		</Style>
+	</Styles>
+
+	<Forms>
+
+		<Form name="Graphics.Graphics 3D.Summary" attach="all">
+			<Label title="3D scene rendering."/>
+		</Form>
+
+		<Form name="Graphics3DControl">
+			<Horizontal margin="0" spacing="4">
+				<if defined="$title">
+					<Label title="$title" attach="vcenter" width="35"/>
+				</if>
+				<ValueBox name="$param" attach="vcenter" width="50" />
+				<Slider name="$param" options="horizontal" width="90" attach="vcenter"/>
+			</Horizontal>
+		</Form>
+
+		<Form name="Graphics.Graphics 3D" attach="all">
+			<Vertical margin="0" spacing="0" options="unifysizes" attach="all">
+				<Horizontal spacing="-180" attach="all">
+					<SwipeBox target="CheckBox" width="200" options="vertical" attach="top bottom">
+						<Vertical attach="top bottom">
+							<CheckBox name="user3D" title="UserView3D"/>
+							<using controller="DemoSceneComponent">
+								<CheckBox name="grid" title="Grid"/>
+								<CheckBox name="teapot" title="Teapot"/>
+								<CheckBox name="outlineCube" title="Outline Cube"/>
+								<CheckBox name="transparentCube" title="Transparent Cube"/>
+								<CheckBox name="sphere" title="Sphere"/>
+								<CheckBox name="billboard" title="Billboard"/>
+								<CheckBox name="textBillboard" title="Text Billboard"/>
+								<Button name="animate" title="Animate"/>
+							</using>
+							<Space attach="all"/>
+						</Vertical>
+					</SwipeBox>
+					<Table columns="1" cellratio="1" attach="all">
+						<View attach="all">
+							<using controller="DemoSceneComponent">
+								<View name="UserSceneView3D" width="300" height="300" attach="all">
+									<SceneView3D name="Scene" width="300" height="300" style="DemoScene" attach="all"/>
+								</View>
+							</using>
+							<Variant name="user3D" width="100" height="100">
+								<View name="UserView3D" width="100" height="100"/>
+							</Variant>
+						</View>
+					</Table>
+				</Horizontal>
+				<Horizontal margin="0" spacing="0" attach="left right">
+					<Space attach="left right"/>
+					<Table columns="5" margin="0" spacing="5">
+						<using controller="DemoSceneComponent">
+							<Label title="Camera Position"/>
+							<Space width="20"/>
+							<Label title="Camera Orientation"/>
+							<Space width="20"/>
+							<Label title="Field of View Angle"/>
+
+							<define title="X:" param="cameraPosX"><View name="Graphics3DControl"/></define>
+							<Space/>
+							<define title="Yaw:" param="cameraYawAngle"><View name="Graphics3DControl"/></define>
+							<Space/>
+							<define param="cameraFieldOfViewAngle"><View name="Graphics3DControl"/></define>
+
+							<define title="Y:" param="cameraPosY"><View name="Graphics3DControl"/></define>
+							<Space/>
+							<define title="Pitch:" param="cameraPitchAngle"><View name="Graphics3DControl"/></define>
+							<Space/>
+							<Space/>
+												
+							<define title="Z:" param="cameraPosZ"><View name="Graphics3DControl"/></define>
+							<Space/>
+							<define title="Roll:" param="cameraRollAngle"><View name="Graphics3DControl"/></define>
+						</using>
+					</Table>
+					<Space attach="left right"/>
+				</Horizontal>
+			</Vertical>
+		</Form>
+
+	</Forms>
+</Skin>
+

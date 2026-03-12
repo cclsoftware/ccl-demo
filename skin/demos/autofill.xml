@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+    <Forms>
+	
+		<Form name="System.Autofill.Summary" attach="all">
+			<Label title="Autofill support for user data (if available)."/>
+		</Form>
+
+		<Form name="System.Autofill" attach="all">
+			<Vertical attach="all">
+				<TabView name="newAccountForm" width="200">
+					<View title="Login"/>
+					<View title="New Account"/>
+				</TabView>
+				<define editWidth="200" editHeight="30">
+				<Variant name="newAccountForm" attach="fitsize">
+					<Vertical attach="all">
+						<Label title="Username"/>
+						<EditBox
+							name="name"
+							autofill="username"
+							size="0,0,$editWidth,$editHeight"/>
+						<Label title="Password"/>
+						<EditBox
+							name="password"
+							options="password"
+							autofill="password"
+							size="0,0,$editWidth,$editHeight"/>
+					</Vertical>
+					<Vertical attach="all">
+						<Label title="Username"/>
+						<EditBox
+							name="name"
+							autofill="username"
+							size="0,0,$editWidth,$editHeight"/>
+						<Label title="New Password"/>
+						<EditBox
+							name="newpassword"
+							options="password"
+							autofill="newpassword"
+							size="0,0,$editWidth,$editHeight"/>
+						<Label title="First Name"/>
+						<EditBox
+							name="firstname"
+							autofill="firstname"
+							size="0,0,$editWidth,$editHeight"/>
+						<Label title="Last Name"/>
+						<EditBox
+							name="lastname"
+							title="Last Name"
+							autofill="lastname"
+							size="0,0,$editWidth,$editHeight"/>
+						<Label title="E-Mail"/>
+						<EditBox
+							name="email"
+							keyboardtype="email"
+							autofill="email"
+							size="0,0,$editWidth,$editHeight"/>
+						<Label title="Country"/>
+						<EditBox
+							name="country"
+							autofill="country"
+							size="0,0,$editWidth,$editHeight"/>
+					</Vertical>
+				</Variant>
+				</define>
+			</Vertical>
+		</Form>
+	
+	</Forms>
+</Skin>
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+	<Forms>      
+	
+		<Form name="System.Store API.Summary" attach="all">
+			<Label title="Use of platform store API (if available)."/>
+		</Form>
+
+		<Form name="System.Store API" attach="all">
+			<Vertical attach="all">
+				<Horizontal margin="0">
+					<Button name="query" title="Query"/>
+					<Button name="purchase" title="Purchase"/>
+					<Button name="licenses" title="Licenses"/>
+				</Horizontal>
+				<ListView name="list" options="extendlastcolumn" scrolloptions="border horizontal vertical" size="0,0,500,400" attach="all"/>
+			</Vertical>
+		</Form>
+	  
+	</Forms>
+</Skin>
+

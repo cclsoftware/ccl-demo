@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+
+	<Resources>
+		<Image name="testimage"  url="images/testimage.png"/>
+	</Resources>
+
+	<Forms>
+		<Form name="Graphics.Graphics 2D.Summary" attach="all">
+			<Label title="2D immediate mode rendering via UserControl."/>
+		</Form>
+	
+		<Form name="Graphics.Graphics 2D" attach="all">
+			<Vertical>
+				<Horizontal margin="0">
+					<TextBox name="performance" width="150" height="18" options="border"/>
+					<TextBox name="stats" width="300" height="18" options="border"/>
+				</Horizontal>
+				<View name="TestView" width="640" height="580"/>
+			</Vertical>
+		</Form>
+
+		<Form name="Graphics.Text Alignment.Summary" attach="all">
+			<Label title="Text alignment at different font sizes."/>
+		</Form>
+
+		<Form name="Graphics.Text Alignment" attach="all">
+			<Vertical attach="all" spacing="0" margin="10">
+				<Horizontal margin="0">
+					<Label title="Custom text:"/>
+					<EditBox name="customText" width="120" height="25" options="immediate"/>
+				</Horizontal>
+				<ScrollView attach="all" options="autohidev transparent" width="800">
+					<Target name="TextAlignment" width="800"/>
+				</ScrollView>
+			</Vertical>
+		</Form>
+
+		<Form name="TextAlignment" attach="all">
+			<Vertical attach="all" margin="4">
+				<View name="TestView" width="840" height="480" attach="all"/>
+			</Vertical>
+		</Form>
+		
+	</Forms>
+</Skin>
+

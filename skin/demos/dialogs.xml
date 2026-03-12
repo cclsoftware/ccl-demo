@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+    <Shapes>
+        <Shape name="TransparentWindowShape">
+			<Rectangle style="fill" size="0,0,100,100" radius="6" Brush.color="#aaaaffdd"/>
+        </Shape>
+    </Shapes>
+
+    <Resources>
+        <ShapeImage name="TransparentWindowBack" url="TransparentWindowShape"/>
+    </Resources>
+
+	<Styles>
+		<Style name="TransparentWindow">
+			<Image name="WindowBack"	image="TransparentWindowBack"/>
+			<Image name="DialogBack"	image="TransparentWindowBack"/>
+		</Style>
+
+		<Style name="CompactMenu">
+			<Metric name="compact" value="1"/>
+		</Style>
+
+		<Style name="SingleColumnMenu">
+			<Metric name="singlecolumn" value="1"/>
+		</Style>
+
+		<Style name="SingleColumnMenuPopup" inherit="Standard.MenuControl">
+			<Metric name="fixedsubmenuwidth"	value="0"/>
+			<Metric name="menuarrowwidth" 		value="20"/>
+		</Style>
+	</Styles>
+
+	<Forms>      
+	
+		<Form name="System.Dialogs.Summary" attach="all">
+			<Label title="Essential system and framework dialogs."/>
+		</Form>
+
+		<Form name="System.Dialogs" attach="all">
+			<Vertical margin="0" options="unifysizes" attach="left right">
+				<Horizontal>
+					<Vertical margin="0">
+						<Label title="Alert Dialogs"/>
+						<Button size="0,0,150,30"	name="yesno"		title="Yes / No" />
+						<Button size="0,0,150,30"	name="yesnocancel"	title="Yes / No / Cancel"/>
+						<Button size="0,0,150,30"	name="okcancel"		title="OK / Cancel"/>
+						<Button size="0,0,150,30"	name="retrycancel"	title="Retry / Cancel"/>
+						<Button size="0,0,150,30"	name="123"			title="1 / 2 / 3"/>
+					</Vertical>
+					<Vertical margin="0">
+						<Label title="System Dialogs"/>
+						<Button size="0,0,150,30"	name="openfile"		title="Open File" />
+						<Button size="0,0,150,30"	name="ImageSelector/saveImage" title="Save File"/>
+						<Button size="0,0,150,30"	name="selectfolder"		title="Select Folder" />
+						<Button size="0,0,150,30"	name="pagesetup"	title="Page Setup" />
+						<Button size="0,0,150,30"	name="printjob"		title="Start Print Job" />
+						<Button size="0,0,150,30"	name="printjobsilent"		title="Start Print Job (silent)" />
+						<Button size="0,0,150,30"	name="defaultprinter"		title="Show Default Printer" />
+						<Button size="0,0,150,30"	name="printjobpdf"			title="Write PDF" />
+					</Vertical>
+					<Space></Space>
+					<Vertical margin="0">
+						<Label title="Test Dialogs"/>
+						<Button size="0,0,150,30"	name="selectFont"		title="Select Font" />
+						<Button size="0,0,150,30"	name="transparentDialog"	title="Transparent Dialog" />
+						<Toggle size="0,0,150,30"	name="transparentWindow"	title="Transparent Window" />
+
+						<Button size="0,0,150,30" title="Compact Menu">
+							<SelectBox size="0,0,150,30" name="menu" options="transparent" style="CompactMenu"/>
+						</Button>
+						<Button size="0,0,150,30" title="Single Column Menu">
+							<SelectBox size="0,0,150,30" name="menu" options="transparent" style="SingleColumnMenu" popupstyle="SingleColumnMenuPopup"/>
+						</Button>
+					</Vertical>
+				</Horizontal>
+				<Horizontal attach="left right">
+					<Label title="Result:"/>
+					<TextBox name="result" width="100" attach="left right"/>
+				</Horizontal>
+			</Vertical>
+		</Form>
+
+		<Form name="TransparentDialog" attach="all" style="TransparentWindow" options="windowmovable windowsizable" windowstyle="translucent customframe titlebar center restorepos restoresize sizable">
+			<Vertical attach="all" options="unifysizes" margin="0">
+				<Horizontal width="300" attach="left right" margin="0">
+					<Space width="2"/>
+					<Label title="Transparent Dialog" attach="top bottom"/>
+					<Space attach="left right"/>
+				</Horizontal>
+				<Horizontal attach="all">
+					<ScrollView name="Views.Scroller" size="0,0,300,200" options="vertical horizontal border" attach="all"/> <!-- from views.xml -->
+				</Horizontal>
+			</Vertical>
+		</Form>
+
+		<Form name="TransparentWindow" attach="all" style="TransparentWindow" options="windowmovable windowsizable" windowstyle="translucent customframe titlebar center restorepos restoresize sizable">
+			<Vertical attach="all" options="unifysizes">
+				<Horizontal width="300" attach="left right" margin="0">
+					<Space width="2"/>
+					<Label title="Transparent Window" attach="top bottom"/>
+					<Space attach="left right"/>
+					<Toggle size="0,0,20,20" name="transparentWindow" title="X"/>
+					<Space width="2"/>
+				</Horizontal>
+				<Horizontal attach="all">
+					<ScrollView name="Views.Scroller" size="0,0,300,200" options="vertical horizontal border" attach="all"/> <!-- from views.xml -->
+				</Horizontal>
+				<Horizontal attach="left right" margin="0">
+					<Space attach="left right"/>
+					<Toggle title="Dummy 1"/>
+					<Toggle title="Dummy 2"/>
+					<Toggle title="Dummy 3"/>
+					<Space attach="left right"/>
+				</Horizontal>
+			</Vertical>
+		</Form>
+
+	</Forms>
+</Skin>
+

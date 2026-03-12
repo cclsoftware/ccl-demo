@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+	<Resources>
+		<ColorScheme name="FlexExampleColors">
+			<ColorScheme.Color name="brush0" color="hsl(0,0,12)"/>
+			<ColorScheme.Color name="brush1" color="hsl(0,0,25)"/>
+			<ColorScheme.Color name="brush2" color="hsl(0,0,40)"/>
+			<ColorScheme.Color name="brush3" color="hsl(0,0,75)"/>
+			<ColorScheme.Color name="line0" color="hsl(0,0,85)"/>
+			<ColorScheme.Color name="line1" color="hsl(0,0,85)"/>
+			<ColorScheme.Color name="line2" color="hsl(0,0,12)"/>
+			<ColorScheme.Color name="line3" color="hsl(0,0,12)"/>
+		</ColorScheme>
+
+		<ShapeImage name="element0Image" url="Element0"/>
+		<ShapeImage name="element1Image" url="Element1"/>
+		<ShapeImage name="element2Image" url="Element2"/>
+		<ShapeImage name="element3Image" url="Element3"/>
+	</Resources>
+	
+	<Shapes>
+		<Shape name="Element0">
+            <Rectangle  style="fill" Brush.color="@FlexExampleColors.brush0" size="0,0,64,32"/>
+			<Ellipse  style="stroke" Pen.color="@FlexExampleColors.line0" Pen.width="2" size="28,8,8,16"/>
+        </Shape>
+		<Shape name="Element1">
+            <Rectangle  style="fill" Brush.color="@FlexExampleColors.brush1" size="0,0,64,32"/>
+			<Line style="stroke" start="32,8" end="32,24" Pen.color="@FlexExampleColors.line1" Pen.width="2"/>
+        </Shape>
+		<Shape name="Element2">
+            <Rectangle  style="fill" Brush.color="@FlexExampleColors.brush2" size="0,0,64,32"/>
+			<Line style="stroke" start="30,8" end="30,24" Pen.color="@FlexExampleColors.line2" Pen.width="2"/>
+			<Line style="stroke" start="34,8" end="34,24" Pen.color="@FlexExampleColors.line2" Pen.width="2"/>
+        </Shape>
+		<Shape name="Element3">
+            <Rectangle  style="fill" Brush.color="@FlexExampleColors.brush3" size="0,0,64,32"/>
+			<Line style="stroke" start="28,8" end="28,24" Pen.color="@FlexExampleColors.line3" Pen.width="2"/>
+			<Line style="stroke" start="32,8" end="32,24" Pen.color="@FlexExampleColors.line3" Pen.width="2"/>
+			<Line style="stroke" start="36,8" end="36,24" Pen.color="@FlexExampleColors.line3" Pen.width="2"/>
+        </Shape>
+    </Shapes>
+
+  	<Forms>
+	
+	<Form name="Flexbox.FlexDirection" title="Direction" attach="all">
+		<Flexbox flex.direction="column" attach="all">
+			<Label title="flex direction: row"/>
+			<Flexbox flex.direction="row" height="32">
+				<ImageView image="element0Image" width="64"/>
+				<ImageView image="element1Image" width="64"/>
+				<ImageView image="element2Image" width="64"/>
+				<ImageView image="element3Image" width="64"/>
+			</Flexbox>
+			<Label title="flex direction: rowreverse"/>
+			<Flexbox flex.direction="rowreverse" height="32">
+				<ImageView image="element0Image" width="64"/>
+				<ImageView image="element1Image" width="64"/>
+				<ImageView image="element2Image" width="64"/>
+				<ImageView image="element3Image" width="64"/>
+			</Flexbox>
+			<Label title="flex direction: column"/>
+			<Flexbox flex.direction="column" width="64">
+				<ImageView image="element0Image" height="32"/>
+				<ImageView image="element1Image" height="32"/>
+				<ImageView image="element2Image" height="32"/>
+				<ImageView image="element3Image" height="32"/>
+			</Flexbox>
+			<Label title="flex direction: columnreverse"/>
+			<Flexbox flex.direction="columnreverse" width="64">
+				<ImageView image="element0Image" height="32"/>
+				<ImageView image="element1Image" height="32"/>
+				<ImageView image="element2Image" height="32"/>
+				<ImageView image="element3Image" height="32"/>
+			</Flexbox>
+		</Flexbox>
+	</Form>
+
+	<Form name="Flexbox.FlexWrap" title="Wrap" attach="all">
+		<Flexbox flex.direction="column" attach="all">
+			<Label title="flex wrap: wrap"/>
+			<Flexbox flex.direction="row" flex.wrap="wrap" width="160">
+				<ImageView image="element0Image" size="0,0,64,32"/>
+				<ImageView image="element1Image" size="0,0,64,32"/>
+				<ImageView image="element2Image" size="0,0,64,32"/>
+				<ImageView image="element3Image" size="0,0,64,32"/>
+			</Flexbox>
+			<Label title="flex wrap: wrapreverse"/>
+			<Flexbox flex.direction="row" flex.wrap="wrapreverse" width="160">
+				<ImageView image="element0Image" size="0,0,64,32"/>
+				<ImageView image="element1Image" size="0,0,64,32"/>
+				<ImageView image="element2Image" size="0,0,64,32"/>
+				<ImageView image="element3Image" size="0,0,64,32"/>
+			</Flexbox>
+		</Flexbox>
+	</Form>
+
+	<Form name="Flexbox.FlexGap" title="Gap" attach="all">
+		<Flexbox flex.direction="column" attach="all">
+			<Label title="gap: gap"/>
+			<Flexbox flex.direction="row" flex.wrap="wrap" flex.gap="20" width="160">
+				<ImageView image="element0Image" size="0,0,64,32"/>
+				<ImageView image="element1Image" size="0,0,64,32"/>
+				<ImageView image="element2Image" size="0,0,64,32"/>
+				<ImageView image="element3Image" size="0,0,64,32"/>
+			</Flexbox>
+			<Label title="gap: row"/>
+			<Flexbox flex.direction="row" flex.wrap="wrap" flex.gap.row="20" width="160">
+				<ImageView image="element0Image" size="0,0,64,32"/>
+				<ImageView image="element1Image" size="0,0,64,32"/>
+				<ImageView image="element2Image" size="0,0,64,32"/>
+				<ImageView image="element3Image" size="0,0,64,32"/>
+			</Flexbox>
+			<Label title="gap: column"/>
+			<Flexbox flex.direction="row" flex.wrap="wrap" flex.gap.column="20" width="160">
+				<ImageView image="element0Image" size="0,0,64,32"/>
+				<ImageView image="element1Image" size="0,0,64,32"/>
+				<ImageView image="element2Image" size="0,0,64,32"/>
+				<ImageView image="element3Image" size="0,0,64,32"/>
+			</Flexbox>
+		</Flexbox>
+	</Form>
+
+	<Form name="Flexbox.JustifyContent" title="Justify" attach="all">
+		<Flexbox flex.direction="column" attach="all">
+			<Label title="justify content: flexstart"/>
+			<Flexbox flex.direction="row" flex.justify="flexstart" height="32">
+				<ImageView image="element0Image" width="64"/>
+				<ImageView image="element1Image" width="64"/>
+				<ImageView image="element2Image" width="64"/>
+				<ImageView image="element3Image" width="64"/>
+			</Flexbox>
+			<Label title="justify content: flexend"/>
+			<Flexbox flex.direction="row" flex.justify="flexend" height="32">
+				<ImageView image="element0Image" width="64"/>
+				<ImageView image="element1Image" width="64"/>
+				<ImageView image="element2Image" width="64"/>
+				<ImageView image="element3Image" width="64"/>
+			</Flexbox>
+			<Label title="justify content: center"/>
+			<Flexbox flex.direction="row" flex.justify="center" height="32">
+				<ImageView image="element0Image" width="64"/>
+				<ImageView image="element1Image" width="64"/>
+				<ImageView image="element2Image" width="64"/>
+				<ImageView image="element3Image" width="64"/>
+			</Flexbox>
+			<Label title="justify content: spacebetween"/>
+			<Flexbox flex.direction="row" flex.justify="spacebetween" height="32">
+				<ImageView image="element0Image" width="64"/>
+				<ImageView image="element1Image" width="64"/>
+				<ImageView image="element2Image" width="64"/>
+				<ImageView image="element3Image" width="64"/>
+			</Flexbox>
+			<Label title="justify content: spacearound"/>
+			<Flexbox flex.direction="row" flex.justify="spacearound" height="32">
+				<ImageView image="element0Image" width="64"/>
+				<ImageView image="element1Image" width="64"/>
+				<ImageView image="element2Image" width="64"/>
+				<ImageView image="element3Image" width="64"/>
+			</Flexbox>
+			<Label title="justify content: spaceevenly"/>
+			<Flexbox flex.direction="row" flex.justify="spaceevenly" height="32">
+				<ImageView image="element0Image" width="64"/>
+				<ImageView image="element1Image" width="64"/>
+				<ImageView image="element2Image" width="64"/>
+				<ImageView image="element3Image" width="64"/>
+			</Flexbox>
+		</Flexbox>
+	</Form>
+
+	<Form name="Flexbox.Alignment" title="Alignment" attach="all">
+		<Flexbox flex.direction="column" attach="all">
+			<Label title="align items: flexstart"/>
+			<Flexbox flex.direction="row" flex.align="flexstart">
+				<ImageView image="element0Image" width="64" height="32"/>
+				<ImageView image="element1Image" width="64" height="48"/>
+				<ImageView image="element2Image" width="64" height="64"/>
+				<ImageView image="element3Image" width="64" height="48"/>
+			</Flexbox>
+			<Label title="align items: flexend"/>
+			<Flexbox flex.direction="row" flex.align="flexend">
+				<ImageView image="element0Image" width="64"/>
+				<ImageView image="element1Image" width="64" height="48"/>
+				<ImageView image="element2Image" width="64" height="64"/>
+				<ImageView image="element3Image" width="64" height="48"/>
+			</Flexbox>
+			<Label title="align items: center"/>
+			<Flexbox flex.direction="row" flex.align="center">
+				<ImageView image="element0Image" width="64"/>
+				<ImageView image="element1Image" width="64" height="48"/>
+				<ImageView image="element2Image" width="64" height="64"/>
+				<ImageView image="element3Image" width="64" height="48"/>
+			</Flexbox>
+			<Label title="align items: stretch"/>
+			<Flexbox flex.direction="row" flex.align="stretch" height="64">
+				<ImageView image="element0Image" width="64"/>
+				<ImageView image="element1Image" width="64"/>
+				<ImageView image="element2Image" width="64"/>
+				<ImageView image="element3Image" width="64"/>
+			</Flexbox>
+			<View/>
+		</Flexbox>
+	</Form>
+
+	<Form name="Flexbox.Flex" title="Flex" attach="all">
+		<Flexbox flex.direction="column" attach="all">
+			<Label title="flex grow: 2, 1, 1"/>
+			<Flexbox flex.direction="row" height="64">
+				<ImageView image="element0Image" flex.grow="2"/>
+				<ImageView image="element1Image" flex.grow="1"/>
+				<ImageView image="element2Image" flex.grow="1"/>
+			</Flexbox>
+			<Label title="flex shrink: 2, 1, 1"/>
+			<Flexbox flex.direction="row" width="128" height="64">
+				<ImageView image="element0Image" flex.basis="64" flex.shrink="2"/>
+				<ImageView image="element1Image" flex.basis="64" flex.shrink="1"/>
+				<ImageView image="element2Image" flex.basis="64" flex.shrink="1"/>
+			</Flexbox>
+		</Flexbox>
+	</Form>
+
+	<Form name="Flexbox.Margin" title="Margin" attach="all">
+		<Flexbox flex.direction="column" attach="all">
+			<Label title="margin for all items: 20"/>
+			<Flexbox flex.direction="row" height="104" width="480">
+				<ImageView image="element0Image" flex.grow="1" flex.margin="20"/>
+				<ImageView image="element1Image" flex.grow="1" flex.margin="20"/>
+				<ImageView image="element2Image" flex.grow="1" flex.margin="20"/>
+			</Flexbox>
+			<Label title="Item 1 [margin.right=20], Item 2 [margin.bottom=20], Item 3 [margin.top=20]"/>
+			<Flexbox flex.direction="row" height="104" width="480">
+				<ImageView image="element0Image" flex.grow="1" flex.margin.right="20"/>
+				<ImageView image="element1Image" flex.grow="1" flex.margin.bottom="20"/>
+				<ImageView image="element2Image" flex.grow="1" flex.margin.top="20"/>
+			</Flexbox>
+		</Flexbox>
+	</Form>
+
+	<Form name="Flexbox.Padding" title="Padding" attach="all">
+		<Flexbox flex.direction="column" attach="all">
+			<Label title="padding: 20"/>
+			<Flexbox flex.direction="row" height="104" flex.padding="20">
+				<ImageView image="element0Image" flex.grow="1"/>
+				<ImageView image="element1Image" flex.grow="1"/>
+				<ImageView image="element2Image" flex.grow="1"/>
+			</Flexbox>
+			<Label title="padding.left: 20"/>
+			<Flexbox flex.direction="row" height="104" flex.padding.left="20">
+				<ImageView image="element0Image" flex.grow="1"/>
+				<ImageView image="element1Image" flex.grow="1"/>
+				<ImageView image="element2Image" flex.grow="1"/>
+			</Flexbox>
+			<Label title="padding.right: 20"/>
+			<Flexbox flex.direction="row" height="104" flex.padding.right="20">
+				<ImageView image="element0Image" flex.grow="1"/>
+				<ImageView image="element1Image" flex.grow="1"/>
+				<ImageView image="element2Image" flex.grow="1"/>
+			</Flexbox>
+		</Flexbox>
+	</Form>
+
+	<Form name="Flexbox.PositionType" title="PositionType" attach="all">
+		<Flexbox flex.direction="column" attach="all">
+			<Label title="item1: positionType absolute"/>
+			<Flexbox flex.direction="row" width="200" height="104">
+				<ImageView image="element1Image" flex.inset="0" flex.positiontype="absolute"/>
+				<ImageView image="element0Image" flex.grow="1" flex.margin="20"/>
+			</Flexbox>
+		</Flexbox>
+	</Form>
+
+	<Form name="Layout.Flexbox Layout.Summary" attach="all">
+		<Label title="Flexbox layout examples."/>
+	</Form>
+
+	<Form name="Layout.Flexbox Layout" attach="all">
+		<Horizontal attach="all">
+			<TabView attach="all">
+				<View name="Flexbox.FlexDirection" attach="all"/>
+				<View name="Flexbox.FlexWrap" attach="all"/>
+				<View name="Flexbox.FlexGap" attach="all"/>
+				<View name="Flexbox.JustifyContent" attach="all"/>
+				<View name="Flexbox.Alignment" attach="all"/>
+				<View name="Flexbox.Flex" attach="all"/>
+				<View name="Flexbox.Margin" attach="all"/>
+				<View name="Flexbox.Padding" attach="all"/>
+				<View name="Flexbox.PositionType" attach="all"/>
+			</TabView>
+		</Horizontal>
+	</Form>
+	
+	</Forms>
+</Skin>

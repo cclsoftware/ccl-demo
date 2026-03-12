@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+  <Forms>
+  
+    <Form name="Variant2" attach="all">
+      <View name="demoView" size="0,0,50,40" attach="all" sizelimits="50,10,50,100">
+        <Label title="TEST"/>
+      </View>
+    </Form>
+
+	<Form name="Layout.Anchor Layout.Summary" attach="all">
+		<Label title="Anchor layout examples."/>
+	</Form>
+
+    <Form name="Layout.Anchor Layout" attach="all">
+      <Vertical attach="left right">
+
+		<Heading level="1" title="Horizontal"/>
+
+        <Layout layoutclass="box" attach="left right" spacing="0">
+          <View attach="all">
+            <View name="demoView" size="10, 0,30,20" sizelimits="10,10,100,100"/>
+            <View name="demoView" size="20,20,30,20" attach="right" sizelimits="10,10,100,100"/>
+            <View name="demoView" size="20,40,20,20" attach="all"   sizelimits="10,10,100,100"/>
+          </View>
+          <Divider size="0,0,10,60" sizelimits="5,0,10,100000" attach="all"/>
+          <View name="demoView" size="0,0,100,60" sizelimits="0,0,1000,1000" attach="all"/>
+        </Layout>
+
+		<Heading level="1" title="Multiple Dividers"/>
+
+        <Horizontal attach="left right" size="0,0,500,40" spacing="1" options="unifysizes">
+          <View name="demoView" size="0,0,20,40" attach="all"/>
+          <View name="demoView" size="0,0,20,10" attach="all"/>
+          <Divider size="0,0,10,40" sizelimits="5,0,10,100000"/>
+          <View name="demoView" size="0,0,20,40" attach="all"/>
+          <Divider  size="0,0,10,40" sizelimits="5,0,10,100000"/>
+          <View name="demoView" size="0,0,20,40" attach="all"/>
+          <Divider size="0,0,10,40" sizelimits="5,0,10,100000"/>
+          <View name="demoView" size="0,0,20,40"/>
+          <View name="demoView" size="0,0,5,40" attach="all"/>
+          <View name="demoView" size="0,0,20,40" attach="all"/>
+          <View name="demoView" size="0,0,20,40"/>
+        </Horizontal>
+
+		<Heading level="1" title="Nested Horizontal Dividers"/>
+
+        <Horizontal attach="left right" size="0,200,500,40" spacing="1">
+          <Horizontal attach="left right" size="0,0,500,40" spacing="1">
+            <View name="demoView" size="0,0,20,40" attach="all"/>
+            <Divider size="0,0,10,40" sizelimits="5,0,10,100000"/>
+            <View name="demoView" size="0,0,20,40" attach="all"/>
+          </Horizontal>
+          <Divider size="0,0,10,40" sizelimits="5,0,10,100000"/>
+          <Horizontal attach="left right" size="0,0,500,40" spacing="1">
+            <View name="demoView" size="0,0,20,40" attach="all"/>
+            <Divider size="0,0,10,40" sizelimits="5,0,10,100000"/>
+            <View name="demoView" size="0,0,20,40" attach="all"/>
+          </Horizontal>
+        </Horizontal>
+
+		<Heading level="1" title="Nested Vertical/Horizontal Dividers Synchronized"/>
+
+        <Vertical attach="left right" spacing="0">
+          <Horizontal attach="all" spacing="0">
+            <View name="demoView" size="0,0,250,40" attach="all" sizelimits="10,10,500,100"/>
+            <Divider size="0,0,10,40" sizelimits="10,0,10,100000" attach="all" name="value1"/>
+            <View name="demoView" size="0,0,240,40" attach="all" sizelimits="10,10,500,100"/>
+          </Horizontal>
+          <Divider size="0,0,500,10" sizelimits="0,10,100000,10" options="vertical" attach="all"/>
+          <Horizontal attach="all" spacing="0">
+            <View name="demoView" size="0,0,250,40" attach="all" sizelimits="10,10,500,100"/>
+            <Divider size="0,0,10,40" sizelimits="10,0,10,100000" attach="all" name="value1"/>
+            <View name="demoView" size="0,0,240,40" attach="all" sizelimits="10,10,500,100"/>
+          </Horizontal>
+        </Vertical>
+
+		<Heading level="1" title="Buttons Aligned Right"/>
+
+        <Horizontal attach="left right" size="0,0,500,40">
+          <Space sizelimits="0,0,10000,0" attach="all"/>
+          <Button title="Ok" sizelimits="-1,-1,100,40" attach="all"/>
+          <Button title="Cancel" sizelimits="-1,-1,100,40" attach="all"/>
+        </Horizontal>
+
+		<Heading level="1" title="Variant"/>
+
+        <Horizontal>
+          <Toggle title="Switch" name="value2"/>
+        </Horizontal>
+
+        <Horizontal attach="left right" size="0,0,500,40">
+          <View name="demoView" size="0,0,240,40" attach="all" sizelimits="10,10,-1,100"/>
+
+          <Variant name="value2" options="boundvalue" attach="fitsize">
+              <Label title="Variant 1" size="0,0,60,40"/>
+              <Label title="Variant 2" size="0,0,150,40"/>
+          </Variant>
+          
+          <View name="demoView" size="0,0,240,40" attach="all" sizelimits="10,10,-1,100"/>
+
+          <Variant property="value2" attach="fitsize">
+              <Label title="Variant 1" size="0,0,60,40"/>
+              <Label title="Variant 2" size="0,0,150,40"/>
+          </Variant>
+          
+          <View name="demoView" size="0,0,240,40" attach="all" sizelimits="10,10,-1,100"/>
+        </Horizontal>
+		
+		<Space/>
+
+      </Vertical>
+    </Form>
+	
+  </Forms>
+</Skin>

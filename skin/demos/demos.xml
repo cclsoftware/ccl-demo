@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+
+	<Resources>
+		<Image name="sliderBack"                     url="images/sliderBack.svg" />
+		<Image name="sliderThumb"                    url="images/sliderThumb.svg" />
+		<Image name="buttonBack"                     url="images/buttonBack.svg" />
+		<Image name="buttonBackBitmap"               url="images/buttonRoundWithStates.png" frames="normal pressed mouseover disabled" />
+		
+		<Image name="buttonBlink" url="images/buttonBlink.png" frames="phaseOn normal pressed" />
+		
+		<Image name="CompositionDemo" url="images/Voodoo.png"/>
+		
+		<Image name="TransitionDemo1" image="CompositionDemo"/>
+		<Image name="TransitionDemo2" image="CompositionDemo">
+			<ImageFilter name="invert"/>
+		</Image>
+		
+		<Image name="TransformTestImage"	image="CompositionDemo"/>
+		<Image name="SaveTestImage"			image="CompositionDemo"/>
+		<Image name="PrintTestImage"		image="CompositionDemo"/>
+		
+		<ImagePart name="TiledDemo"	image="CompositionDemo" size="12,18,79,38" tile="tile-xy" margin="30,15,23,14"/>
+
+		<ShapeImage name="ScaledShapeValueBar"	url="ScaledShapeValueBarShape" frames="embedded"/>
+
+	</Resources>
+
+	<Shapes>
+		<Shape name="ScaledShapeValueBarShape" size="0,0,4,100">
+			<Shape name="normal" size="0,0,4,100">
+				<Rectangle style="fill" size="0,0,4,100" Brush.color="hsl(0,0,22)"/>
+			</Shape>
+			<Shape name="pressed" size="0,0,4,100">
+				<Rectangle style="fill" size="0,0,4,100" Brush.color="lightblue"/>
+				<Rectangle style="fill" size="0,0,4,20" Brush.color="red"/>
+			</Shape>
+		</Shape>
+	</Shapes>
+
+	<Styles>
+		<Style name="slider">
+			<Image name="background"   image="sliderBack"/>
+			<Image name="handle"       image="sliderThumb" />
+		</Style>
+		
+		<Style name="button">
+			<Image name="background"   image="buttonBackBitmap"/>
+		</Style>
+		
+		<Style name="textbox" />
+
+		<Style name="TextEditor" textoptions="wordbreak">
+			<Font name="textfont" themeid="StandardUI" size="15" linespacing="2"/>
+			<Align name="textalign" align="left top"/>
+			<Color name="selectioncolor" color="hsl(212,100,70,50)"/>
+		</Style>
+
+		<Style name="BlinkTriggers">
+			<Triggers>
+				<Trigger property="value" value="1">
+					<StartAnimation>
+						<Animation group="BlinkToggles" property="phase" function="toggle" duration="1000 ms"/>
+					</StartAnimation>
+				</Trigger>
+				<Trigger property="value" value="0">
+					<StopAnimation property="phase"/>
+				</Trigger>
+			</Triggers>
+		</Style>
+		
+		<Style name="ButtonBlink" inherit="BlinkTriggers">
+			<Image name="background" image="buttonBlink"/>
+		</Style>
+		<Style name="WideScrollStyle" inherit="Standard.ScrollPicker">
+			<Metric name="itemSize" value="40"/>
+			<Metric name="centerSize" value="40"/>
+		</Style>
+		<Style name="ScrollStyle" inherit="Standard.ScrollPicker">
+		</Style>
+		
+		<Style name="ColorBox">
+			<Color name="backcolor"	color="hsl(204,70,25)"/>
+		</Style>
+		<Style name="RangeSliderStyle" inherit="Standard.RangeSlider">
+			<Metric name="outreach"	value="15"/>
+		</Style>
+		
+		<Style name="ValueBoxL" inherit="Standard.ValueBox">
+			<Align name="textalign"	align="left"/>
+		</Style>
+		<Style name="ValueBoxC" inherit="Standard.ValueBox">
+			<Align name="textalign"	align="center"/>
+		</Style>
+		<Style name="ValueBoxR" inherit="Standard.ValueBox">
+			<Align name="textalign"	align="right"/>
+		</Style>
+
+		<Style name="TextBoxLeft" inherit="Standard.TextBox">
+			<Align name="textalign"	align="left"/>
+		</Style>
+
+		<Style name="ScaledShapeValueBarStyle">
+			<Image name="background" image="ScaledShapeValueBar"/>
+		</Style>
+
+	</Styles>
+
+  	<Forms>
+		
+	<Form name="Graphics.Composition.Summary" attach="all">
+		<Label title="Using hardware-accelerated UI composition."/>
+	</Form>
+
+    <Form name="Graphics.Composition" attach="all">
+		<Horizontal margin="0">
+			<View name="CompositedView" width="300" height="300"/>
+			<Vertical margin="0">
+				<View name="TimingCurveView" width="200" height="200"/>
+				<Label title="Timing Function"/>
+				<Horizontal margin="0" spacing="5">
+					<Label title="c1.x" attach="vcenter"/>
+					<ValueBox name="c1x" width="40" height="20" options="border"/>
+					<Label title="c1.y" attach="vcenter"/>
+					<ValueBox name="c1y" width="40" height="20" options="border"/>
+					<Label title="c2.x" attach="vcenter"/>
+					<ValueBox name="c2x" width="40" height="20" options="border"/>
+					<Label title="c2.y" attach="vcenter"/>
+					<ValueBox name="c2y" width="40" height="20" options="border"/>
+				</Horizontal>
+			</Vertical>
+		</Horizontal>
+	</Form>
+		
+	<Form name="Graphics.Transitions.Summary" attach="all">
+		<Label title="Animated UI transitions."/>
+	</Form>
+		
+    <Form name="Graphics.Transitions" attach="all">
+		<Vertical>
+			<!-- Component creates VariantView with customized transition -->
+			
+			<Horizontal spacing="0">
+				<SelectBox name="transitionType" width="200"/>
+				<UpDownBox name="transitionType" size="0,0,60,24" options="horizontal"></UpDownBox>
+				<Space/>
+				<Button name="startTransition" title="start" height="24"/>
+			</Horizontal>
+			<Horizontal>
+				<Variant name="transitionType">
+					<foreach variable="$i" count="transitionCount">
+						<View name="Transition$i" size="0,0,200,200">
+							<ImageView image="TransitionDemo1"/>
+							<ImageView image="TransitionDemo2"/>
+						</View>
+					</foreach>
+				</Variant>
+			</Horizontal>
+			
+			<UpDownBox name="fourVariants" size="0,0,60,30"/>			
+			<Table columns="4" margin="2">
+				<foreach variable="$i" count="transitionCount">
+					<View name="Transition$i" data.parameter="fourVariants" size="0,0,60,60">
+						<ImageView image="element0Image" size="0,0,60,60"/>
+						<ImageView image="element1Image" size="0,0,60,60"/>
+						<ImageView image="element2Image" size="0,0,60,60"/>
+						<ImageView image="element3Image" size="0,0,60,60"/>
+					</View>
+				</foreach>
+			</Table>
+			
+		</Vertical>
+	</Form>
+
+	<Form name="Graphics.Embedded Graphics.Summary" attach="all">
+		<Label title="Software rendering with controls from Core Library."/>
+	</Form>
+
+	<Form name="Graphics.Embedded Graphics" attach="all">
+		<Horizontal>
+			<View name="EmbeddedGraphicsView" width="480" height="272"/>
+			<View name="EmbeddedGraphicsViewMonochrome" width="64" height="96"/>
+		</Horizontal>
+	</Form>
+
+	<Form name="Controls.WebView.Summary" attach="all">
+		<Label title="WebView control demo (if available)."/>
+	</Form>
+
+	<Form name="Controls.WebView" attach="all">
+		<using controller="WebNavigator">
+			<Vertical attach="all" margin="0" options="unifysizes">
+				<View name="contentFrame" width="710" height="300" attach="all"/>
+				<Horizontal margin="0" attach="left right bottom">
+					<EditBox name="location" width="400" height="20" options="border" attach="left right" style="TextBoxLeft"/>
+					<TextBox name="title" width="300" height="20" options="border" attach="left right" style="TextBoxLeft"/>
+				</Horizontal>
+				<Horizontal margin="0" attach="left right bottom">
+					<Toggle name="goBack" title="&lt;" tooltip="Back"/>
+					<Toggle name="goForward" title="&gt;" tooltip="Forward"/>
+					<Button name="refresh" title="&lt;&gt;" tooltip="Refresh"/>
+					<Button name="goHome" title="H" tooltip="Home"/>
+					<Space attach="left right"/>
+				</Horizontal>
+			</Vertical>
+		</using>
+	</Form>
+	
+	<Form name="Controls.TextEditor.Summary" attach="all">
+		<Label title="Multiline text editor demo."/>
+	</Form>
+
+	<Form name="Controls.TextEditor" attach="all">
+		<TextEditor name="text" width="400" height="400" options="border vertical dragtext extended" style="TextEditor" attach="all"/>
+	</Form>
+	
+	<Form name="ScrollPickerTestView" attach="all">
+		<Vertical>
+			<Heading level="2" title="ScrollPicker"/>
+
+			<ValueBar name="picker" options="horizontal" tooltip="ValueBar" width="200" height="10"/>
+			<ValueBox name="picker" tooltip="TextBox" style="ValueBoxL" width="120"/>
+
+			<Variant name="digitMode">
+				<Variant name="flatMode">
+					<Vertical>
+						<Variant name="wrapMode">
+							<ScrollPicker name="picker" options="horizontal" style="WideScrollStyle" height="40" width="120"/>
+							<ScrollPicker name="picker" options="wraparound horizontal" style="WideScrollStyle" height="40" width="120"/>
+						</Variant>
+						<Variant name="wrapMode">
+							<ScrollPicker name="picker" size="0,0,120,200" style="ScrollStyle"/>
+							<ScrollPicker name="picker" options="wraparound" style="ScrollStyle" size="0,0,120,200"/>
+						</Variant>
+					</Vertical>
+					<Vertical>
+						<Variant name="wrapMode">
+							<ScrollPicker name="picker" options="flat horizontal" style="WideScrollStyle" height="40" width="120"/>
+							<ScrollPicker name="picker" options="flat wraparound horizontal" style="WideScrollStyle" height="40" width="120"/>
+						</Variant>
+						<Variant name="wrapMode">
+							<ScrollPicker name="picker" options="flat" size="0,0,120,200" style="ScrollStyle"/>
+							<ScrollPicker name="picker" options="flat wraparound" size="0,0,120,200" style="ScrollStyle"/>
+						</Variant>
+					</Vertical>
+				</Variant>
+				<Variant name="flatMode">
+					<Vertical>
+						<Variant name="wrapMode">
+							<ScrollPicker name="picker" options="digitmode horizontal" style="WideScrollStyle" height="40" width="120"/>
+							<ScrollPicker name="picker" options="digitmode wraparound horizontal" style="WideScrollStyle" height="40" width="120"/>
+						</Variant>
+						<Variant name="wrapMode">
+							<ScrollPicker name="picker" options="digitmode" size="0,0,120,200" style="ScrollStyle"/>
+							<ScrollPicker name="picker" options="digitmode wraparound" style="ScrollStyle" size="0,0,120,200"/>
+						</Variant>
+					</Vertical>
+					<Vertical>
+						<Variant name="wrapMode">
+							<ScrollPicker name="picker" options="digitmode flat horizontal" style="WideScrollStyle" height="40" width="120"/>
+							<ScrollPicker name="picker" options="digitmode flat wraparound horizontal" style="WideScrollStyle" height="40" width="120"/>
+						</Variant>
+						<Variant name="wrapMode">
+							<ScrollPicker name="picker" options="digitmode flat" size="0,0,120,200" style="ScrollStyle"/>
+							<ScrollPicker name="picker" options="digitmode flat wraparound" size="0,0,120,200" style="ScrollStyle"/>
+						</Variant>
+					</Vertical>
+				</Variant>
+			</Variant>
+			<CheckBox name="wrapMode" title="Wrapping Mode"/>
+			<CheckBox name="flatMode" title="Flat Mode"/>
+			<CheckBox name="digitMode" title="Digits Mode"/>
+		</Vertical>
+	</Form>
+
+	<Form name="Experimental.More Controls.Summary" attach="all">
+		<Label title="More UI controls linked via parameters."/>
+	</Form>
+
+	<Form name="Experimental.More Controls" attach="all">
+		<Horizontal attach="all">
+			<Vertical size="0,0,220,0">
+				<Slider name="discrete" options="horizontal bargraph" xyediting="350" mode="relative" tooltip="Slider" width="200"/>
+				<ValueBar name="discrete" options="horizontal" tooltip="ValueBar" width="200" height="10"/>
+				<Horizontal margin="0">
+					<TextBox name="discrete" tooltip="TextBox" width="120"/>
+					<PopupBox name="discrete" size="0,0,20,17" options="vertical slider" attach="right bottom">
+						<Button size="0,0,20,17"/>
+					</PopupBox>
+				</Horizontal>
+				<EditBox name="string" tooltip="EditBox" options="scaletext fittext markup extended" width="120" height="50"/>
+				<ValueBox name="continuous" tooltip="EditBox" width="120"/>
+				<Knob name="continuous" options="indicator"/>
+				<SelectBox name="list" options="border" tooltip="SelectBox" width="120"/>
+				<ComboBox name="list" editname="listadd" options="border" tooltip="ComboBox" width="120"/>
+				<ColorBox tooltip="ColorBox" style="ColorBox" width="120"/>
+				<Horizontal margin="0">
+					<Toggle name="blink" style="ButtonBlink" options="trigger immediate silenttracking"/>
+					<Button name="button" title="Custom" style="button" tooltip="Button" size="0,0,74,22"/>
+				</Horizontal>
+				<Space/>
+				<Horizontal margin="0">
+					<Button name="nextHighlight" title="Next Highlight"/>
+					<Button name="removeHighlight" title="Remove"/>
+				</Horizontal>
+				
+				<EditBox name="textModel" options="extended" width="120" height="50"/>
+				<TextBox name="textModel" width="120" height="50"/>
+				
+				<Heading level="2" title="ColorPicker"/>
+				<ImageView style="Standard.EditBox">
+					<PopupBox name="ColorPicker" size="0,0,50,50">
+						<ColorBox name="color" radius="2" size="1,1,48,48"/>
+					</PopupBox>
+				</ImageView>
+			</Vertical>
+
+			<Vertical height="1000" margin="0" spacing="0" attach="top bottom">
+				<ValueBar name="discrete" style="ScaledShapeValueBarStyle" width="20" height="100" attach="top bottom"/>
+				<Divider options="vertical" size="0,0,20,10"/>
+				<Space attach="top bottom"/>
+			</Vertical>
+
+			<DialogGroup options="secondary" attach="top bottom">
+				<ScrollView size="0,0,250,0" options="small vertical mousescroll" attach="top bottom">
+					<Target name="CenterControlsColumn"/>
+				</ScrollView>
+			</DialogGroup>
+
+			<Vertical size="10,10" width="220" margin="10">
+				<ListView name="list" options="header selection" scrolloptions="border horizontal vertical" tooltip="ListView" size="0,0,200,80"/>
+				<Anchor url="https://www.ccl.dev">
+					<Link title="https://www.ccl.dev"/>
+				</Anchor>
+				
+				<View name="ScrollPickerTestView"/>
+			</Vertical>						
+		</Horizontal>
+	</Form>
+	
+	<Form name="CenterControlsColumn">
+		<Vertical size="10,20,220,1000" margin="10">
+			<ScrollBar name="scroll" tooltip="ScrollBar" width="200"/>
+			<Slider name="continuous" options="horizontal bargraph" tooltip="Slider @value[]" width="200"/>
+			<ProgressBar name="continuous" options="horizontal" tooltip="ProgressBar" width="200"/>
+			<Horizontal margin="0" attach="left">
+				<Button name="button" title="Click" tooltip="Button" width="80"/>
+				<Toggle name="check" title="Check" tooltip="Toggle" width="80"/>
+			</Horizontal>
+			<CheckBox name="check" title="Check Me" tooltip="CheckBox" width="200"/>
+			<CheckBox name="check" title="Me Too" tooltip="CheckBox" width="200"/>
+			<RadioButton name="list" value="0" title="Item 1" tooltip="RadioButton" width="200"/>
+			<RadioButton name="list" value="1" title="Item 2" tooltip="RadioButton" width="200"/>
+			<RadioButton name="list" value="2" title="Item 3" tooltip="RadioButton" width="200"/>
+			<Horizontal margin="0" spacing="0">
+				<Knob name="scroll"/>
+				<Space/>
+				<Knob name="scroll2"/>
+			</Horizontal>
+			
+			<Slider name="scroll" options="bargraph xyediting" style="RangeSliderStyle" tooltip="RangeSlider @value[]" width="200" height="20"/>
+			<Heading level="2" title="RangeSlider"/>
+			<RangeSlider name="scroll" name2="scroll2" options="bargraph xyediting" style="RangeSliderStyle" tooltip="RangeSlider @value[]" width="200" height="20"/>
+			<Label title="Invertible"/>
+			<RangeSlider name="scroll" name2="scroll2" mode="relative" options="invertible bargraph xyediting limit" style="RangeSliderStyle" tooltip="RangeSlider @value[]" width="200" height="20"/>
+
+			<Heading level="2" title="TriVectorPad"/>
+			
+			<Variant name="check">
+				<TriVectorPad name="scroll" yname="scroll2" zname="scroll3" size="0,0,200,180"/>
+				<TriVectorPad name="scroll" yname="scroll2" zname="scroll3" options="keeplevel" size="0,0,200,180"/>
+			</Variant>
+			<Space/>
+			<Slider name="scroll" size="0,0,200,10"/>
+			<Slider name="scroll2" size="0,0,200,10"/>
+			<Slider name="scroll3" size="0,0,200,10"/>
+			<CheckBox name="check" title="Keep Levels"/>
+			<Variant name="check">
+				<TriVectorPad name="scroll" yname="scroll2" zname="scroll3" options="upsidedown invert tooltip" size="0,0,200,180"/>
+				<TriVectorPad name="scroll" yname="scroll2" zname="scroll3" options="keeplevel upsidedown invert tooltip" size="0,0,200,180"/>
+			</Variant>				
+		</Vertical>
+	</Form>
+	
+	</Forms>
+</Skin>

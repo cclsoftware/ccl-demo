@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+    <Styles>
+		<Style name="TextLinkStyle" inherit="Standard.Label">
+			<Color name="textcolor" color="@Main.LabelColor"/>
+		</Style>
+		
+		<Style name="HeaderTextStyle" inherit="Standard.Label">
+			<Font name="textfont" themeid="StandardUI" size="+2" style="bold"/>
+			<Color name="textcolor" color="@Main.LabelColor"/>
+		</Style>
+		
+		<Style name="BodyTextStyle" inherit="Standard.Label">
+			<Color name="textcolor" color="@Main.LabelColor.Secondary"/>
+		</Style>
+
+		<Style name="BodyLinkTextStyle" inherit="Standard.Label">
+			<Color name="textcolor" color="@Main.HyperLinkColor"/>
+		</Style>
+	</Styles>
+
+	<Forms>
+	    <!-- ******************************************************************************************** -->
+	    <!-- Navigator -->
+	    <!-- ******************************************************************************************** -->
+
+		<Form name="NavigationBar" attach="top left right">
+			<Horizontal spacing="5" margin="5">
+				<Button name="goBack"    title="Back"/>
+				<Button name="goForward" title="Forward"/>
+				<Button name="goHome"    title="Start Page"/>
+				<Button name="refresh"   title="Refresh"/>
+				<!--
+				<TextBox name="location" size="0,0,300,20"/>
+				-->
+			</Horizontal>
+		</Form>
+
+		<Form name="Navigator" attach="all">
+			<Vertical spacing="2" margin="2" attach="all">
+				<View name="NavigationBar"/>
+				<View name="contentFrame" width="800" height="600" sizelimits="none" attach="all"/>
+			</Vertical>
+		</Form>
+
+		<!-- ******************************************************************************************** -->
+		<!-- Demo Index Page -->
+		<!-- ******************************************************************************************** -->
+
+		<Form name="DemoIndex" attach="all">
+			<Vertical margin="0" spacing="0" attach="all">
+				<ScrollView width="800" options="autohideboth extendtarget transparent" scrolloptions="notiledlayers" attach="all">
+					<Target name="DemoIndex.Target" options="transparent" attach="all"/>
+				</ScrollView>
+				<TextBox name="object://ccldemo/Application/appNameAndVersion" attach="fitsize hcenter bottom" options="transparent"/>
+			</Vertical>
+		</Form>
+
+		<Form name="DemoIndex.Target">
+			<Horizontal margin="0" spacing="0" attach="all fill">
+				<Space attach="left right fill"/>				
+				<Vertical margin="0" spacing="5" attach="hcenter">
+					<Space/>
+					<Label title="Select a category or demo" style="HeaderTextStyle"/>
+					<Space/>
+					<foreach variable="$index" count="resultCount">
+						<define resultId="@property:resultId[$index]" resultTitle="@property:resultTitle[$index]" resultForm="@property:resultForm[$index]">
+						<Anchor url="object://ccldemo/Demo?id=$resultId">
+							<Link title="$resultTitle" style="TextLinkStyle"/>
+							<View name="$resultForm.Summary"/>
+						</Anchor>
+						<Space height="5"/>
+						</define>
+					</foreach>
+					<Space/>
+				</Vertical>			
+				<Space attach="left right fill"/>
+			</Horizontal>
+		</Form>
+
+		<!-- ******************************************************************************************** -->
+		<!-- Demo Page -->
+		<!-- ******************************************************************************************** -->
+
+		<Form name="DemoPage" attach="all">		
+			<Vertical margin="0" spacing="0" attach="all" options="unifysizes">
+				<!-- Demo Header -->
+				<Vertical spacing="0" attach="left right" sizelimits="none">
+					<using controller="DemoInfo">
+						<TextBox name="demoTitle" options="transparent" attach="fitsize" style="HeaderTextStyle"/>
+						<Table margin="0" spacing="1" columns="2">
+							<Label title="Source:" attach="vcenter"/>
+							<Link name="demoSourceFileLink">
+								<TextBox name="demoSourceFileName" options="transparent" attach="fitsize" style="BodyLinkTextStyle"/>
+							</Link>
+							<Label title="Skin XML:" attach="vcenter"/>
+							<Link name="demoSkinFileLink">
+								<TextBox name="demoSkinFileName" options="transparent" attach="fitsize" style="BodyLinkTextStyle"/>
+							</Link>
+						</Table>
+					</using>
+					<View name="$demoFormName.Summary" attach="all"/>
+				</Vertical>
+								
+				<!-- Demo Content -->
+				<ScrollView options="small vertical horizontal mousescroll transparent extendtarget" attach="all">
+					<Target name="$demoFormName" attach="left right"/>
+				</ScrollView>
+				
+			</Vertical>			
+		</Form>
+
+	</Forms>
+</Skin>

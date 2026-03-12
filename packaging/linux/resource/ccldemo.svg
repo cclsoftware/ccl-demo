@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-3244,0)">
+        <g id="CCL-Demo" serif:id="CCL Demo" transform="matrix(1,0,0,1,2170,0)">
+            <rect x="1074" y="0" width="1024" height="1024" style="fill:none;"/>
+            <g>
+                <g id="bg_shadow" transform="matrix(1.00117,0,0,1.00204,1078.84,-2.05317)">
+                    <g style="filter:url(#_Effect1);">
+                        <path d="M996,74.188C996,47.592 974.389,26 947.77,26L65.375,26C38.755,26 17.144,47.592 17.144,74.188L17.144,955.812C17.144,982.408 38.755,1004 65.375,1004L947.77,1004C974.389,1004 996,982.408 996,955.812L996,74.188Z" style="fill:rgb(35,35,35);"/>
+                    </g>
+                </g>
+                <g transform="matrix(1.00117,0,0,1.00204,1078.84,-4.05317)">
+                    <path d="M996,74.9C996,47.911 974.069,26 947.057,26L66.087,26C39.075,26 17.144,47.911 17.144,74.9L17.144,955.1C17.144,982.089 39.075,1004 66.087,1004L947.057,1004C974.069,1004 996,982.089 996,955.1L996,74.9Z" style="fill:rgb(0,84,128);"/>
+                </g>
+                <g id="shadow" transform="matrix(0.943959,0,0,0.944785,1107.82,25.4356)">
+                    <g style="filter:url(#_Effect2);">
+                        <path d="M996,55.34C996,39.147 982.842,26 966.634,26L46.51,26C30.302,26 17.144,39.147 17.144,55.34L17.144,974.66C17.144,990.853 30.302,1004 46.51,1004L966.634,1004C982.842,1004 996,990.853 996,974.66L996,55.34Z" style="fill:rgb(35,35,35);"/>
+                    </g>
+                </g>
+                <g transform="matrix(0.939873,0,0,0.940695,1109.89,27.5419)">
+                    <path d="M996,55.34C996,39.147 982.842,26 966.634,26L46.51,26C30.302,26 17.144,39.147 17.144,55.34L17.144,974.66C17.144,990.853 30.302,1004 46.51,1004L966.634,1004C982.842,1004 996,990.853 996,974.66L996,55.34Z" style="fill:rgb(0,255,209);"/>
+                    <path d="M998.128,55.34C998.128,37.973 984.016,23.874 966.634,23.874L46.51,23.874C29.128,23.874 15.016,37.973 15.016,55.34C15.016,55.34 15.016,974.66 15.016,974.66C15.016,992.027 29.128,1006.13 46.51,1006.13L966.634,1006.13C984.016,1006.13 998.128,992.027 998.128,974.66L998.128,55.34ZM996,55.34C996,39.147 982.842,26 966.634,26L46.51,26C30.302,26 17.144,39.147 17.144,55.34L17.144,974.66C17.144,990.853 30.302,1004 46.51,1004L966.634,1004C982.842,1004 996,990.853 996,974.66L996,55.34Z" style="fill:rgb(15,68,93);"/>
+                </g>
+                <g transform="matrix(0.939873,0,0,0.588476,1109.89,36.6996)">
+                    <path d="M996,71.839C996,46.523 983.15,26 967.299,26L45.845,26C29.994,26 17.144,46.523 17.144,71.839L17.144,1004L996,1004L996,71.839Z" style="fill:url(#_Linear3);"/>
+                </g>
+                <g transform="matrix(-4.12095,5.04671e-16,-5.04671e-16,-4.12095,16261.8,1254.48)">
+                    <circle cx="3561" cy="213" r="37" style="fill:white;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,-2170,8)">
+                    <g style="filter:url(#_Effect4);">
+                        <path d="M4123.94,964L3389.39,964L3568.03,652.53L3943.3,652.53L4123.94,964ZM4205.93,941.137C4205.95,947.459 4203.45,953.529 4198.98,958.006C4194.52,962.484 4198.46,965 4192.14,965C4192.14,965 4187.14,965 4187.14,965L3966.41,652.53L4015.02,652.53C4015.02,652.53 4205.7,866.989 4205.93,941.137ZM3334.4,964C3334.4,964 3316.04,966 3313.9,966C3299.6,966 3490,652.53 3490,652.53L3547.95,652.53L3334.4,964Z" style="fill:rgb(29,38,51);fill-opacity:0.7;"/>
+                    </g>
+                </g>
+                <g transform="matrix(1.04136,0,0,1.72457,-66.0806,-472.802)">
+                    <g transform="matrix(1.7926,0,0,1.89027,-4732.7,612.834)">
+                        <path d="M3772.07,111.68C3772.08,113.619 3770.74,115.481 3768.35,116.855C3765.95,118.228 3762.71,119 3759.32,119L3759.32,119L3638.4,21L3771.58,21C3771.58,21 3771.94,88.934 3772.07,111.68Z" style="fill:rgb(0,134,204);"/>
+                    </g>
+                    <g transform="matrix(1.7926,0,0,1.89027,-5555.32,612.834)">
+                        <path d="M3752.84,119L3750.97,119C3743.31,119 3737.09,115.443 3737.09,111.055C3737.09,87.717 3737.09,21 3737.09,21L3872.06,21L3752.84,119Z" style="fill:rgb(0,75,113);"/>
+                    </g>
+                    <g transform="matrix(1.57071,0,0,1.89027,-4312.46,612.834)">
+                        <path d="M3980.54,119L3531.46,119L3643.73,21L3868.27,21L3980.54,119Z" style="fill:rgb(0,120,182);"/>
+                    </g>
+                </g>
+                <g transform="matrix(-2.05097,2.51172e-16,-9.21855e-17,-0.752752,8792.25,877.637)">
+                    <circle cx="3561" cy="213" r="37" style="fill:rgb(74,74,74);"/>
+                </g>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <filter id="_Effect1" filterUnits="userSpaceOnUse" x="-6.82793" y="2.04898" width="1026.8" height="1025.9">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3.99358"/>
+        </filter>
+        <filter id="_Effect2" filterUnits="userSpaceOnUse" x="-20.9932" y="-12.1039" width="1055.13" height="1054.21">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6.35343"/>
+        </filter>
+        <linearGradient id="_Linear3" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(3.77561e-14,978,-616.604,5.98852e-14,507.749,26)"><stop offset="0" style="stop-color:rgb(0,84,128);stop-opacity:1"/><stop offset="0.21" style="stop-color:rgb(0,89,135);stop-opacity:1"/><stop offset="0.31" style="stop-color:rgb(0,118,180);stop-opacity:1"/><stop offset="0.57" style="stop-color:rgb(0,126,192);stop-opacity:1"/><stop offset="0.66" style="stop-color:rgb(17,144,210);stop-opacity:1"/><stop offset="0.83" style="stop-color:rgb(20,147,213);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(0,198,255);stop-opacity:1"/></linearGradient>
+        <filter id="_Effect4" filterUnits="userSpaceOnUse" x="3289.13" y="628.53" width="940.794" height="361.47">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4"/>
+        </filter>
+    </defs>
+</svg>

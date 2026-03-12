@@ -1,0 +1,11 @@
+[
+	{"name": "Toggle", "file": "toggle.png", "frames": 2},
+	{"name": "Logo", "file": "logo.png"},
+	{
+		"name": "Gradient", "file": "gradient.bmp",
+		"atlas":
+		[
+			{"name": "GradientPart1", "size": "0,0,20,20", "frames": 1}
+		]
+	}
+]

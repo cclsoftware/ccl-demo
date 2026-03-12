@@ -1,0 +1,35 @@
+{
+	"width": 480,
+	"height": 272,
+	"children" :
+	[
+		{
+			"type": "ImageView",
+			"width": 480,
+			"height": 272,
+			"options": "colorize",
+			"children" :
+			[
+				{
+					"type": "TextInputBox",
+					"name": "preview",
+					"size": "10,10,460,24",
+					"style": {"font": "Tuffy16"}
+				},
+				{
+					"type": "TouchKeyboard",
+					"size": "8,60,460,232",
+					"name": "keyInput",
+					"style": {"font": "Tuffy16", "hilitecolor": "#0000ff"},
+					"keyspacing": 4,
+					"rowspacing": 8,
+					"keywidth": 38,
+					"keycolor": "#d3d3d6",
+					"pressedkeycolor": "#e8e8eb",
+					"keycolor2": "#8b8a8a",
+					"pressedkeycolor2": "#aaaaaa"				
+				}			
+			]
+		}
+	]
+}

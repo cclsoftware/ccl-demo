@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="220"
+   height="35"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.44"
+   sodipodi:docbase="D:\Kristal\testarea\ccldemo\resource\images"
+   sodipodi:docname="sliderBack.svg"
+   version="1.0">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient2788">
+      <stop
+         style="stop-color:#444800;stop-opacity:1;"
+         offset="0"
+         id="stop2790" />
+      <stop
+         style="stop-color:#444800;stop-opacity:0;"
+         offset="1"
+         id="stop2792" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.8181818"
+     inkscape:cx="117.58115"
+     inkscape:cy="17.5"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="925"
+     inkscape:window-height="774"
+     inkscape:window-x="183"
+     inkscape:window-y="118"
+     width="220px"
+     height="35px" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#444800;fill-opacity:1;fill-rule:evenodd;stroke:black;stroke-width:0.85809678px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="rect1890"
+       width="34.713329"
+       height="219.49905"
+       x="0.21980238"
+       y="-220.14236"
+       transform="matrix(0,1,-1,0,0,0)" />
+    <rect
+       style="fill:#c7c8b8;fill-opacity:1"
+       id="rect2800"
+       width="6"
+       height="181"
+       x="13.933611"
+       y="-201.19048"
+       transform="matrix(0,1,-1,0,0,0)" />
+  </g>
+</svg>

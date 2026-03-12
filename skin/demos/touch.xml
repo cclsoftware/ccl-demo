@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>    
+    <Forms>
+
+		<Form name="System.Multi-touch.Summary" attach="all">
+			<Label title="Multi-touch demo (requires device with touch input)."/>
+		</Form>
+
+		<Form name="System.Multi-touch" attach="all">
+			<Vertical attach="all">
+				<CheckBox name="multipleViews" title="Multipe Views"/>
+				<Variant name="multipleViews" size="0,0,640,480" >
+					<View name="TouchDemo" size="0,0,640,480" attach="all"/>
+					<View>
+						<View name="TouchDemo1" size="0,0,640,480" attach="all"/>
+						<View name="TouchDemo2" size="0,0,640,480" attach="all"/>
+					</View>
+				</Variant>
+			</Vertical>
+        </Form>        
+
+	</Forms>
+</Skin>
+

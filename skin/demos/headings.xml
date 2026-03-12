@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+  	<Forms>
+		
+		<Form name="Controls.Headings.Summary" attach="all">
+			<Label title="Overview of heading levels."/>
+		</Form>
+		
+		<Form name="Controls.Headings" attach="all">
+			<Vertical>
+				<Heading level="1" title="Heading 1"/>
+				<Heading level="2" title="Heading 2"/>
+				<Heading level="3" title="Heading 3"/>
+				<Label title="Paragraph text"/>
+			</Vertical>
+		</Form>
+	
+	</Forms>
+</Skin>

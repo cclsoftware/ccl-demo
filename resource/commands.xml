@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Commands>
+	<!-- ******************************************************************************* -->
+	<!-- SVG -->
+	<!-- ******************************************************************************* -->
+
+	<Command category="SVG" name="Next Image">
+		<Key name="Space"/>
+	</Command>
+   
+	<Command category="SVG" name="Previous Image">
+		<Key name="Backspace"/>
+	</Command>
+
+	<Command category="SVG" name="Reload Image">
+		<Key name="R"/>
+	</Command>
+
+</Commands>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+	<Styles>
+		<Style name="Source" inherit="Standard.Label">
+			<Align name="textalign" align="left top"/>
+		</Style>
+
+		<Style name="white" backcolor="white"/>
+	</Styles>
+	
+    <Forms>
+	
+		<Form name="Graphics.SVG.Summary" attach="all">
+			<Label title="SVG rendering demo."/>
+		</Form>
+
+        <Form name="Graphics.SVG" attach="all" datatarget="datatarget">
+          <Vertical attach="all">
+            <Horizontal _attach="left right" margin="0">
+              <Button command.category="SVG" command.name="Previous Image" title="Previous Image"/>
+              <Button command.category="SVG" command.name="Next Image" title="Next Image"/>
+              <Button command.category="SVG" command.name="Reload Image" title="Reload Image"/>
+            </Horizontal>
+
+			<Label title="Drag .svg file or a folder here. Show SVG source by tapping the filename below."/>
+
+			<Horizontal margin="0" attach="all" options="unifysizes">
+				<Vertical margin="0" attach="all">
+					<Label title="Rendered SVG:" size="0,0,300,16" attach="left top" style="BodyTextStyle" sizelimits="0,0,10,16"/>
+					<ColorBox size="0,0,300,300" style="white" attach="all">
+						<View name="image1" size="2,2,296,296" attach="all"/>
+					</ColorBox>
+				</Vertical>
+
+				<Vertical margin="0" attach="all">
+					<Variant name="hasReference" size="0,0,300,16">
+						<Label title="Reference bitmap:" size="0,0,300,16" attach="left top" style="BodyTextStyle" sizelimits="0,0,10,16"/>
+					</Variant>
+					<ColorBox size="0,0,300,300" style="white" attach="all">
+						<View name="image2" size="2,2,296,296" attach="all"/>
+					</ColorBox>
+				</Vertical>
+			</Horizontal>
+			
+			<define sourceWidth="610">
+
+				<Toggle name="showSource" attach="left right bottom" options="transparent" tooltip="Click to show SVG source">
+					<TextBox name="filename" size="0,0,$sourceWidth,20" attach="all" style="BodyTextStyle"/>
+				</Toggle> 
+				<Variant name="showSource" width="$sourceWidth" attach="left right vfit">
+					<TextEditor name="source" size="0,0,$sourceWidth,200" attach="left right bottom" style="Source"/>
+				</Variant>
+			
+			</define>
+			
+          </Vertical>
+        </Form>
+		
+	</Forms>
+</Skin>
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Skin>
+	<Imports>
+		<Import url="@neutralbase"/>
+		<Import url="@neutraldesign"/>
+	</Imports>
+
+    <Includes>
+        <Include url="appwindow.xml"/>
+        <Include url="navigator.xml"/>
+        
+        <!-- ******************************************************************************************** -->
+        <!-- Demo includes -->
+        <!-- ******************************************************************************************** -->
+
+        <Include url="demos/autofill.xml"/>
+        <Include url="demos/categories.xml"/>
+        <Include url="demos/treeview.xml"/>
+        <Include url="demos/svg.xml"/>
+		<Include url="demos/flexbox.xml"/>
+        <Include url="demos/views.xml"/>
+        <Include url="demos/focus.xml"/>
+        <Include url="demos/layout.xml"/>
+        <Include url="demos/tablelayout.xml"/>
+        <Include url="demos/workspace.xml"/>
+        <Include url="demos/graphics.xml"/>
+        <Include url="demos/graphics3d.xml"/>
+		<Include url="demos/dialogs.xml"/>
+		<Include url="demos/system.xml"/>
+		<Include url="demos/network.xml"/>
+		<Include url="demos/skindemo.xml"/>
+		<Include url="demos/sprites.xml"/>
+		<Include url="demos/storeapi.xml"/>
+        <Include url="demos/demos.xml"/>
+        <Include url="demos/touch.xml"/>
+		<Include url="demos/button.xml"/>
+		<Include url="demos/slider.xml"/>
+        <Include url="demos/headings.xml"/>
+        <Include url="demos/imageview.xml"/>
+    </Includes>
+	
+	<Forms>
+		<!-- ******************************************************************************************** -->
+		<!-- WindowTitlebar (for popup windows on mobile platforms) -->
+		<!-- ******************************************************************************************** -->
+
+		<?defined mobileapp?>
+		<Form name="WindowTitlebar" attach="left right">
+			<Horizontal spacing="0" margin="0" attach="left right">
+				<using controller="$frame">
+					<Space width="2"/>
+					<TextBox name="title" size="0,0,100,30" options="transparent" attach="vcenter left right"/>
+					<Button name="close"  size="0,0,30,30"	tooltip="Close" title="X"/>
+				</using>
+			</Horizontal>
+		</Form>
+		<?defined?>
+	</Forms>
+
+	<Overlays>
+		<?defined mobileapp?>
+		<Overlay target="skin://cclgui/WindowTitlebar" source="WindowTitlebar"/>
+		<?defined?>
+	</Overlays>
+
+</Skin>
+

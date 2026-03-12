@@ -1,0 +1,73 @@
+{
+	"width": 480,
+	"height": 272,
+	"children" :
+	[
+		{
+			"type": "ImageView",
+			"size": "5,0,140,60",
+			"image": "Logo"
+		},
+		{
+			"type": "Label",
+			"size": "5,60,140,20",
+			"title": "Hello Embedded World!",
+			"style": {"font": "Tuffy16", "textcolor": "#0000FF", "textalign": "center"}
+		},
+		{
+			"type": "MultiLineLabel",
+			"size": "300,100,140,120",
+			"title": "Multi-\nline-\nlabel\nwith\n\ttab.",
+			"style": {"font": "Tuffy16", "textcolor": "#0000FF", "textalign": "left"}
+		},
+		{
+			"type": "UserControl",
+			"size": "160,10,100,50",
+			"style": {"backcolor": "#999999", "forecolor": "#00FF00", "textalign": "bottom center"}
+		},		
+		{
+			"type": "ImageView",
+			"size": "300,10,64,64",
+			"image": "Gradient"
+		},
+		{
+			"type": "ImageView",
+			"size": "380,10,20,20",
+			"image": "GradientPart1"
+		},
+		{
+			"type": "Toggle",
+			"name": "test",
+			"size": "0,100,87,37",
+			"image": "Toggle"
+		},
+		{
+			"type": "TextBox",
+			"name": "text",
+			"size": "100,100,150,37",
+			"style": {"font": "Tuffy16"}
+		},
+		{
+			"type": "ListView",
+			"name": "test",
+			"size": "5,150,150,100",
+			"style": {"selectcolor": "#d8f0fb"}
+		},
+		{
+			"type": "SelectBox",
+			"name": "list",
+			"size": "160,150,100,20"
+		},
+		{
+			"type": "EditBox",
+			"name": "text",
+			"size": "160,180,100,20"
+		},
+		{
+			"type": "Slider",
+			"name": "value",
+			"size": "160,220,100,20",
+			"style": {"hilitecolor": "#00FF00"}
+		}
+	]
+}

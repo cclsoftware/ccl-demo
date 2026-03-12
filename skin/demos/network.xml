@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+	<Forms>      
+ 
+		<Form name="Network.XMLHttpRequest.Summary" attach="all">
+			<Label title="Use of IXMLHttpRequest interface."/>
+		</Form>
+
+		<Form name="Network.XMLHttpRequest" attach="all">
+			<Vertical attach="all" options="unifysizes">
+				<Horizontal  attach="left right">
+					<Label title="URL"/>
+					<EditBox name="url" attach="left right"/>
+				</Horizontal>
+				<ListView name="list" options="extendlastcolumn" scrolloptions="border horizontal vertical" size="0,0,500,400" attach="all"/>
+			</Vertical>
+		</Form>
+
+		<Form name="Network.WebSocket.Summary" attach="all">
+			<Label title="Web socket demo (incomplete)."/>
+		</Form>
+
+		<Form name="Network.WebSocket" attach="all">
+			<Vertical attach="all">
+				<Horizontal attach="left right">
+					<Label title="Url"/>
+					<EditBox name="url" attach="left right"/>
+					<Variant property="paramEnabled[disconnect]" width="80" height="20" attach="vcenter right">
+						<Button name="connect" title="Connect" width="80" height="20"/>
+						<Button name="disconnect" title="Disconnect" width="80" height="20"/>
+					</Variant>
+					<TextBox name="readyState" width="100" attach="right"/>
+				</Horizontal>
+				<Horizontal attach="left right">
+					<Label title="Message"/>
+					<EditBox name="messageText" attach="left right"/>
+					<Button name="sendMessage" title="Send" attach="right"/>
+				</Horizontal>				
+			</Vertical>
+		</Form>
+		
+	</Forms>
+</Skin>
+

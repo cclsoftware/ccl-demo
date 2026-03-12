@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+	<Styles>
+		<Style name="Border" backcolor="#00000000" forecolor="black"/>
+		<Style name="Frame" forecolor="black"/>
+	</Styles>
+
+	<Forms>
+		<Form name="Layout.Workspace.Summary" attach="all">
+			<Label title="Workspace and window classes example."/>
+		</Form>
+
+		<Form name="Layout.Workspace">
+			<Vertical>
+				<Horizontal>
+					<Button title="Toolbar" command.category="Open" command.name="Toolbar"/>
+					<Button title="LowerArea" command.category="Open" command.name="LowerAreaPanel"/>
+					<Button title="ExtraArea" command.category="Open" command.name="ExtraArea"/>
+					<Button title="MainArea" command.category="Open" command.name="MainArea"/>
+					<Button title="Popup" command.category="Open" command.name="PopupWindow"/>
+				</Horizontal>
+				<ColorBox options="border" style="Border" attach="all">
+					<View name="workspace" size="0,0,600,400"/>
+				</ColorBox>
+			</Vertical>
+		</Form>
+
+		<Form name="Workspace.Toolbar">
+			<ColorBox options="border" style="Frame" attach="all">
+				<Horizontal margin ="2">
+					<Button title="Tool1"/>
+					<Button title="Tool2"/>
+				</Horizontal>
+			</ColorBox>
+		</Form>
+
+		<Form name="Workspace.LowerArea" style="Frame">
+			<ColorBox options="border" style="Frame" attach="all" size="0,0,300,30">
+				<Label title="LowerArea"/>
+			</ColorBox>
+		</Form>
+
+		<Form name="Workspace.ExtraArea">
+			<ColorBox options="border" style="Frame" attach="all" size="0,0,150,200">
+				<Label title="ExtraArea"/>
+			</ColorBox>
+		</Form>
+
+		<Form name="Workspace.MainArea">
+			<ColorBox options="border" style="Frame" attach="all" size="0,0,300,300">
+				<Label title="MainArea"/>
+			</ColorBox>
+		</Form>
+
+		<Form name="Workspace.PopupWindow" title="Popup Window">
+			<View size="0,0,300,300"/>
+		</Form>
+
+	</Forms>
+
+	<WindowClasses>
+
+		<WindowClass name="Toolbar"
+			title="Toolbar"
+			controller="object://ccldemo"
+			form.name="Workspace.Toolbar"
+			command.category="Toolbar" command.name="Open"
+			group="Toolbar"
+			visible="true"/>
+
+		<WindowClass name="LowerAreaPanel"
+			title="LowerArea"
+			controller="object://ccldemo"
+			form.name="Workspace.LowerArea"
+			group="LowerArea"
+			visible="true"/>
+
+		<WindowClass name="ExtraArea"
+			controller="object://ccldemo"
+			form.name="Workspace.ExtraArea"
+			group="Left"
+			visible="true"/>
+
+		<WindowClass name="MainArea"
+			controller="object://ccldemo"
+			form.name="Workspace.MainArea"
+			group="Main"
+			visible="true"/>
+
+		<WindowClass name="PopupWindow"
+			controller="object://ccldemo"
+			form.name="Workspace.PopupWindow"
+			group="Popups"/>
+
+	</WindowClasses>
+
+	<Workspaces>
+		<Workspace name="WorkspaceDemo">
+
+			<Perspective name="Song">
+				<Frame options="vertical dividers">
+					<Frame groups="Toolbar" name="toolbar"/>
+					<Frame options="horizontal dividers">
+						<Frame groups="Left" name="left"/>
+						<Frame groups="Main" name="main"/>
+					</Frame>
+					<Frame groups="LowerArea" default="LowerAreaPanel" width="30" height="30" name="LowerArea"/>
+					<Frame options="popup multiple" name="Popups" groups="Popups"/>
+				</Frame>
+			</Perspective>
+
+		</Workspace>
+	</Workspaces>
+
+</Skin>

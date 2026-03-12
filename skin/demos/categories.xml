@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+	<Forms>
+	
+		<!-- ******************************************************************************************** -->
+		<!-- Category Summaries -->
+		<!-- ******************************************************************************************** -->
+
+		<Form name="Controls.Summary" attach="all">
+			<Label title="Demos of various UI controls."/>
+		</Form>
+
+		<Form name="Graphics.Summary" attach="all">
+			<Label title="2D, 3D, SVG rendering, and more."/>
+		</Form>
+
+		<Form name="Layout.Summary" attach="all">
+			<Label title="Anchor and Flexbox layout."/>
+		</Form>
+
+		<Form name="Network.Summary" attach="all">
+			<Label title="Networking and web."/>
+		</Form>
+
+		<Form name="System.Summary" attach="all">
+			<Label title="OS-level integrations."/>
+		</Form>
+
+		<Form name="Experimental.Summary" attach="all">
+			<Label title="Experimental demos."/>
+		</Form>
+
+	</Forms>
+</Skin>

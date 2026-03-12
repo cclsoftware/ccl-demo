@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+	<Resources>
+		<Image name="Example1" url="images/UnsplashExample1.jpg"/>
+	</Resources>
+
+	<Styles>
+		<Style name="RedBackground" backcolor="red"/>
+		<Style name="GreenBackground" backcolor="green"/>
+		<Style name="BlueBackground" backcolor="blue"/>
+	</Styles>
+
+  	<Forms>
+		
+		<Form name="Controls.ImageView.Summary" attach="all">
+			<Label title="Use cases for image views."/>
+		</Form>
+		
+		<Form name="Controls.ImageView" attach="all">
+			<Vertical>
+				<Heading title="Colorization"/>
+				<Horizontal>
+					<ImageView width="64" height="64" style="RedBackground" options="colorize"/>				
+					<ImageView width="64" height="64" style="GreenBackground" options="colorize"/>				
+					<ImageView width="64" height="64" style="BlueBackground" options="colorize"/>				
+				</Horizontal>
+				<Heading title="Image Alignment Options"/>
+				<Table rows="2">
+					<Label title="None"/>
+					<ImageView width="128" height="128" image="Example1"/>
+					<Label title="Fit"/>
+					<ImageView width="128" height="128" image="Example1" options="fitimage"/>
+					<Label title="Center"/>
+					<ImageView width="128" height="128" image="Example1" options="centerimage"/>
+				</Table>
+			</Vertical>
+		</Form>
+	
+	</Forms>
+</Skin>

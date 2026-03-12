@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+    <Forms>    
+	
+		<Form name="Controls.TreeView.Summary" attach="all">
+			<Label title="TreeView example."/>
+		</Form>
+
+        <Form name="Controls.TreeView" attach="all">
+        	<Vertical attach="all">
+				<Horizontal spacing="2" attach="left right">
+					<Slider  name="zoom" size="0,0,200,20" options="horizontal" attach="left right"/>
+					<TextBox name="zoom" size="0,0,50,20" attach="right"/>
+				</Horizontal>
+				<View name="TreeView" size="0,0,250,200" attach="all"/>
+        	</Vertical>
+        </Form>        
+		
+	</Forms>
+</Skin>
+

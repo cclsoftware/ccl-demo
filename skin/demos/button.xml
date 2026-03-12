@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+	<Styles>
+		<Style name="Button3State" inherit="Standard.Button">
+			<Image name="background" image="Button3State"/>
+		</Style>
+	</Styles>
+	
+	<Resources>
+		<ShapeImage name="Button3State" url="Button3StateShape" frames="embedded"/>
+	</Resources>
+	
+	<Shapes>
+		<Shape name="Button3StateShape">
+			<Shape name="normal">
+				<Rectangle size="0,0,28,32" style="fill" Brush.color="hsl(0,100,50,25)"/>
+			</Shape>
+			<Shape name="mouseover">
+				<Rectangle size="0,0,28,32" style="fill" Brush.color="hsl(0,100,50,50)"/>
+			</Shape>
+			<Shape name="pressed">
+				<Rectangle size="0,0,28,32" style="fill" Brush.color="hsl(0,100,50,25)"/>
+			</Shape>
+			<Shape name="normal1">
+				<Rectangle size="0,0,28,32" style="fill" Brush.color="hsl(56,100,50,25)"/>
+			</Shape>
+			<Shape name="mouseover1">
+				<Rectangle size="0,0,28,32" style="fill" Brush.color="hsl(56,100,50,50)"/>
+			</Shape>
+			<Shape name="pressed1">
+				<Rectangle size="0,0,28,32" style="fill" Brush.color="hsl(56,100,50,25)"/>
+			</Shape>
+			<Shape name="normal2">
+				<Rectangle size="0,0,28,32" style="fill" Brush.color="hsl(107,100,50,25)"/>
+			</Shape>
+			<Shape name="mouseover2">
+				<Rectangle size="0,0,28,32" style="fill" Brush.color="hsl(107,100,50,50)"/>
+			</Shape>
+			<Shape name="pressed2">
+				<Rectangle size="0,0,28,32" style="fill" Brush.color="hsl(107,100,50,25)"/>
+			</Shape>
+		</Shape>
+	</Shapes>
+
+  	<Forms>		
+		<Form name="Controls.Button.Summary" attach="all">
+			<Label title="Overview of button types, options, and modes."/>
+		</Form>
+		
+		<Form name="Controls.Button" attach="left right">
+			<Vertical attach="left right" options="unifysizes">
+				<Heading title="Single-state buttons"/>
+				
+				<DialogGroup title="Variants for Grouping" attach="left right">
+					<Vertical attach="left right">
+						<Space height="15"/>
+						<Horizontal margin="0" spacing="0" attach="left right">
+							<Space attach="left right"/>
+							<Button title="Normal"/>
+							<Space/>
+							<Button title="Left" options="left"/>
+							<Button title="Middle" options="middle"/>
+							<Button title="Right" options="right"/>
+							<Space attach="left right"/>
+						</Horizontal>
+					</Vertical>
+				</DialogGroup>
+
+				<DialogGroup title="Title Wrapping and Scaling" attach="left right">
+					<Vertical attach="left right">
+						<Space height="15"/>
+						<Horizontal margin="0" attach="left right">
+							<Space attach="left right"/>
+							<Button title="This is a very long button title to be wrapped" width="80" height="80" options="multiline"/>
+							<Button title="Title will be scaled" width="160" height="80" options="scaletext"/>
+							<Space attach="left right"/>
+						</Horizontal>
+					</Vertical>
+				</DialogGroup>
+
+				<DialogGroup title="Special Behavior" attach="left right">
+					<Vertical attach="left right">
+						<Space height="15"/>
+						<Horizontal margin="0" attach="left right">
+							<Space attach="left right"/>
+							<Button title="Immediate" options="immediate"/>
+							<Button title="Momentary" options="momentary"/>
+							<Space attach="left right"/>
+						</Horizontal>
+					</Vertical>
+				</DialogGroup>
+
+				<Heading title="Multi-state buttons"/>
+
+				<DialogGroup title="Toggle and MultiToggle" attach="left right">
+					<Vertical attach="left right">
+						<Space height="15"/>
+						<Horizontal margin="0" attach="left right">
+							<Space attach="left right"/>
+							<Toggle title="Toggle" name="bool"/>
+							<MultiToggle titlename="list" name="list" style="Button3State"/>
+							<Space attach="left right"/>
+						</Horizontal>
+					</Vertical>
+				</DialogGroup>				
+			</Vertical>
+		</Form>		
+	</Forms>
+</Skin>

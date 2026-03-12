@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+  <Forms>
+  
+  	<Form name="Layout.Anchor Layout - Table.Summary" attach="all">
+		<Label title="Table layout examples."/>
+	</Form>
+
+    <Form name="Layout.Anchor Layout - Table" attach="all">
+        <Vertical attach="left right">
+
+          <Heading level="1" title="2 Columns"/>
+
+          <Layout layoutclass="table" attach="all" spacing="2" columns="2">
+              <View name="demoView" size="0,0,30,30" sizelimits="10,10,100,100" attach="left right"/>
+              <View name="demoView" size="0,0,30,30" sizelimits="10,10,100,100" attach="left right"/>
+              <View name="demoView" size="0,0,30,30" sizelimits="10,10, 10,100" attach="right"/>
+              <View name="demoView" size="0,0,30,30" sizelimits="10,10, 30,10"  attach="bottom right"/>
+              <View name="demoView" size="0,0,30,30" sizelimits="10,10,100,100" attach="left right"/>
+          </Layout>
+
+          <Heading level="1" title="3 Columns"/>
+
+          <Layout layoutclass="table" attach="all" spacing="2" columns="3">
+            <View name="demoView" size="0,0,30,30" sizelimits="10,10,100,100" attach="left right"/>
+            <View name="demoView" size="0,0,30,30" sizelimits="10,10,100,100" attach="left right"/>
+            <View name="demoView" size="0,0,30,30" sizelimits="10,10, 10,100" attach="left right"/>
+            <View name="demoView" size="0,0,30,30" sizelimits="10,10,100,100" attach="left right"/>
+            <View name="demoView" size="0,0,30,30" sizelimits="10,10,100,100" attach="left right"/>
+          </Layout>
+
+          <Heading level="1" title="3 Rows"/>
+
+          <Layout layoutclass="table" attach="all" spacing="2" rows="3">
+            <View name="demoView" size="0,0,30,30" sizelimits="10,10,100,100" attach="left right"/>
+            <View name="demoView" size="0,0,30,30" sizelimits="10,10,100,100" attach="left right"/>
+            <View name="demoView" size="0,0,30,30" sizelimits="10,10, 10,100" attach="left right"/>
+            <View name="demoView" size="0,0,30,30" sizelimits="10,10,100,100" attach="left right"/>
+            <View name="demoView" size="0,0,30,30" sizelimits="10,10,100,100" attach="left right"/>
+          </Layout>
+
+        </Vertical>
+    </Form>
+	
+  </Forms>
+</Skin>

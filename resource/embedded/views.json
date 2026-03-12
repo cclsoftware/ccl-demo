@@ -1,0 +1,6 @@
+[
+	{"name": "StartPage", "file": "startpage.json"},
+	{"name": "MonochromePage", "file": "monopage.json"},
+	{"name": "Standard.TextEditor", "file": "texteditor.json"},
+	{"name": "Standard.AlertBox", "file": "alertbox.json"}
+]

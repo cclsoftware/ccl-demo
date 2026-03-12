@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+    <Resources>
+        <ShapeImage name="bmShape" url="Shape"/>
+		
+		<LinearGradient name="ShapeGradient" start="0,0" end="32,32">
+			<GradientStop position="0" color="#EEEEEE"/>
+			<GradientStop position="1" color="#EFEFEF"/>
+		</LinearGradient>
+    </Resources>
+
+    <Shapes>
+        <Shape name="Shape">
+            <Rectangle style="fill stroke" size="0,0,32,32" radius="8"
+                       Pen.color="#111111" _Brush.color="#EEEEEE" Brush.gradient="ShapeGradient"/>
+            <Triangle  style="fill stroke" point1="10,8" point2="24,16" point3="10,24"
+                       Pen.color="black" Brush.color="white"/>
+        </Shape>
+    </Shapes>
+    
+    <Forms>
+	
+        <Form name="Scroller" attach="all" size="0,0,500,500">
+            <ImageView image="bmShape" size="0,0,500,500"/>
+		</Form>
+		
+		<Form name="Controls.Views.Summary" attach="all">
+			<Label title="Basic ScrollView and TabView behavior."/>
+		</Form>
+		
+        <Form name="Controls.Views" attach="all">
+			<Vertical spacing="10">
+				<Horizontal spacing="10">
+
+					<ScrollView name="Scroller"
+						size="0,0,166,166"
+						options="vertical horizontal border"/>
+
+					<TabView
+						title="TabView"
+						tooltip="TabView"
+						size="0,0,266,166"
+						options="border"
+						attach="all">
+
+						<TextBox
+							name="string1"
+							title="View 1"
+							size="20,20,80,22"/>
+						<TextBox
+							name="string2"
+							title="View 2"
+							size="20,20,80,22"/>
+						<TextBox
+							name="string3"
+							title="View 3"
+							size="20,20,80,22"/>
+
+					</TabView>
+
+				</Horizontal>
+				
+				<Horizontal spacing="10">
+					<View name="TransformTest" size="0,0,100,100" data.scaleFactor="1"/>
+					<View name="TransformTest" size="0,0,200,200" data.scaleFactor="2"/>
+				</Horizontal>
+			</Vertical>
+        </Form>        
+
+	</Forms>
+</Skin>
+

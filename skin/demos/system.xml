@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+	<Forms>      
+	
+		<Form name="System.System Info.Summary" attach="all">
+			<Label title="Overview of system information."/>
+		</Form>
+
+		  <Form name="System.System Info" attach="all">
+			<Vertical attach="all">
+				<ListView name="list" options="extendlastcolumn" scrolloptions="border horizontal vertical" size="0,0,500,400" attach="all"/>
+			</Vertical>
+		  </Form>
+	  
+	</Forms>
+</Skin>
+

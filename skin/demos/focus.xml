@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+  <Forms>
+
+	<Form name="Layout.Focus.Summary" attach="all">
+		<Label title="Explore focus navigation in view tree."/>
+	</Form>
+
+    <Form name="Layout.Focus">
+      <Horizontal>
+        <Vertical spacing="10" attach="all">
+          <EditBox title="e1" style="textbox" options="border" size="0,0,120,20"/>
+          <EditBox title="e2" style="textbox" options="border" size="0,0,120,20"/>
+          <EditBox title="e3" style="textbox" options="border" size="0,0,120,20"/>
+      </Vertical>
+      <View name="focusContainer" title="focusContainer">
+          <Vertical spacing="10" attach="all">
+              <EditBox title="e4" style="textbox" options="border" size="0,0,120,20"/>
+              <EditBox title="e5" style="textbox" options="border" size="0,0,120,20"/>
+              <EditBox title="e6" style="textbox" options="border" size="0,0,120,20"/>
+          </Vertical>
+      </View>
+      <Vertical spacing="10" attach="all">
+          <Horizontal>
+              <EditBox title="h1" style="textbox" options="border" size="0,0,120,20"/>
+              <EditBox title="h2" style="textbox" options="border" size="0,0,120,20"/>
+          </Horizontal>
+          <Horizontal>
+              <EditBox title="h3" style="textbox" options="border" size="0,0,120,20"/>
+              <EditBox title="h4" style="textbox" options="border" size="0,0,120,20"/>
+          </Horizontal>
+        </Vertical>
+      </Horizontal>
+    </Form>
+
+  </Forms>
+</Skin>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+    <Forms>
+	
+		<Form name="Graphics.Sprites.Summary" attach="all">
+			<Label title="Graphical feedback on screen using sprite."/>
+		</Form>
+
+		<Form name="Graphics.Sprites" attach="all">
+			<Vertical attach="all">
+				<View name="SpriteDemo" size="0,0,640,480" attach="all"/>
+			</Vertical>
+        </Form>
+
+	</Forms>
+</Skin>
+

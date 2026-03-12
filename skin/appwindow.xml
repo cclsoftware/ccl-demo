@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Skin>
+	
+	<Resources>		
+		<Image name="AppIcon" url="images/AppIcon.png"/> <!-- icon for about screen -->
+		<Image name="AppNotifyIcon" url="images/TrayIcon.png"/> <!-- icon for notifications -->
+	</Resources>
+
+    <Styles>
+		<Style name="AboutLabel" inherit="Standard.Label"/>
+	</Styles>
+
+	<Forms>
+		<!-- ******************************************************************************************** -->
+		<!-- Application Window -->
+		<!-- ******************************************************************************************** -->
+		
+		<Form name="ApplicationWindow" sizelimits="80,80,-1,-1" attach="all" options="colorize" style="Standard.WindowBackground">
+			<using controller="object://ccldemo/Navigator">
+				<View name="Navigator" attach="all"/>
+			</using>
+		</Form>
+
+		<!-- ******************************************************************************************** -->
+        <!-- About -->
+        <!-- ******************************************************************************************** -->
+		
+		<?xstring off?>
+		<Form name="AboutApplication" title="About $APPNAME">
+			<Horizontal margin="20">
+				<ImageView image="AppIcon"/>
+				<Vertical spacing="2">
+					<Space/>
+					<TextBox name="appNameAndVersion" height="15" options="transparent" style="AboutLabel" attach="hfit"/>
+					<Label title="Demo Application for $CCLNAME&reg;" style="AboutLabel"/>
+					<Space/>
+					<Label title="Copyright &copy; $COPYYEAR $CCLAUTHOR. All Rights Reserved" style="AboutLabel"/>
+					<Anchor url="https://ccl.dev">
+						<Link title="For more information, please visit ccl.dev." style="AboutLabel"/>
+					</Anchor>
+					<Space/>
+					<Anchor url="local://$deployment/license/">				
+						<Link title="See license folder for 3rd party software used in this product" style="AboutLabel"/>
+					</Anchor>
+				</Vertical>
+			</Horizontal>
+		</Form>
+		<?xstring?>
+		
+	</Forms>
+		
+</Skin>
+

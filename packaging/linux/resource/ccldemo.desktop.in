@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=CCL Demo
+Exec=/opt/CCL\\\sDemo/CCL\\\sDemo %u
+Icon=ccldemo
+Categories=Utility;Development
