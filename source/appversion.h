@@ -50,7 +50,7 @@
 #define APP_PACKAGE_ID		APP_PACKAGE_DOMAIN "." APP_ID
 #define APP_MIME_TYPE		CCL_MIME_TYPE
 
-#define CCLDEMO_GITHUB_URL	"https://github.com/cclsoftware/ccl-demo-application/blob/main/applications/ccldemo/"
+#define CCLDEMO_GITHUB_URL	"https://github.com/cclsoftware/ccl-demo/blob/main/"
 #define SKINXML_DOCUMENTATION_URL "https://cclsoftware.github.io/ccl-documentation/skinlanguage/reference/"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////

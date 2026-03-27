@@ -329,8 +329,8 @@
 
 			<Vertical size="10,10" width="220" margin="10">
 				<ListView name="list" options="header selection" scrolloptions="border horizontal vertical" tooltip="ListView" size="0,0,200,80"/>
-				<Anchor url="https://www.ccl.dev">
-					<Link title="https://www.ccl.dev"/>
+				<Anchor url="https://ccl.dev">
+					<Link title="https://ccl.dev"/>
 				</Anchor>
 				
 				<View name="ScrollPickerTestView"/>
