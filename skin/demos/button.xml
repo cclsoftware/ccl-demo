@@ -42,7 +42,8 @@
 		</Shape>
 	</Shapes>
 
-  	<Forms>		
+  	<Forms>
+
 		<Form name="Controls.Button.Summary" attach="all">
 			<Label title="Overview of button types, options, and modes."/>
 		</Form>
@@ -51,34 +52,34 @@
 			<Vertical attach="left right" options="unifysizes">
 				<Heading title="Single-state buttons"/>
 				
-				<DialogGroup title="Variants for Grouping" attach="left right">
+				<DialogGroup title="Variants for Grouping" options="secondary" attach="left right">
 					<Vertical attach="left right">
 						<Space height="15"/>
 						<Horizontal margin="0" spacing="0" attach="left right">
 							<Space attach="left right"/>
-							<Button title="Normal"/>
+							<Button title="Normal" width="90"/>
 							<Space/>
-							<Button title="Left" options="left"/>
-							<Button title="Middle" options="middle"/>
-							<Button title="Right" options="right"/>
+							<Button title="Left" width="60" options="left"/>
+							<Button title="Middle" width="60" options="middle"/>
+							<Button title="Right" width="60" options="right"/>
 							<Space attach="left right"/>
 						</Horizontal>
 					</Vertical>
 				</DialogGroup>
 
-				<DialogGroup title="Title Wrapping and Scaling" attach="left right">
+				<DialogGroup title="Title Wrapping and Scaling" options="secondary" attach="left right">
 					<Vertical attach="left right">
 						<Space height="15"/>
 						<Horizontal margin="0" attach="left right">
 							<Space attach="left right"/>
-							<Button title="This is a very long button title to be wrapped" width="80" height="80" options="multiline"/>
-							<Button title="Title will be scaled" width="160" height="80" options="scaletext"/>
+							<Button title="Very long wrapped button title" width="90" height="80" options="multiline"/>
+							<Button title="Title will be scaled" width="180" height="80" options="scaletext"/>
 							<Space attach="left right"/>
 						</Horizontal>
 					</Vertical>
 				</DialogGroup>
 
-				<DialogGroup title="Special Behavior" attach="left right">
+				<DialogGroup title="Special Behavior" options="secondary" attach="left right">
 					<Vertical attach="left right">
 						<Space height="15"/>
 						<Horizontal margin="0" attach="left right">
@@ -92,7 +93,7 @@
 
 				<Heading title="Multi-state buttons"/>
 
-				<DialogGroup title="Toggle and MultiToggle" attach="left right">
+				<DialogGroup title="Toggle and MultiToggle" options="secondary" attach="left right">
 					<Vertical attach="left right">
 						<Space height="15"/>
 						<Horizontal margin="0" attach="left right">

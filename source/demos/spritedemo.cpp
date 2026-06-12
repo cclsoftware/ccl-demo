@@ -172,4 +172,4 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Graphics", "Sprites", SpriteDemo)
+REGISTER_DEMO ("Graphics", "Sprites", SpriteDemo, DEMO_PAGE_DEFAULT)

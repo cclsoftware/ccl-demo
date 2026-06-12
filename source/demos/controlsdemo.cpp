@@ -34,7 +34,8 @@
 #include "ccl/public/gui/framework/guievent.h"
 #include "ccl/public/gui/graphics/graphicsfactory.h"
 #include "ccl/public/gui/graphics/igraphics.h"
-#include "ccl/public/gui/graphics/markuptags.h"
+#include "ccl/public/gui/graphics/imarkupsupport.h"
+#include "ccl/public/text/itextbuilder.h"
 #include "ccl/public/guiservices.h"
 #include "ccl/public/plugservices.h"
 
@@ -47,7 +48,8 @@ using namespace CCL;
 //************************************************************************************************
 
 class DemoTextModel: public Object,
-                     public AbstractTextModel
+                     public AbstractTextModel,
+					 public ITextBackgroundRenderer
 {
 public:
 	DemoTextModel ()
@@ -58,13 +60,13 @@ public:
 	  colorIndex (0)
 	{}
 
-	// ITextModel
+	// IMutableTextModel
 	void CCL_API toDisplayString (String& string) const override
 	{
 		string = modelText;
 	}
 
-	void CCL_API updateLayout (ITextLayout& layout) override
+	void CCL_API updateLayout (ITextLayout& layout) const override
 	{
 		if(wordStart >= 0 && wordEnd >= 0)
 		{
@@ -75,7 +77,7 @@ public:
 		}
 	}
 
-	int CCL_API insertText (int textIndex, StringRef text, ITextModel::EditOptions options) override
+	int CCL_API insertText (int textIndex, StringRef text, IMutableTextModel::EditOptions options) override
 	{
 		String toInsert (text == "x" ? "**" : text); // we can insert what we like
 		modelText.insert (textIndex, toInsert);
@@ -83,7 +85,7 @@ public:
 		return toInsert.length ();
 	}
 
-	int CCL_API removeText (int textIndex, int length, ITextModel::EditOptions options) override
+	int CCL_API removeText (int textIndex, int length, IMutableTextModel::EditOptions options) override
 	{
 		if(length < 0)
 		{
@@ -96,14 +98,6 @@ public:
 		modelText.remove (textIndex, length);
 		signal (Message (kChanged));
 		return length;
-	}
-
-	tbool CCL_API drawBackground (const ITextLayout& layout, const DrawInfo& info) override
-	{
-		Rect rect (info.rect);
-		rect.contract (2);
-		info.graphics.drawEllipse (rect, Colors::kBlue);
-		return true;
 	}
 
 	tbool CCL_API onTextInteraction (const ITextLayout& layout, const InteractionInfo& info) override
@@ -143,7 +137,16 @@ public:
 		signal (Message (kChanged));
 	}
 
-	CLASS_INTERFACE (ITextModel, Object)
+	// ITextBackgroundRenderer
+	tbool CCL_API drawTextBackground (IGraphics& graphics, const ITextLayout& layout, RectFRef _rect) const override
+	{
+		RectF rect (_rect);
+		rect.contract (2);
+		graphics.drawEllipse (rect, Colors::kBlue);
+		return true;
+	}
+
+	CLASS_INTERFACE3 (ITextModel, IMutableTextModel, ITextBackgroundRenderer, Object)
 
 private:
 	String modelText;
@@ -189,7 +192,9 @@ public:
 		paramList.add (param3);
 		
 		// editbox
-		paramList.addString (CSTR ("string"), 'strn')->fromString (MarkupBuilder ().append ("Dynamic ").italic ("Text").append (" ").underline ("Size"));
+		TextBlock markup (ccl_new<ITextBuilder> (ClassID::MarkupBuilder));
+		markup << Text::Plain ("Dynamic ") << Text::Italic ("Text") << Text::Plain (" ") << Text::Underline ("Size");
+		paramList.addString (CSTR ("string"), 'strn')->fromString (markup.asString ());
 		
 		// checkbox
 		paramList.addParam (CSTR ("check"), 'chek');
@@ -316,8 +321,8 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Controls", "WebView", WebViewDemo)
-REGISTER_DEMO ("Controls", "TextEditor", TextEditorDemo)
-REGISTER_DEMO ("Controls", "Headings", DemoComponent)
-REGISTER_DEMO ("Controls", "ImageView", DemoComponent)
-REGISTER_DEMO ("Experimental", "More Controls", ControlsDemo)
+REGISTER_DEMO ("Controls", "WebView", WebViewDemo, DEMO_PAGE_STATIC)
+REGISTER_DEMO ("Controls", "TextEditor", TextEditorDemo, DEMO_PAGE_STATIC)
+REGISTER_DEMO ("Controls", "Headings", DemoComponent, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Controls", "ImageView", DemoComponent, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Experimental", "More Controls", ControlsDemo, DEMO_PAGE_DEFAULT)

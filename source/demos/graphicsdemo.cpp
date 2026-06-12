@@ -50,6 +50,12 @@ FontRef CCL::getStandardFont ()
 	return themeStatics->getStandardFont ();
 }
 
+FontRef CCL::getMonospacedStandardFont ()
+{
+	AutoPtr<IThemeStatics> themeStatics = ccl_new<IThemeStatics> (ClassID::ThemeStatics);
+	return themeStatics->getMonospacedStandardFont ();
+}
+
 //************************************************************************************************
 // TestView
 //************************************************************************************************
@@ -58,12 +64,12 @@ class TestView: public UserControl,
 				public ITimerTask
 {
 public:
-
 	TestView (RectRef size = Rect (), IParameter* performance = nullptr, IParameter* stats = nullptr)
 	: UserControl (size),
 	  performance (performance),
 	  stats (stats),
-	  standardFont (getStandardFont ())
+	  standardFont (getStandardFont ()),
+	  monospacedStandardFont (getMonospacedStandardFont ())
 	{
 		System::GetGUI ().addIdleTask (this);
 	}
@@ -86,6 +92,7 @@ protected:
 	SharedPtr<IParameter> stats;
 	Vector<double> drawTimes;
 	Font standardFont;
+	Font monospacedStandardFont;
 
 	struct PerformanceScope
 	{
@@ -182,7 +189,7 @@ public:
 		s.center (r);
 		graphics.drawRect (s, Pen (Colors::kGray));
 
-		f.setSize(16);
+		f.setSize (16);
 		r.offset (80, 0);
 		graphics.drawRect (r, Pen (Colors::kRed));
 		graphics.drawString (r, zeros, f, SolidBrush (Colors::kBlack), Alignment (Alignment::kCenter));
@@ -229,10 +236,15 @@ public:
 		graphics.measureText (textRect, 500, multiLineText, f);
 		textRect.offset (20, 40);
 		graphics.drawRect (textRect, Pen (Colors::kRed));
-		TextFormat textFormat;
+		TextFormat textFormat (Alignment::kLeftTop);
 		textFormat.isWordBreak (true);
 		graphics.drawText (textRect, multiLineText, f, SolidBrush (Colors::kBlack), textFormat);
 		f.setLineSpacing (1.f);
+
+		textRect.offset (0, textRect.getHeight ());
+		multiLineText.truncate (multiLineText.length ()/2);
+		multiLineText << "...";
+		graphics.drawText (textRect, multiLineText, getMonospacedStandardFont (), SolidBrush (Colors::kBlack), textFormat);
 
 		float start = 120.f;
 		float range = 300.f;
@@ -668,5 +680,5 @@ protected:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Graphics", "Graphics 2D", GraphicsDemo)
-REGISTER_DEMO ("Graphics", "Text Alignment", TextAlignDemo)
+REGISTER_DEMO ("Graphics", "Graphics 2D", GraphicsDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Graphics", "Text Alignment", TextAlignDemo, DEMO_PAGE_DEFAULT)

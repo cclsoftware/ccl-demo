@@ -344,4 +344,4 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Graphics", "Embedded Graphics", EmbeddedGraphicsDemo)
+REGISTER_DEMO ("Graphics", "Embedded Graphics", EmbeddedGraphicsDemo, DEMO_PAGE_DEFAULT)

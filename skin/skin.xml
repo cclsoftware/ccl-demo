@@ -3,6 +3,7 @@
 	<Imports>
 		<Import url="@neutralbase"/>
 		<Import url="@neutraldesign"/>
+		<Import url="@devtools"/>
 	</Imports>
 
     <Includes>
@@ -14,6 +15,7 @@
         <!-- ******************************************************************************************** -->
 
         <Include url="demos/autofill.xml"/>
+        <Include url="demos/blockview.xml"/>
         <Include url="demos/categories.xml"/>
         <Include url="demos/treeview.xml"/>
         <Include url="demos/svg.xml"/>

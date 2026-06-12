@@ -349,4 +349,4 @@ protected:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("System", "Multi-touch", TouchDemo)
+REGISTER_DEMO ("System", "Multi-touch", TouchDemo, DEMO_PAGE_DEFAULT)

@@ -34,12 +34,16 @@ class DemoCategory;
 //************************************************************************************************
 // How to add a demo page:
 // - Implement a component derived from DemoComponent
-// - Use macro REGISTER_DEMO (category, title, class) to register the component class
+// - Use macro REGISTER_DEMO (category, title, Class, PageType) to register the component class
 // - Add a <Form> with name "Category.Title" to the skin
 //************************************************************************************************
 
-#define REGISTER_DEMO(category, title, Class) \
-static RegisterDemoItem<Class> UNIQUE_IDENT (__register##Class) (CCLSTR (category), CCLSTR (title), __FILE__);
+#define DEMO_PAGE_STATIC		"DemoPage.Static"
+#define DEMO_PAGE_SCROLLABLE	"DemoPage.Scrollable"
+#define DEMO_PAGE_DEFAULT		DEMO_PAGE_SCROLLABLE
+
+#define REGISTER_DEMO(category, title, Class, PageType) \
+static RegisterDemoItem<Class> UNIQUE_IDENT (__register##Class) (CCLSTR (category), CCLSTR (title), PageType, __FILE__);
 
 //************************************************************************************************
 // DemoComponent
@@ -102,16 +106,18 @@ public:
 
 	typedef DemoComponent* (*CreateFunction) ();
 
-	DemoPageItem (CreateFunction createFunction, StringID formName, StringRef title, StringRef sourceFile)
+	DemoPageItem (CreateFunction createFunction, StringID formName, StringID pageType, StringRef title, StringRef sourceFile)
 	: DemoItem (title),
 	  parentCategory (nullptr),
 	  createFunction (createFunction),
+	  pageType (pageType),
 	  sourceFile (sourceFile)
 	{
 		setFormName (formName);
 	}
 
 	PROPERTY_POINTER (DemoCategory, parentCategory, ParentCategory)
+	PROPERTY_MUTABLE_CSTRING (pageType, PageType)
 	PROPERTY_STRING (sourceFile, SourceFile)
 	
 	DemoComponent* createComponent () const
@@ -251,13 +257,13 @@ public:
 		return NEW Class;
 	}
 
-	RegisterDemoItem (StringRef category, StringRef title, StringRef sourceFile)
+	RegisterDemoItem (StringRef category, StringRef title, CStringPtr pageType, CStringPtr sourceFile)
 	{
 		MutableCString formName (category);
 		formName.append (".");
 		formName.append (title);
 
-		DemoRegistry::instance ().addDemo (category, NEW DemoPageItem (createInstance, formName, title, sourceFile));
+		DemoRegistry::instance ().addDemo (category, NEW DemoPageItem (createInstance, formName, pageType, title, sourceFile));
 	}
 };
 

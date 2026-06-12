@@ -83,4 +83,4 @@ protected:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Layout", "Workspace", WorkspaceDemo)
+REGISTER_DEMO ("Layout", "Workspace", WorkspaceDemo, DEMO_PAGE_DEFAULT)

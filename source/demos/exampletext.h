@@ -35,6 +35,7 @@ static const String kExampleText
 );
 
 extern FontRef getStandardFont ();
+extern FontRef getMonospacedStandardFont ();
 
 } // namespace CCL
 

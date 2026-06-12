@@ -282,5 +282,5 @@ protected:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Network", "XMLHttpRequest", XMLHttpRequestDemo)
-//REGISTER_DEMO ("Network", "WebSocket", WebSocketDemo) work in progress
+REGISTER_DEMO ("Network", "XMLHttpRequest", XMLHttpRequestDemo, DEMO_PAGE_DEFAULT)
+//REGISTER_DEMO ("Network", "WebSocket", WebSocketDemo, DEMO_PAGE_DEFAULT) work in progress

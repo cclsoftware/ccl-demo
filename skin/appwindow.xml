@@ -7,7 +7,9 @@
 	</Resources>
 
     <Styles>
-		<Style name="AboutLabel" inherit="Standard.Label"/>
+		<Style name="AboutLabel" inherit="Standard.Label">
+			<Metric name="padding.left"	value="0"/>
+		</Style>
 	</Styles>
 
 	<Forms>
@@ -26,24 +28,38 @@
         <!-- ******************************************************************************************** -->
 		
 		<?xstring off?>
-		<Form name="AboutApplication" title="About $APPNAME">
-			<Horizontal margin="20">
-				<ImageView image="AppIcon"/>
-				<Vertical spacing="2">
-					<Space/>
-					<TextBox name="appNameAndVersion" height="15" options="transparent" style="AboutLabel" attach="hfit"/>
-					<Label title="Demo Application for $CCLNAME&reg;" style="AboutLabel"/>
-					<Space/>
-					<Label title="Copyright &copy; $COPYYEAR $CCLAUTHOR. All Rights Reserved" style="AboutLabel"/>
-					<Anchor url="https://ccl.dev">
-						<Link title="For more information, please visit ccl.dev." style="AboutLabel"/>
-					</Anchor>
-					<Space/>
-					<Anchor url="local://$deployment/license/">				
-						<Link title="See license folder for 3rd party software used in this product" style="AboutLabel"/>
-					</Anchor>
+
+		<Form name="AboutApplication" title="About $APPNAME" attach="all fitsize">
+			<Variant property="isPortraitOrientation" controller="://WindowManager" attach="all fitsize">
+				<Horizontal margin="20">
+					<ImageView image="AppIcon"/>
+					<View name="AboutApplicationContent" width="370"/>
+				</Horizontal>
+				<Vertical attach="left right vfit">
+					<ImageView image="AppIcon" attach="hcenter"/>
+					<View name="AboutApplicationContent" attach="left right vfit"/>
 				</Vertical>
-			</Horizontal>
+			</Variant>
+		</Form>
+
+		<Form name="AboutApplicationContent">
+			<Vertical attach="left right vfit" spacing="0">
+				<TextBox name="appNameAndVersion" width="300" sizelimits="300,32,-1,-1" options="transparent multiline" style="AboutLabel" attach="left right vfit"/>
+				<Label title="Demo Application for $CCLNAME&reg;" width="300" style="AboutLabel"/>
+				<Space/>
+				<Label title="Copyright &copy; $COPYYEAR $CCLAUTHOR. All Rights Reserved" width="300" style="AboutLabel" options="multiline" attach="left right vfit"/>
+				<Space/>
+				<Space/>
+				<Anchor url="https://ccl.dev">
+					<Link title="For more information, please visit ccl.dev." width="300" style="AboutLabel" attach="left right"/>
+				</Anchor>
+				<Anchor url="local://$deployment/license/" attach="left right">
+					<Link title="Third-party software used in this product" width="300" height="20" style="AboutLabel" options="fittitle" attach="left right"/>
+				</Anchor>
+				<Space/>
+				<Space/>
+				<Label title="Made with &hearts; in Hamburg, Germany" width="300" style="AboutLabel"/>
+			</Vertical>
 		</Form>
 		<?xstring?>
 		

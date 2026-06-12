@@ -193,7 +193,7 @@ tresult CCL_API DemoNavigationServer::navigateTo (NavigateArgs& args)
 			Attributes arguments;
 			MutableCString formName = pageItem->getFormName ();
 			arguments.set ("demoFormName", formName);
-			contentView = theme->createView ("DemoPage", demoComponent->asUnknown (), &arguments);
+			contentView = theme->createView (pageItem->getPageType (), demoComponent->asUnknown (), &arguments);
 		}
 	}
 	else
@@ -349,9 +349,12 @@ DEFINE_CLASS_HIDDEN (DemoApp, Application)
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 DemoApp::DemoApp ()
-: Application (APP_ID, /*APP_COMPANY*/nullptr, APP_NAME, APP_PACKAGE_ID)
+: Application (APP_ID, /*APP_COMPANY*/nullptr, APP_NAME, APP_PACKAGE_ID),
+  appSchemeOption (nullptr)
 {
 	setBuildInformation (APP_FULL_NAME);
+
+	addApplicationMenu ();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -362,7 +365,7 @@ bool DemoApp::startup ()
 		return false;
 
 	// init color scheme
-	MainColorSchemeOption* appSchemeOption = UserOption::init<MainColorSchemeOption> ();
+	appSchemeOption = UserOption::init<MainColorSchemeOption> ();
 	appSchemeOption->addConfigurationSavers ();
 	paramList.addAlias ("colorInversion", 'ciap')->setOriginal (appSchemeOption->findParameter ("colorInversion"));
 
@@ -390,13 +393,6 @@ bool DemoApp::startup ()
 
 	// main window
 	createWindow ();
-
-	// update menu bar
-	if(appearanceMenu.menu)
-	{
-		MenuInserter inserter (appearanceMenu);
-		appSchemeOption->makeAppearanceMenu (*appearanceMenu.menu);
-	}
 	
 	// notification icon
 	ApplicationSpecifics* specifics = getSpecifics<ApplicationSpecifics> ();
@@ -429,8 +425,10 @@ bool DemoApp::shutdown ()
 
 void CCL_API DemoApp::extendMenu (IMenu& menu, StringID name)
 {
-	if(name == "Appearance")
-		appearanceMenu = MenuPosition (menu);
+	if(name == "Appearance" && appSchemeOption)
+		appSchemeOption->makeAppearanceMenu (menu);
+	else
+		SuperClass::extendMenu (menu, name);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////

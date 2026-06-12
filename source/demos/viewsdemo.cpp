@@ -131,4 +131,4 @@ protected:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Controls", "Views", ViewsDemo)
+REGISTER_DEMO ("Controls", "Views", ViewsDemo, DEMO_PAGE_DEFAULT)

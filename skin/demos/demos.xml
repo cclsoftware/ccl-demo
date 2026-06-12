@@ -104,6 +104,10 @@
 			<Image name="background" image="ScaledShapeValueBar"/>
 		</Style>
 
+		<Style name="EditBoxNoPadding" inherit="Standard.EditBox">
+			<Metric name="padding" value="0"/>
+		</Style>
+
 	</Styles>
 
   	<Forms>
@@ -113,23 +117,31 @@
 	</Form>
 
     <Form name="Graphics.Composition" attach="all">
-		<Horizontal margin="0">
-			<View name="CompositedView" width="300" height="300"/>
-			<Vertical margin="0">
-				<View name="TimingCurveView" width="200" height="200"/>
-				<Label title="Timing Function"/>
-				<Horizontal margin="0" spacing="5">
-					<Label title="c1.x" attach="vcenter"/>
-					<ValueBox name="c1x" width="40" height="20" options="border"/>
-					<Label title="c1.y" attach="vcenter"/>
-					<ValueBox name="c1y" width="40" height="20" options="border"/>
-					<Label title="c2.x" attach="vcenter"/>
-					<ValueBox name="c2x" width="40" height="20" options="border"/>
-					<Label title="c2.y" attach="vcenter"/>
-					<ValueBox name="c2y" width="40" height="20" options="border"/>
-				</Horizontal>
-			</Vertical>
-		</Horizontal>
+		<Vertical attach="left right">
+			<View name="CompositedView" width="170" height="170"/>
+			<Label title="Timing Function"/>
+			<Horizontal margin="0" spacing="5" options="unifysizes" attach="hcenter">
+				<Vertical margin="0" spacing="5" attach="left right">
+					<EditBox name="c1y" style="EditBoxNoPadding" options="transparent" size="0,0,50,50"/>
+					<Slider name="c1y" height="170" options="vertical" attach="hcenter"/>
+					<EditBox name="c1x" style="EditBoxNoPadding" options="transparent" size="0,0,50,50"/>
+				</Vertical>
+				<Vertical margin="0" spacing="0" height="270">
+					<Space attach="top bottom"/>
+					<Slider name="c2x" width="170"/>
+					<Space attach="top bottom"/>
+					<View name="TimingCurveView" style="Standard.DialogGroup" width="170" height="170"/>
+					<Space attach="top bottom"/>
+					<Slider name="c1x" width="170"/>
+					<Space attach="top bottom"/>
+				</Vertical>
+				<Vertical margin="0" spacing="5" attach="left right">
+					<EditBox name="c2x" style="EditBoxNoPadding" options="transparent" size="0,0,50,50"/>
+					<Slider name="c2y" height="170" options="vertical" attach="hcenter"/>
+					<EditBox name="c2y" style="EditBoxNoPadding" options="transparent" size="0,0,50,50"/>
+				</Vertical>
+			</Horizontal>
+		</Vertical>
 	</Form>
 		
 	<Form name="Graphics.Transitions.Summary" attach="all">

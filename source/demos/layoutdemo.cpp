@@ -200,5 +200,5 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Layout", "Anchor Layout", LayoutDemo)
-REGISTER_DEMO ("Layout", "Anchor Layout - Table", LayoutDemo)
+REGISTER_DEMO ("Layout", "Anchor Layout", LayoutDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Layout", "Anchor Layout - Table", LayoutDemo, DEMO_PAGE_DEFAULT)

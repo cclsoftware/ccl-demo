@@ -13,8 +13,8 @@ list (APPEND ccldemo_resources
 	${ccldemo_bundle_resources}
 )
 
-ccl_add_shader_resource (ccldemo ${CMAKE_CURRENT_LIST_DIR}/../resource/shaders/vertexshader.metal PATH shaders)
-ccl_add_shader_resource (ccldemo ${CMAKE_CURRENT_LIST_DIR}/../resource/shaders/pixelshader.metal PATH shaders)
+ccl_add_shader_resource (ccldemo ${CMAKE_CURRENT_LIST_DIR}/../resource/shaders/vertexshader.metal PATH Resources/shaders)
+ccl_add_shader_resource (ccldemo ${CMAKE_CURRENT_LIST_DIR}/../resource/shaders/pixelshader.metal PATH Resources/shaders)
 
 list (APPEND ccldemo_sources
 	${ccldemo_resources}

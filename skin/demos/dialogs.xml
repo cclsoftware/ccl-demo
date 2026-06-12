@@ -80,7 +80,7 @@
 			</Vertical>
 		</Form>
 
-		<Form name="TransparentDialog" attach="all" style="TransparentWindow" options="windowmovable windowsizable" windowstyle="translucent customframe titlebar center restorepos restoresize sizable">
+		<Form name="TransparentDialog" attach="all" style="TransparentWindow" options="windowmovable windowsizable" windowstyle="translucent customframe center restorepos restoresize sizable">
 			<Vertical attach="all" options="unifysizes" margin="0">
 				<Horizontal width="300" attach="left right" margin="0">
 					<Space width="2"/>
@@ -93,7 +93,7 @@
 			</Vertical>
 		</Form>
 
-		<Form name="TransparentWindow" attach="all" style="TransparentWindow" options="windowmovable windowsizable" windowstyle="translucent customframe titlebar center restorepos restoresize sizable">
+		<Form name="TransparentWindow" attach="all" style="TransparentWindow" options="windowmovable windowsizable" windowstyle="translucent customframe center restorepos restoresize sizable">
 			<Vertical attach="all" options="unifysizes">
 				<Horizontal width="300" attach="left right" margin="0">
 					<Space width="2"/>

@@ -11,130 +11,131 @@
 
   	<Forms>
 
-		<Form name="Controls.Slider.Summary" attach="all">
-			<Label title="Overview of various slider options and modes."/>
+		<Form name="Controls.Slider.Summary">
+			<Label options="multiline" title="Overview of various slider options and modes." width="300" attach="left right vfit"/>
 		</Form>
 
-		<Form name="Controls.Slider" attach="left right">
-			<Vertical options="unifysizes" attach="all">
-				<Heading level="1" title="Slider"/>
+		<Form name="Controls.Slider">
+			<define sliderHandleSize="$Theme.SliderHandleSize">
+				<Vertical options="unifysizes" attach="left right vfit">
 
-				<DialogGroup title="Default" attach="left right">
-					<Vertical attach="left right">
-						<Space height="15"/>
-						<Slider name="testValue" options="horizontal" attach="left right"/>
-					</Vertical>
-				</DialogGroup>
-
-				<Space/>
-
-				<Heading level="2" title="Modes"/>
-
-				<Horizontal margin="0" spacing="20" attach="left right">
-
-					<DialogGroup title="Jump" attach="left right">
+					<DialogGroup title="Default" options="secondary" attach="left right">
 						<Vertical attach="left right">
 							<Space height="15"/>
-							<Slider name="testValue" options="horizontal" mode="jump" attach="left right"/>
+							<Slider name="testValue" options="horizontal" attach="left right"/>
 						</Vertical>
 					</DialogGroup>
 
-					<DialogGroup title="Relative" attach="left right">
-						<Vertical attach="left right">
-							<Space height="15"/>
-							<Slider name="testValue" options="horizontal" mode="relative" attach="left right"/>
-						</Vertical>
-					</DialogGroup>
+					<Space/>
 
-					<DialogGroup title="Touch" attach="left right">
-						<Vertical attach="left right">
-							<Space height="15"/>
-							<Slider name="testValue" options="horizontal" mode="touch" attach="left right"/>
-						</Vertical>
-					</DialogGroup>
-				</Horizontal>
-				
-				<Space/>
-				<Heading level="2" title="Options"/>
+					<Heading level="2" title="Modes"/>
 
-				<Horizontal margin="0" spacing="20" options="unifysizes" attach="left right">
-					<Vertical margin="0" spacing="20" options="unifysizes" attach="left right">
-						<Horizontal margin="0" spacing="20" attach="left right">
-							<DialogGroup title="Bargraph" attach="left right">
+					<Horizontal margin="0" spacing="20" attach="left right">
+
+						<DialogGroup title="Jump" options="secondary" attach="left right">
+							<Vertical attach="left right">
+								<Space height="15"/>
+								<Slider name="testValue" options="horizontal" mode="jump" attach="left right"/>
+							</Vertical>
+						</DialogGroup>
+
+						<DialogGroup title="Relative" options="secondary" attach="left right">
+							<Vertical attach="left right">
+								<Space height="15"/>
+								<Slider name="testValue" options="horizontal" mode="relative" attach="left right"/>
+							</Vertical>
+						</DialogGroup>
+
+						<DialogGroup title="Touch" options="secondary" attach="left right">
+							<Vertical attach="left right">
+								<Space height="15"/>
+								<Slider name="testValue" options="horizontal" mode="touch" attach="left right"/>
+							</Vertical>
+						</DialogGroup>
+					</Horizontal>
+
+					<Space/>
+					<Heading level="2" title="Options"/>
+
+					<Horizontal margin="0" spacing="20" options="unifysizes" attach="left right">
+						<Vertical margin="0" spacing="20" options="unifysizes" attach="left right">
+							<Horizontal margin="0" spacing="20" attach="left right">
+								<DialogGroup title="Bargraph" options="secondary" attach="left right">
+									<Vertical attach="left right">
+										<Space height="15"/>
+										<Slider name="testValue" sizelimits="80,-1,-1,-1" options="bargraph horizontal" attach="left right"/>
+									</Vertical>
+								</DialogGroup>
+
+								<DialogGroup title="Bargraph Centered" options="secondary" attach="left right">
+									<Vertical attach="left right">
+										<Space height="15"/>
+										<Slider name="testValue" sizelimits="110,-1,-1,-1" options="bargraph centered horizontal" attach="left right"/>
+									</Vertical>
+								</DialogGroup>
+							</Horizontal>
+
+							<DialogGroup title="Reverse" options="secondary" attach="left right">
 								<Vertical attach="left right">
 									<Space height="15"/>
-									<Slider name="testValue" options="bargraph horizontal" attach="left right"/>
+									<Slider name="testValue" options="reverse horizontal" attach="left right"/>
 								</Vertical>
 							</DialogGroup>
-							
-							<DialogGroup title="Bargraph Centered" attach="left right">
+
+							<DialogGroup title="Tick Scale" options="secondary" attach="left right">
 								<Vertical attach="left right">
 									<Space height="15"/>
-									<Slider name="testValue" options="bargraph centered horizontal" attach="left right"/>
+									<Slider name="testValue" options="tickscale horizontal" style="TickScaleStyle" attach="left right"/>
 								</Vertical>
 							</DialogGroup>
-						</Horizontal>
 
-						<DialogGroup title="Reverse" attach="left right">
-							<Vertical attach="left right">
-								<Space height="15"/>
-								<Slider name="testValue" options="reverse horizontal" attach="left right"/>
-							</Vertical>
-						</DialogGroup>
-
-						<DialogGroup title="Tick Scale" attach="left right">
-							<Vertical attach="left right">
-								<Space height="15"/>
-								<Slider name="testValue" options="tickscale horizontal" style="TickScaleStyle" attach="left right"/>
-							</Vertical>
-						</DialogGroup>
-
-						<DialogGroup title="Tooltip" attach="left right">
-							<Vertical attach="left right">
-								<Space height="15"/>
-								<Slider name="testValue" options="tooltip horizontal" attach="left right"/>
-							</Vertical>
-						</DialogGroup>
-					</Vertical>
-
-					<DialogGroup title="Vertical" attach="top bottom">
-						<Vertical width="60" attach="top bottom">
-							<Space height="15"/>
-							<Slider name="testValue" options="vertical" attach="top bottom hcenter"/>
+							<DialogGroup title="Tooltip" options="secondary" attach="left right">
+								<Vertical attach="left right">
+									<Space height="15"/>
+									<Slider name="testValue" options="tooltip horizontal" attach="left right"/>
+								</Vertical>
+							</DialogGroup>
 						</Vertical>
-					</DialogGroup>
-				</Horizontal>
 
-				<Space/>
-				<Heading level="1" title="Range Slider"/>
+						<DialogGroup title="Vertical" options="secondary" attach="top bottom">
+							<Vertical width="60" attach="top bottom">
+								<Space height="15"/>
+								<Slider name="testValue" options="vertical" attach="top bottom hcenter"/>
+							</Vertical>
+						</DialogGroup>
+					</Horizontal>
 
-				<DialogGroup title="Default" attach="left right">
-					<Vertical attach="left right">
-						<Space height="15"/>
-						<RangeSlider name="range1" name2="range2" width="25" height="20" attach="left right"/>
-					</Vertical>
-				</DialogGroup>
+					<Space/>
+					<Heading level="1" title="Range Slider"/>
 
-				<Space/>
-				<Heading level="2" title="Options"/>
-
-				<Horizontal margin="0" spacing="20" attach="left right">
-					<DialogGroup title="Bargraph Invertible" attach="left right">
+					<DialogGroup title="Default" options="secondary" attach="left right">
 						<Vertical attach="left right">
 							<Space height="15"/>
-							<RangeSlider name="range1" name2="range2" width="25" height="20" options="bargraph invertible" attach="left right"/>
+							<RangeSlider name="range1" name2="range2" width="25" options="horizontal" height="$sliderHandleSize" attach="left right"/>
 						</Vertical>
 					</DialogGroup>
-					
-					<DialogGroup title="Limit" attach="left right">
-						<Vertical attach="left right">
-							<Space height="15"/>
-							<RangeSlider name="range1" name2="range2" width="25" height="20" options="limit" attach="left right"/>
-						</Vertical>
-					</DialogGroup>
-				</Horizontal>
-			</Vertical>
+
+					<Space/>
+					<Heading level="2" title="Options"/>
+
+					<Horizontal margin="0" spacing="20" attach="left right">
+						<DialogGroup title="Bargraph Invertible" options="secondary" attach="left right">
+							<Vertical attach="left right">
+								<Space height="15"/>
+								<RangeSlider name="range1" name2="range2" width="25" height="$sliderHandleSize" options="horizontal bargraph invertible" attach="left right"/>
+							</Vertical>
+						</DialogGroup>
+
+						<DialogGroup title="Limit" options="secondary" attach="left right">
+							<Vertical attach="left right">
+								<Space height="15"/>
+								<RangeSlider name="range1" name2="range2" width="25" height="$sliderHandleSize" options="horizontal limit" attach="left right"/>
+							</Vertical>
+						</DialogGroup>
+					</Horizontal>
+				</Vertical>
+			</define>
 		</Form>
-		
+
 	</Forms>
 </Skin>

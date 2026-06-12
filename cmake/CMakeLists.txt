@@ -37,6 +37,9 @@ include (vendor OPTIONAL)
 find_package (ccl ${CCL_VERSION_REQUIREMENT} REQUIRED COMPONENTS cclapp cclbase ccltext cclsystem cclnet cclgui cclsecurity cclextras-stores)
 find_package (modelimporter3d)
 find_package (skins)
+if (${CCLDEMO_CCLSPY_SUPPORT})
+	find_package (cclspy)
+endif ()
 
 list (APPEND ccldemo_license_files
 	${CCL_IDENTITIES_DIR}/ccl/legal/CCL\ 3rd\ Party\ Licenses.txt
@@ -52,7 +55,7 @@ ccl_add_app (ccldemo GUI
 ccl_set_product_name (ccldemo ${ccldemo_NAME})
 ccl_set_startup_project (ccldemo)
   
-ccl_use_skin_packages (ccldemo neutralbase neutraldesign)
+ccl_use_skin_packages (ccldemo neutralbase neutraldesign devtools)
 ccl_add_skin_package (ccldemo ${CMAKE_CURRENT_LIST_DIR}/../skin)
 
 ccl_add_assets (ccldemo FILES ${ccldemo_license_files} PATH "license")
@@ -61,9 +64,11 @@ list (APPEND ccldemo_resources
 	${CMAKE_CURRENT_LIST_DIR}/../resource/cclgui.config
 	${CMAKE_CURRENT_LIST_DIR}/../resource/cclplugins.xml
 	${CMAKE_CURRENT_LIST_DIR}/../resource/commands.xml
+	${CMAKE_CURRENT_LIST_DIR}/../resource/markdowndemo.md
 	${CMAKE_CURRENT_LIST_DIR}/../resource/embedded
 	${CMAKE_CURRENT_LIST_DIR}/../resource/svg
 	${CMAKE_CURRENT_LIST_DIR}/../resource/menubar.xml
+	${CMAKE_CURRENT_LIST_DIR}/../resource/appmenu.xml
 )
 
 list (APPEND ccldemo_source_files
@@ -72,6 +77,7 @@ list (APPEND ccldemo_source_files
 	${CMAKE_CURRENT_LIST_DIR}/../source/demoapp.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../source/demoitem.h
 	${CMAKE_CURRENT_LIST_DIR}/../source/demoitem.cpp
+	${CMAKE_CURRENT_LIST_DIR}/../source/demos/blockviewdemo.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../source/demos/buttondemo.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../source/demos/coreviewdemo.h
 	${CMAKE_CURRENT_LIST_DIR}/../source/demos/compositiondemo.cpp
@@ -120,7 +126,6 @@ target_compile_definitions (ccldemo PRIVATE "CCL_APPLICATIONS_DIRECTORY=\"${ccl_
 
 ccl_add_dependencies (ccldemo modelimporter3d)
 
-if(${CCLDEMO_CCLSPY_SUPPORT})
-	find_package (cclspy)
+if (${CCLDEMO_CCLSPY_SUPPORT})
 	ccl_add_dependencies (ccldemo cclspy)
-endif()
+endif ()

@@ -437,14 +437,14 @@ void DemoSceneComponent::addLight (IScene3D* scene)
 	scene->getChildren ()->addNode (directionalLight);
 
 	bluePointLight = ccl_new<ILightSource3D> (ClassID::PointLight3D);
-	bluePointLight->setPosition ({2.5f, 1.f, 1.f});
+	bluePointLight->setPosition ({2.5f, -1.f, 1.f});
 	bluePointLight->setLightColor (Color (0x8E, 0xDB, 0xFF));
 	bluePointLight->setAttenuationRadius (3.f);
 	bluePointLight->setAttenuationMinimum (0.5f);
 	scene->getChildren ()->addNode (bluePointLight);
 
 	redPointLight = ccl_new<ILightSource3D> (ClassID::PointLight3D);
-	redPointLight->setPosition ({0.f, 1.f, 2.5f});
+	redPointLight->setPosition ({0.f, -1.f, 2.5f});
 	redPointLight->setLightColor (Color (0xFF, 0xD0, 0xC6));
 	scene->getChildren ()->addNode (redPointLight);
 }
@@ -466,7 +466,7 @@ void DemoSceneComponent::updateGrid (IScene3D* scene, bool visible)
 	gridMaterial->setDepthBias (20.f);
 	gridModelNode->setModelData (ModelFactory3D::createGrid (4, 4, 1.f, 1.f, gridMaterial));
 
-	gridModelNode->setPosition ({-2.5f, 0.f, -2.5f});
+	gridModelNode->setPosition ({-2.5f, -1.5f, -2.5f});
 	setNodeNameFromTag (gridModelNode, Tag::kGridNodeActive);
 	scene->getChildren ()->addNode (gridModelNode);
 };
@@ -489,7 +489,7 @@ void DemoSceneComponent::updateTeapot (IScene3D* scene, bool visible)
 	demoModel->setMaterialForGeometries (demoModelMaterial);
 
 	teapotModelNode->setModelData (demoModel);
-	teapotModelNode->setPosition ({0.f, 1.f, 0.f});
+	teapotModelNode->setPosition ({0.f, -1.5f, 0.f});
 	setNodeNameFromTag (teapotModelNode, Tag::kTeapotNodeActive);
 	scene->getChildren ()->addNode (teapotModelNode);
 };
@@ -595,7 +595,7 @@ void DemoSceneComponent::updateBillboard (IScene3D* scene, bool visible)
 	UnknownPtr<IBitmap> demoTexture = getTheme ()->getImage ("DemoTexture");
 	auto* billboardModelNode = ccl_new<IModelNode3D> (ClassID::ModelNode3D);
 	billboardModelNode->setModelData (ModelFactory3D::createBillboard (ModelFactory3D::createTextureMaterial (demoTexture)));
-	billboardModelNode->setPosition ({0.f, 1.f, 2.5f});
+	billboardModelNode->setPosition ({0.f, -1.5f, 2.5f});
 	billboardModelNode->setScaleX (0.8f * demoTexture->getPixelSize ().x / demoTexture->getPixelSize ().y);
 	billboardModelNode->setScaleY (0.8f);
 	setNodeNameFromTag (billboardModelNode, Tag::kBillboardActive);
@@ -622,7 +622,7 @@ void DemoSceneComponent::updateTextBillboard (IScene3D* scene, bool visible)
 	
 	auto* dynamicTextureModelNode = ccl_new<IModelNode3D> (ClassID::ModelNode3D);
 	dynamicTextureModelNode->setModelData (ModelFactory3D::createBillboard (dynamicTextureMaterial));
-	dynamicTextureModelNode->setPosition ({2.5f, 1.f, 0.f});
+	dynamicTextureModelNode->setPosition ({2.5f, -1.5f, 0.f});
 	dynamicTextureModelNode->enableHitTesting (true);
 	setNodeNameFromTag (dynamicTextureModelNode, Tag::kTextBillboardActive);
 	scene->getChildren ()->addNode (dynamicTextureModelNode);
@@ -772,14 +772,10 @@ void DemoSceneComponent::animateScene ()
 	description.resetMode = IAnimation::kResetForwards;
 	animation->setDescription (description);
 
-	AutoPtr<IUIValue> startValue = GraphicsFactory::createValue ();
-	startValue->fromPointF3D ({0.f, 1.f, 0.f});
-	AutoPtr<IUIValue> endValue = GraphicsFactory::createValue ();
-	endValue->fromPointF3D ({0.f, 2.f, 0.f});
-	animation->setStartValue (startValue);
-	animation->setEndValue (endValue);
+	animation->setStartValue (0.f);
+	animation->setEndValue (2.f * Math::Constants<float>::kPi);
 
-	node->addAnimation (ISceneNode3D::kPosition, animation);
+	node->addAnimation (ISceneNode3D::kYawAngle, animation);
 }
 
 //************************************************************************************************
@@ -820,4 +816,4 @@ IView* CCL_API Graphics3DDemo::createView (StringID name, VariantRef data, const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Graphics", "Graphics 3D", Graphics3DDemo)
+REGISTER_DEMO ("Graphics", "Graphics 3D", Graphics3DDemo, DEMO_PAGE_DEFAULT)

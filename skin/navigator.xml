@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Skin>
-    <Styles>
+
+	<Styles>
 		<Style name="TextLinkStyle" inherit="Standard.Label">
 			<Color name="textcolor" color="@Main.LabelColor"/>
 		</Style>
-		
+
 		<Style name="HeaderTextStyle" inherit="Standard.Label">
-			<Font name="textfont" themeid="StandardUI" size="+2" style="bold"/>
+			<Font name="textfont" themeid="StandardUI" size="+6"/>
 			<Color name="textcolor" color="@Main.LabelColor"/>
+			<Metric name="padding.left"     value="1"/>
 		</Style>
-		
+
 		<Style name="BodyTextStyle" inherit="Standard.Label">
 			<Color name="textcolor" color="@Main.LabelColor.Secondary"/>
 		</Style>
@@ -17,6 +19,19 @@
 		<Style name="BodyLinkTextStyle" inherit="Standard.Label">
 			<Color name="textcolor" color="@Main.HyperLinkColor"/>
 		</Style>
+
+		<Style name="DemoButton" inherit="Standard.Button">
+			<Metric name="colorize.icon" value="1"/>
+			<Color name="iconcolor" color="@Main.LabelColor"/>
+			<Color name="iconcolor.disabled" color="@Main.LabelColor.Disabled"/>
+			<Color name="iconcolor.mouseover" color="@Main.LabelColor.Primary"/>
+			<Metric name="fill.icon" value="0.75"/>
+		</Style>
+
+		<Style name="AppMenu" inherit="Standard.SelectBox">
+			<Metric name="extended" value="1"/>
+		</Style>
+
 	</Styles>
 
 	<Forms>
@@ -24,23 +39,32 @@
 	    <!-- Navigator -->
 	    <!-- ******************************************************************************************** -->
 
-		<Form name="NavigationBar" attach="top left right">
-			<Horizontal spacing="5" margin="5">
-				<Button name="goBack"    title="Back"/>
-				<Button name="goForward" title="Forward"/>
-				<Button name="goHome"    title="Start Page"/>
-				<Button name="refresh"   title="Refresh"/>
-				<!--
-				<TextBox name="location" size="0,0,300,20"/>
-				-->
-			</Horizontal>
-		</Form>
-
 		<Form name="Navigator" attach="all">
-			<Vertical spacing="2" margin="2" attach="all">
-				<View name="NavigationBar"/>
+			<Vertical margin="0" spacing="0" width="800" attach="all">
+				<View name="NavigationBar" width="800" attach="left right"/>
 				<View name="contentFrame" width="800" height="600" sizelimits="none" attach="all"/>
 			</Vertical>
+		</Form>
+
+		<Form name="NavigationBar" attach="top left right">
+			<Horizontal spacing="5" margin="5" attach="left right">
+				<DialogGroup options="secondary" attach="left right">
+					<Horizontal spacing="0" margin="0" attach="left right">
+						<Button name="goHome"    icon="Mdi/HomeOutline" style="DemoButton" size="0,0,50,40" options="transparent" tooltip="Start Page"/>
+						<Button name="goBack"    icon="Mdi/ChevronLeft" style="DemoButton" size="0,0,50,40" options="transparent" tooltip="Back"/>
+						<Button name="goForward" icon="Mdi/ChevronRight" style="DemoButton" size="0,0,50,40" options="transparent" tooltip="Forward"/>
+						<Button name="refresh"   icon="Mdi/Refresh" style="DemoButton" size="0,0,50,40" options="transparent" tooltip="Refresh"/>
+						<!--
+						<TextBox name="location" size="0,0,300,20"/>
+						-->
+						<Space attach="left right"/>
+
+						<SelectBox name="object://hostapp/Application/applicationMenu" style="AppMenu" tooltip="Application Menu" size="0,0,40,40" popup="right bottom" options="transparent hidebutton hidefocus">
+							<Button icon="Mdi/Menu" style="DemoButton" size="0,0,40,40" options="passive transparent" tooltip="Application Menu"/>
+						</SelectBox>
+					</Horizontal>
+				</DialogGroup>
+			</Horizontal>
 		</Form>
 
 		<!-- ******************************************************************************************** -->
@@ -56,7 +80,7 @@
 			</Vertical>
 		</Form>
 
-		<Form name="DemoIndex.Target">
+		<Form name="DemoIndex.Target" options="transparent">
 			<Horizontal margin="0" spacing="0" attach="all fill">
 				<Space attach="left right fill"/>				
 				<Vertical margin="0" spacing="5" attach="hcenter">
@@ -66,8 +90,8 @@
 					<foreach variable="$index" count="resultCount">
 						<define resultId="@property:resultId[$index]" resultTitle="@property:resultTitle[$index]" resultForm="@property:resultForm[$index]">
 						<Anchor url="object://ccldemo/Demo?id=$resultId">
-							<Link title="$resultTitle" style="TextLinkStyle"/>
-							<View name="$resultForm.Summary"/>
+							<Link title="$resultTitle" size="2,0" style="TextLinkStyle" attach="left"/>
+							<View name="$resultForm.Summary" attach="left right"/>
 						</Anchor>
 						<Space height="5"/>
 						</define>
@@ -82,10 +106,16 @@
 		<!-- Demo Page -->
 		<!-- ******************************************************************************************** -->
 
-		<Form name="DemoPage" attach="all">		
+		<Form name="DemoPage.Scrollable" attach="all">
+			<ScrollView options="small vertical horizontal mousescroll transparent extendtarget" attach="all">
+				<Target name="DemoPage.Static" options="transparent" attach="left right vfit"/>
+			</ScrollView>
+		</Form>
+
+		<Form name="DemoPage.Static" options="transparent" attach="all">
 			<Vertical margin="0" spacing="0" attach="all" options="unifysizes">
 				<!-- Demo Header -->
-				<Vertical spacing="0" attach="left right" sizelimits="none">
+				<Vertical margin="10" spacing="0" attach="all" options="unifysizes">
 					<using controller="DemoInfo">
 						<TextBox name="demoTitle" options="transparent" attach="fitsize" style="HeaderTextStyle"/>
 						<Table margin="0" spacing="1" columns="2">
@@ -99,16 +129,15 @@
 							</Link>
 						</Table>
 					</using>
-					<View name="$demoFormName.Summary" attach="all"/>
+
+					<View name="$demoFormName.Summary" attach="left right vfit"/>
 				</Vertical>
-								
+
 				<!-- Demo Content -->
-				<ScrollView options="small vertical horizontal mousescroll transparent extendtarget" attach="all">
-					<Target name="$demoFormName" attach="left right"/>
-				</ScrollView>
-				
-			</Vertical>			
+				<View name="$demoFormName" attach="all"/>
+			</Vertical>
 		</Form>
+
 
 	</Forms>
 </Skin>

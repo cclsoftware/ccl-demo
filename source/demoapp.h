@@ -27,6 +27,8 @@
 
 namespace CCL {
 
+class MainColorSchemeOption;
+
 //************************************************************************************************
 // DemoApp
 //************************************************************************************************
@@ -52,7 +54,7 @@ public:
 	CLASS_INTERFACE (IServiceNotification, Application)
 
 protected:	
-	MenuPosition appearanceMenu;
+	MainColorSchemeOption* appSchemeOption;
 };
 
 } // namespace CCL

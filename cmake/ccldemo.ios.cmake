@@ -39,5 +39,10 @@ set_target_properties (ccldemo PROPERTIES
 	RESOURCE "${ccldemo_bundle_resources}"
 	MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_LIST_DIR}/../packaging/ios/Info.plist"
 	XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME "cclapp"
-	XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${CMAKE_CURRENT_LIST_DIR}/../packaging/ios/ccldemo.entitlements"
 )
+
+if (${CCLDEMO_USE_IOS_ENTITLEMENTS})
+	set_target_properties (ccldemo PROPERTIES
+		XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${CMAKE_CURRENT_LIST_DIR}/../packaging/ios/ccldemo.entitlements"
+	)
+endif ()

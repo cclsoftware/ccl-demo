@@ -170,4 +170,4 @@ protected:
 DEFINE_STRINGID_MEMBER_ (SkinDemo, kCommentID, "comment")
 DEFINE_STRINGID_MEMBER_ (SkinDemo, kColorID, "color")
 
-REGISTER_DEMO ("Experimental", "Skin Content", SkinDemo)
+REGISTER_DEMO ("Experimental", "Skin Content", SkinDemo, DEMO_PAGE_DEFAULT)
