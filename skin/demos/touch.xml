@@ -9,9 +9,9 @@
 		<Form name="System.Multi-touch" attach="all">
 			<Vertical attach="all">
 				<CheckBox name="multipleViews" title="Multipe Views"/>
-				<Variant name="multipleViews" size="0,0,640,480" >
+				<Variant name="multipleViews" size="0,0,640,480" attach="all">
 					<View name="TouchDemo" size="0,0,640,480" attach="all"/>
-					<View>
+					<View size="0,0,640,480" attach="all">
 						<View name="TouchDemo1" size="0,0,640,480" attach="all"/>
 						<View name="TouchDemo2" size="0,0,640,480" attach="all"/>
 					</View>

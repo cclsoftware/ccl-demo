@@ -26,7 +26,7 @@
 
 			<Horizontal margin="0" attach="all" options="unifysizes">
 				<Vertical margin="0" attach="all">
-					<Label title="Rendered SVG:" size="0,0,300,16" attach="left top" style="BodyTextStyle" sizelimits="0,0,10,16"/>
+					<Label title="Rendered SVG:" size="0,0,300,16" attach="left top" sizelimits="0,0,10,16"/>
 					<ColorBox size="0,0,300,300" style="white" attach="all">
 						<View name="image1" size="2,2,296,296" attach="all"/>
 					</ColorBox>
@@ -34,7 +34,7 @@
 
 				<Vertical margin="0" attach="all">
 					<Variant name="hasReference" size="0,0,300,16">
-						<Label title="Reference bitmap:" size="0,0,300,16" attach="left top" style="BodyTextStyle" sizelimits="0,0,10,16"/>
+						<Label title="Reference bitmap:" size="0,0,300,16" attach="left top" sizelimits="0,0,10,16"/>
 					</Variant>
 					<ColorBox size="0,0,300,300" style="white" attach="all">
 						<View name="image2" size="2,2,296,296" attach="all"/>
@@ -45,7 +45,7 @@
 			<define sourceWidth="610">
 
 				<Toggle name="showSource" attach="left right bottom" options="transparent" tooltip="Click to show SVG source">
-					<TextBox name="filename" size="0,0,$sourceWidth,20" attach="all" style="BodyTextStyle"/>
+					<TextBox name="filename" size="0,0,$sourceWidth,20" attach="all"/>
 				</Toggle> 
 				<Variant name="showSource" width="$sourceWidth" attach="left right vfit">
 					<TextEditor name="source" size="0,0,$sourceWidth,200" attach="left right bottom" style="Source"/>

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Skin>
 	<Styles>
-		
-		<Style name="MarkDownEditor" inherit="TextEditor">
-			<Font name="textfont" themeid="StandardUI" size="12"/>
-		</Style>
-
-		<Style name="BlockViewStyle" inherit="Standard.BlockView">
+		<Style name="DemoTextEditor" inherit="Standard.Label">
+			<Color name="backcolor"        	color="@Main.EditBoxBackColor"/>
+			<Color name="selectioncolor"   	color="@Main.TextSelectionBackColor"/>
+			<Align name="textalign" align="left top"/>
 		</Style>
 	</Styles>
-	
-    <Forms>
-	
+
+	<Forms>
+
 		<Form name="Controls.BlockView.Summary" attach="all">
 			<Label title="BlockView with Markdown."/>
 		</Form>
@@ -21,14 +19,14 @@
 
 				<Horizontal margin="0" attach="all" options="unifysizes">
 					<Vertical margin="0" attach="all">
-						<Label title="Markdown Source:" size="0,0,300,16" attach="left top" style="BodyTextStyle" sizelimits="0,0,10,16"/>
-						<TextEditor name="markdownSource" width="300" height="00" options="border vertical dragtext extended" style="MarkDownEditor" attach="all"/>
+						<Label title="Markdown Source:"/>
+						<TextEditor name="markdownSource" size="0,0,150,300" style="DemoTextEditor" options="hidefocus dragtext extended small" attach="all"/>
 					</Vertical>
 
 					<Vertical margin="0" attach="all">
-						<Label title="Result in BlockView:" size="0,0,300,16" attach="left top" style="BodyTextStyle" sizelimits="0,0,10,16"/>
-						<ImageView size="0,0,300,300" style="BlockViewStyle" attach="all">
-							<BlockView name="blockContent" size="0,0,300,300" style="BlockViewStyle" attach="all"/>
+						<Label title="Result in BlockView:"/>
+						<ImageView style="BlockViewStyle" attach="all">
+							<BlockView name="blockContent" size="0,0,150,300" options="small" attach="all"/>
 						</ImageView>
 					</Vertical>
 				</Horizontal>

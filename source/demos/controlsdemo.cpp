@@ -321,8 +321,8 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Controls", "WebView", WebViewDemo, DEMO_PAGE_STATIC)
-REGISTER_DEMO ("Controls", "TextEditor", TextEditorDemo, DEMO_PAGE_STATIC)
-REGISTER_DEMO ("Controls", "Headings", DemoComponent, DEMO_PAGE_DEFAULT)
-REGISTER_DEMO ("Controls", "ImageView", DemoComponent, DEMO_PAGE_DEFAULT)
-REGISTER_DEMO ("Experimental", "More Controls", ControlsDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Controls", "WebView", WebViewDemo, DEMO_PAGE_FULL, DOCLINK_WEBVIEW)
+REGISTER_DEMO ("Controls", "TextEditor", TextEditorDemo, DEMO_PAGE_FULL, DOCLINK_TEXTEDITOR)
+REGISTER_DEMO ("Controls", "Headings", DemoComponent, DEMO_PAGE_DEFAULT, DOCLINK_HEADING)
+REGISTER_DEMO ("Controls", "ImageView", DemoComponent, DEMO_PAGE_DEFAULT, DOCLINK_IMAGEVIEW)
+REGISTER_DEMO ("Experimental", "More Controls", ControlsDemo, DEMO_PAGE_DEFAULT, DOCLINK_DEFAULT)

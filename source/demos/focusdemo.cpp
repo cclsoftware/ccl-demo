@@ -97,4 +97,4 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Layout", "Focus", FocusDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Layout", "Focus", FocusDemo, DEMO_PAGE_DEFAULT, DOCLINK_DEFAULT)

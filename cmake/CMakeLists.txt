@@ -77,6 +77,7 @@ list (APPEND ccldemo_source_files
 	${CMAKE_CURRENT_LIST_DIR}/../source/demoapp.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../source/demoitem.h
 	${CMAKE_CURRENT_LIST_DIR}/../source/demoitem.cpp
+	${CMAKE_CURRENT_LIST_DIR}/../source/doclinks.h
 	${CMAKE_CURRENT_LIST_DIR}/../source/demos/blockviewdemo.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../source/demos/buttondemo.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../source/demos/coreviewdemo.h

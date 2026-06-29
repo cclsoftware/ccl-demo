@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Skin>
+
+	<Resources>
+		<ShapeImage name="DemoWorkspaceImage" url="DemoWorkspaceImageShape"/>
+	</Resources>
+
 	<Styles>
-		<Style name="Border" backcolor="#00000000" forecolor="black"/>
-		<Style name="Frame" forecolor="black"/>
+		<Style name="DemoWorkspaceFrame">
+			<Image name="background" image="DemoWorkspaceImage"/>
+		</Style>
 	</Styles>
+
+	<Shapes>
+		<Shape name="DemoWorkspaceImageShape" style="scale">
+			<Rectangle size="0,0,10,10" style="fill stroke tiled" Brush.color="@Main.ListBackgroundColor" Pen.color="@Main.LabelColor.Tertiary"/>
+		</Shape>
+	</Shapes>
 
 	<Forms>
 		<Form name="Layout.Workspace.Summary" attach="all">
@@ -25,36 +37,26 @@
 			</Vertical>
 		</Form>
 
-		<Form name="Workspace.Toolbar">
-			<ColorBox options="border" style="Frame" attach="all">
-				<Horizontal margin ="2">
-					<Button title="Tool1"/>
-					<Button title="Tool2"/>
-				</Horizontal>
-			</ColorBox>
+		<Form name="Workspace.Toolbar" style="DemoWorkspaceFrame" attach="all">
+			<Horizontal margin="2">
+				<Button title="Tool1"/>
+				<Button title="Tool2"/>
+			</Horizontal>
 		</Form>
 
-		<Form name="Workspace.LowerArea" style="Frame">
-			<ColorBox options="border" style="Frame" attach="all" size="0,0,300,30">
-				<Label title="LowerArea"/>
-			</ColorBox>
+		<Form name="Workspace.LowerArea" style="DemoWorkspaceFrame" attach="all" size="0,0,300,30">
+			<Label title="LowerArea"/>
 		</Form>
 
-		<Form name="Workspace.ExtraArea">
-			<ColorBox options="border" style="Frame" attach="all" size="0,0,150,200">
-				<Label title="ExtraArea"/>
-			</ColorBox>
+		<Form name="Workspace.ExtraArea" style="DemoWorkspaceFrame" attach="all" size="0,0,150,200">
+			<Label title="ExtraArea"/>
 		</Form>
 
-		<Form name="Workspace.MainArea">
-			<ColorBox options="border" style="Frame" attach="all" size="0,0,300,300">
-				<Label title="MainArea"/>
-			</ColorBox>
+		<Form name="Workspace.MainArea" style="DemoWorkspaceFrame" attach="all" size="0,0,300,300">
+			<Label title="MainArea"/>
 		</Form>
 
-		<Form name="Workspace.PopupWindow" title="Popup Window">
-			<View size="0,0,300,300"/>
-		</Form>
+		<Form name="Workspace.PopupWindow" title="Popup Window" size="0,0,300,300"/>
 
 	</Forms>
 

@@ -31,4 +31,4 @@ using namespace CCL;
 class FlexboxDemo: public DemoComponent
 {};
 
-REGISTER_DEMO ("Layout", "Flexbox Layout", FlexboxDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Layout", "Flexbox Layout", FlexboxDemo, DEMO_PAGE_DEFAULT, DOCLINK_FLEXBOX_LAYOUT)

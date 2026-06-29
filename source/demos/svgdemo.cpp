@@ -246,4 +246,4 @@ IMPLEMENT_COMMANDS (SvgDemo, DemoComponent)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Graphics", "SVG", SvgDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Graphics", "SVG", SvgDemo, DEMO_PAGE_DEFAULT, DOCLINK_DEFAULT)

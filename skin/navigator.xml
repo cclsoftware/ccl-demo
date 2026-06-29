@@ -1,38 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Skin>
 
+	<Resources>
+		<ShapeImage name="DemoDividerGradient" url="DemoDividerGradientShape"/>
+
+		<LinearGradient name="DemoDividerLinearGradient" start="0,0" end="10,0">
+			<GradientStop position="0" color="hsl(0,0,50,0)"/>
+			<GradientStop position="0.1" color="hsl(0,0,50)"/>
+			<GradientStop position="0.9" color="hsl(0,0,50)"/>
+			<GradientStop position="1" color="hsl(0,0,50,0)"/>
+		</LinearGradient>
+	</Resources>
+
 	<Styles>
-		<Style name="TextLinkStyle" inherit="Standard.Label">
-			<Color name="textcolor" color="@Main.LabelColor"/>
-		</Style>
-
-		<Style name="HeaderTextStyle" inherit="Standard.Label">
+		<Style name="DemoHeaderText" inherit="Standard.TextBox">
 			<Font name="textfont" themeid="StandardUI" size="+6"/>
-			<Color name="textcolor" color="@Main.LabelColor"/>
-			<Metric name="padding.left"     value="1"/>
-		</Style>
-
-		<Style name="BodyTextStyle" inherit="Standard.Label">
-			<Color name="textcolor" color="@Main.LabelColor.Secondary"/>
-		</Style>
-
-		<Style name="BodyLinkTextStyle" inherit="Standard.Label">
-			<Color name="textcolor" color="@Main.HyperLinkColor"/>
+			<Metric name="padding.left"	value="1"/>
 		</Style>
 
 		<Style name="DemoButton" inherit="Standard.Button">
 			<Metric name="colorize.icon" value="1"/>
-			<Color name="iconcolor" color="@Main.LabelColor"/>
-			<Color name="iconcolor.disabled" color="@Main.LabelColor.Disabled"/>
-			<Color name="iconcolor.mouseover" color="@Main.LabelColor.Primary"/>
-			<Metric name="fill.icon" value="0.75"/>
+			<Color name="iconcolor.mouseover" 	color="@Main.LabelColor.Primary"/>
+		</Style>
+
+		<Style name="DemoLink" inherit="Standard.Label">
+			<Align name="textalign"        	align="center"/>
+			<Metric name="padding.left"		value="2"/>
+			<Metric name="padding.right"	value="2"/>
 		</Style>
 
 		<Style name="AppMenu" inherit="Standard.SelectBox">
 			<Metric name="extended" value="1"/>
 		</Style>
 
+		<Style name="DemoFooter" inherit="Standard.Label">
+			<Font name="textfont" themeid="StandardUI" size="-1"/>
+			<Color name="textcolor"	color="@Main.LabelColor.Secondary"/>
+		</Style>
+
+		<Style name="DemoDividerLine">
+			<Image name="background" image="DemoDividerGradient"/>
+		</Style>
 	</Styles>
+
+	<Shapes>
+		<Shape name="DemoDividerGradientShape" style="scale">
+			<Rectangle size="0,0,10,1" style="fill" Brush.gradient="DemoDividerLinearGradient"/>
+		</Shape>
+
+	</Shapes>
 
 	<Forms>
 	    <!-- ******************************************************************************************** -->
@@ -40,30 +56,27 @@
 	    <!-- ******************************************************************************************** -->
 
 		<Form name="Navigator" attach="all">
-			<Vertical margin="0" spacing="0" width="800" attach="all">
-				<View name="NavigationBar" width="800" attach="left right"/>
+			<Vertical margin="0" spacing="0" options="unifysizes" attach="all">
+				<View name="NavigationBar" attach="left right"/>
+				<ImageView style="DemoDividerLine" height="1" attach="left right"/>
 				<View name="contentFrame" width="800" height="600" sizelimits="none" attach="all"/>
 			</Vertical>
 		</Form>
 
 		<Form name="NavigationBar" attach="top left right">
-			<Horizontal spacing="5" margin="5" attach="left right">
-				<DialogGroup options="secondary" attach="left right">
-					<Horizontal spacing="0" margin="0" attach="left right">
-						<Button name="goHome"    icon="Mdi/HomeOutline" style="DemoButton" size="0,0,50,40" options="transparent" tooltip="Start Page"/>
-						<Button name="goBack"    icon="Mdi/ChevronLeft" style="DemoButton" size="0,0,50,40" options="transparent" tooltip="Back"/>
-						<Button name="goForward" icon="Mdi/ChevronRight" style="DemoButton" size="0,0,50,40" options="transparent" tooltip="Forward"/>
-						<Button name="refresh"   icon="Mdi/Refresh" style="DemoButton" size="0,0,50,40" options="transparent" tooltip="Refresh"/>
-						<!--
-						<TextBox name="location" size="0,0,300,20"/>
-						-->
-						<Space attach="left right"/>
+			<Horizontal spacing="5" margin="10" attach="left right">
+				<Button name="goHome"    icon="Mdi/HomeOutline" style="DemoButton" size="0,0,40,30" options="transparent" tooltip="Start Page"/>
+				<Button name="goBack"    icon="Mdi/ChevronLeft" style="DemoButton" size="0,0,40,30" options="transparent" tooltip="Back"/>
+				<Button name="goForward" icon="Mdi/ChevronRight" style="DemoButton" size="0,0,40,30" options="transparent" tooltip="Forward"/>
+				<Button name="refresh"   icon="Mdi/Refresh" style="DemoButton" size="0,0,40,30" options="transparent" tooltip="Refresh"/>
+				<!--
+				<TextBox name="location" size="0,0,300,20"/>
+				-->
+				<Space attach="left right"/>
 
-						<SelectBox name="object://hostapp/Application/applicationMenu" style="AppMenu" tooltip="Application Menu" size="0,0,40,40" popup="right bottom" options="transparent hidebutton hidefocus">
-							<Button icon="Mdi/Menu" style="DemoButton" size="0,0,40,40" options="passive transparent" tooltip="Application Menu"/>
-						</SelectBox>
-					</Horizontal>
-				</DialogGroup>
+				<SelectBox name="object://hostapp/Application/applicationMenu" style="AppMenu" tooltip="Application Menu" size="0,0,40,30" popup="right bottom" options="transparent hidebutton hidefocus">
+					<Button icon="Mdi/Menu" style="DemoButton" size="0,0,40,30" options="passive transparent" tooltip="Application Menu"/>
+				</SelectBox>
 			</Horizontal>
 		</Form>
 
@@ -76,24 +89,24 @@
 				<ScrollView width="800" options="autohideboth extendtarget transparent" scrolloptions="notiledlayers" attach="all">
 					<Target name="DemoIndex.Target" options="transparent" attach="all"/>
 				</ScrollView>
-				<TextBox name="object://ccldemo/Application/appNameAndVersion" attach="fitsize hcenter bottom" options="transparent"/>
+				<TextBox name="object://ccldemo/Application/appNameAndVersion" attach="fitsize hcenter bottom" style="DemoFooter" options="transparent"/>
 			</Vertical>
 		</Form>
 
 		<Form name="DemoIndex.Target" options="transparent">
 			<Horizontal margin="0" spacing="0" attach="all fill">
 				<Space attach="left right fill"/>				
-				<Vertical margin="0" spacing="5" attach="hcenter">
+				<Vertical margin="0" spacing="2" attach="hcenter">
 					<Space/>
-					<Label title="Select a category or demo" style="HeaderTextStyle"/>
+					<Label title="Select a category or demo" size="-3,0" style="DemoHeaderText" attach="left"/>
 					<Space/>
 					<foreach variable="$index" count="resultCount">
 						<define resultId="@property:resultId[$index]" resultTitle="@property:resultTitle[$index]" resultForm="@property:resultForm[$index]">
 						<Anchor url="object://ccldemo/Demo?id=$resultId">
-							<Link title="$resultTitle" size="2,0" style="TextLinkStyle" attach="left"/>
+							<Link title="$resultTitle" size="2,0" style="Standard.Label" attach="left"/>
 							<View name="$resultForm.Summary" attach="left right"/>
 						</Anchor>
-						<Space height="5"/>
+						<Space height="10"/>
 						</define>
 					</foreach>
 					<Space/>
@@ -107,35 +120,64 @@
 		<!-- ******************************************************************************************** -->
 
 		<Form name="DemoPage.Scrollable" attach="all">
-			<ScrollView options="small vertical horizontal mousescroll transparent extendtarget" attach="all">
+			<ScrollView options="small vertical horizontal mousescroll transparent extendtarget autohidev" attach="all">
 				<Target name="DemoPage.Static" options="transparent" attach="left right vfit"/>
 			</ScrollView>
 		</Form>
 
-		<Form name="DemoPage.Static" options="transparent" attach="all">
-			<Vertical margin="0" spacing="0" attach="all" options="unifysizes">
-				<!-- Demo Header -->
-				<Vertical margin="10" spacing="0" attach="all" options="unifysizes">
-					<using controller="DemoInfo">
-						<TextBox name="demoTitle" options="transparent" attach="fitsize" style="HeaderTextStyle"/>
-						<Table margin="0" spacing="1" columns="2">
-							<Label title="Source:" attach="vcenter"/>
-							<Link name="demoSourceFileLink">
-								<TextBox name="demoSourceFileName" options="transparent" attach="fitsize" style="BodyLinkTextStyle"/>
-							</Link>
-							<Label title="Skin XML:" attach="vcenter"/>
-							<Link name="demoSkinFileLink">
-								<TextBox name="demoSkinFileName" options="transparent" attach="fitsize" style="BodyLinkTextStyle"/>
-							</Link>
-						</Table>
-					</using>
+		<Form name="DemoPage.Full" attach="all">
+			<define fullpage="1">
+				<View name="DemoPage.Static" options="transparent" attach="all"/>
+			</define>
+		</Form>
 
+		<Form name="DemoPage.Static" options="transparent" attach="all">
+			<Vertical margin="0" spacing="0" sizelimits="none" attach="all" options="unifysizes">
+				<Vertical spacing="5" sizelimits="none" attach="left right vfit" options="unifysizes">
+					<Horizontal margin="0" spacing="0" attach="left right">
+						<using controller="DemoInfo">
+							<TextBox name="demoTitle" options="transparent" style="DemoHeaderText" attach="vcenter"/>
+
+							<PopupBox form.name="DocumentationLinksPopup" attach="vcenter">
+								<Button size="0,0,50,20" options="passive transparent" icon="Mdi/InformationOutline" style="DemoButton" tooltip="References"/>
+							</PopupBox>
+							<Space attach="left right"/>
+						</using>
+					</Horizontal>
 					<View name="$demoFormName.Summary" attach="left right vfit"/>
+					<Space height="4"/>
 				</Vertical>
 
-				<!-- Demo Content -->
-				<View name="$demoFormName" attach="all"/>
+				<if defined="$fullpage">
+					<View name="$demoFormName" attach="all"/>
+				</if>
+				<if not.defined="$fullpage">
+					<Horizontal margin="0" spacing="-1" attach="all">
+						<View name="$demoFormName" sizelimits="-1,-1,800,-1" attach="all fill"/>
+						<Space width="1" attach="left right"/>
+					</Horizontal>
+				</if>
 			</Vertical>
+		</Form>
+
+		<Form name="DocumentationLinksPopup">
+			<using controller="source">
+				<DialogGroup options="secondary" attach="left right">
+					<Vertical margin="10" spacing="0">
+						<Link title="Documentation" name="demoDocumentationLink" style="DemoLink" attach="vcenter"/>
+						<Space/>
+						<Label title="Source:"/>
+						<define demoSourceFileTitle="@property:paramValue[demoSourceFileName]">
+							<Link title="$demoSourceFileTitle" style="DemoLink" name="demoSourceFileLink"/>
+						</define>
+						<Space/>
+						<Label title="Skin XML:"/>
+						<define demoSkinFileTitle="@property:paramValue[demoSkinFileName]">
+							<Link title="$demoSkinFileTitle" style="DemoLink" name="demoSkinFileLink"/>
+						</define>
+					</Vertical>
+				</DialogGroup>
+			</using>
 		</Form>
 
 

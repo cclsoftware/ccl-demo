@@ -161,7 +161,7 @@ private:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("System", "Dialogs", DialogsDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("System", "Dialogs", DialogsDemo, DEMO_PAGE_DEFAULT, DOCLINK_DIALOGS)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -460,7 +460,7 @@ void DialogsDemo::selectFont ()
 	
 	AutoPtr<FontSelectorComponent> fontSelector (NEW FontSelectorComponent (Font::kCollectAllFonts));
 	Promise promise (fontSelector->runDialogAsync (font));
-	promise.then ([&] (IAsyncOperation& operation)
+	promise.then ([fontSelector] (IAsyncOperation& operation)
 	{
 		if(operation.getResult ())
 			fontSelector->getSelectedFont (font);

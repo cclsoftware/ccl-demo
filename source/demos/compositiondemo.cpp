@@ -365,7 +365,7 @@ protected:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Graphics", "Composition", CompositionDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Graphics", "Composition", CompositionDemo, DEMO_PAGE_DEFAULT, DOCLINK_DEFAULT)
 
 //************************************************************************************************
 // TransitionDemo
@@ -483,4 +483,4 @@ protected:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Graphics", "Transitions", TransitionDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Graphics", "Transitions", TransitionDemo, DEMO_PAGE_DEFAULT, DOCLINK_DEFAULT)

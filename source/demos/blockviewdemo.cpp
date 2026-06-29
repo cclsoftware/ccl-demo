@@ -85,4 +85,4 @@ private:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Controls", "BlockView", BlockViewDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Controls", "BlockView", BlockViewDemo, DEMO_PAGE_STATIC, DOCLINK_BLOCKVIEW)

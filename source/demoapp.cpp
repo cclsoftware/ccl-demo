@@ -3,7 +3,7 @@
 // CCL Demo Application
 //
 // This file is part of Crystal Class Library (R)
-// Copyright (c) 2025 CCL Software Licensing GmbH.
+// Copyright (c) 2026 CCL Software Licensing GmbH.
 // All Rights Reserved.
 //
 // Licensed for use under either:
@@ -84,6 +84,28 @@ namespace GitHubDocs
 		htmlUrl.appendFormat (kHtmlFile, typeLibraryNameFormatted).append ("#"). appendFormat (kFragmentationID, typeLibraryNameFormatted, elementType, elementNameFormatted);
 
 		return htmlUrl;
+	}
+
+	// build an HTML URL for a documentation page
+	static String buildPageUrl (StringRef inputPath)
+	{
+		static const String kPagePrefix ("page/");
+		if(inputPath.startsWith (kPagePrefix))
+		{
+			String remainder = inputPath.subString (kPagePrefix.length ());
+			String anchor;
+			int hashIndex = remainder.index (CCLSTR ("#"));
+			if(hashIndex >= 0)
+			{
+				anchor = remainder.subString (hashIndex);
+				remainder.truncate (hashIndex);
+			}
+
+			String htmlUrl = CCL_DOCUMENTATION_BASE_URL;
+			htmlUrl.append (remainder).append (".html").append (anchor);
+			return htmlUrl;
+		}
+		return String::kEmpty;
 	}
 }
 
@@ -284,6 +306,11 @@ tbool CCL_API DocumentationLinkHandler::openFile (UrlRef path)
 	// URL in XML file has the format "documentation:///type-library/element.enum"
 	// Examples: "documentation:///skinelement/button", "documentation:///skinelement/button.options"
 	// Note that there are three slashes after the protocol.
+	//
+	// Documentation pages can be linked using the prefix "page/", followed by the
+	// path relative to the documentation root (without ".html") and an optional "#anchor".
+	// Examples: "documentation:///page/skinlanguage/chapter/layouts/index#anchor-layout"
+	//           "documentation:///page/cclframework/details/components#views"
 
 	static const String kProtocol ("documentation");
 
@@ -291,6 +318,14 @@ tbool CCL_API DocumentationLinkHandler::openFile (UrlRef path)
 		return false;
 
 	StringRef urlFromXml = path.getPath ();
+
+	// First try to detect page URL
+	String pageUrl = GitHubDocs::buildPageUrl (urlFromXml);
+	if(!pageUrl.isEmpty ())
+	{
+		System::GetSystemShell ().openUrl (Url (pageUrl));
+		return true;
+	}
 
 	// If a class or enum from a particular library type matches the URL in the XML file,
 	// it means that the URL in the XML is valid and a corresponding HTML URL should be opened

@@ -134,4 +134,4 @@ protected:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Controls", "TreeView", TreeViewDemo, DEMO_PAGE_STATIC)
+REGISTER_DEMO ("Controls", "TreeView", TreeViewDemo, DEMO_PAGE_STATIC, DOCLINK_TREEVIEW)

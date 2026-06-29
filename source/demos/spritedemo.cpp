@@ -75,7 +75,7 @@ void SpriteDemoView::attached (IView* parent)
 	UID cid (ClassID::FloatingSprite);
 	//UID cid (ClassID::SublayerSprite); // todo: choose sprite class
 
-	AutoPtr<IDrawable> drawable = NEW SolidDrawable (Color (Colors::kBlue).setAlphaF (0.4f));
+	AutoPtr<IDrawable> drawable = NEW SolidDrawable (Color (0x35, 0x35, 0xFF).setAlphaF (0.75f));
 
 	sprite = ccl_new<ISprite> (cid);
 
@@ -172,4 +172,4 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Graphics", "Sprites", SpriteDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Graphics", "Sprites", SpriteDemo, DEMO_PAGE_FULL, DOCLINK_SPRITE)

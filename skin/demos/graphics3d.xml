@@ -21,34 +21,37 @@
 		</Form>
 
 		<Form name="Graphics3DControl">
-			<Horizontal margin="0" spacing="4">
+			<Horizontal margin="0" spacing="4" attach="left right">
 				<if defined="$title">
 					<Label title="$title" attach="vcenter" width="35"/>
 				</if>
-				<ValueBox name="$param" attach="vcenter" width="50" />
-				<Slider name="$param" options="horizontal" width="90" attach="vcenter"/>
+				<ValueBox name="$param" attach="vcenter" width="50"/>
+				<Slider name="$param" options="horizontal" width="200" attach="vcenter left right"/>
 			</Horizontal>
 		</Form>
 
 		<Form name="Graphics.Graphics 3D" attach="all">
-			<Vertical margin="0" spacing="0" options="unifysizes" attach="all">
-				<Horizontal spacing="-180" attach="all">
-					<SwipeBox target="CheckBox" width="200" options="vertical" attach="top bottom">
-						<Vertical attach="top bottom">
-							<CheckBox name="user3D" title="UserView3D"/>
+			<Horizontal margin="0" spacing="0" attach="left right">
+				<Vertical margin="10" spacing="5" sizelimits="-1,-1,500,-1" options="unifysizes" attach="left right">
+					<SwipeBox target="CheckBox" attach="left right">
+						<Table margin="0" columns="3" sizelimits="-1,-1,500,-1" attach="left right">
+							<CheckBox name="user3D" title="UserView3D" attach="left right"/>
 							<using controller="DemoSceneComponent">
-								<CheckBox name="grid" title="Grid"/>
-								<CheckBox name="teapot" title="Teapot"/>
-								<CheckBox name="outlineCube" title="Outline Cube"/>
-								<CheckBox name="transparentCube" title="Transparent Cube"/>
-								<CheckBox name="sphere" title="Sphere"/>
-								<CheckBox name="billboard" title="Billboard"/>
-								<CheckBox name="textBillboard" title="Text Billboard"/>
-								<Button name="animate" title="Animate"/>
+								<CheckBox name="grid" title="Grid" attach="left right"/>
+								<Space/>
+								<CheckBox name="transparentCube" title="Transparent Cube" attach="left right"/>
+								<CheckBox name="outlineCube" title="Outline Cube" attach="left right"/>
+								<Space/>
+								<CheckBox name="sphere" title="Sphere" attach="left right"/>
+								<CheckBox name="billboard" title="Billboard" attach="left right"/>
+								<Space/>
+								<CheckBox name="textBillboard" title="Text Billboard" attach="left right"/>
+								<CheckBox name="teapot" title="Teapot" attach="left right"/>
+								<Button name="animate" title="Animate" attach="left right"/>
 							</using>
-							<Space attach="all"/>
-						</Vertical>
+						</Table>
 					</SwipeBox>
+
 					<Table columns="1" cellratio="1" attach="all">
 						<View attach="all">
 							<using controller="DemoSceneComponent">
@@ -61,37 +64,24 @@
 							</Variant>
 						</View>
 					</Table>
-				</Horizontal>
-				<Horizontal margin="0" spacing="0" attach="left right">
-					<Space attach="left right"/>
-					<Table columns="5" margin="0" spacing="5">
-						<using controller="DemoSceneComponent">
-							<Label title="Camera Position"/>
-							<Space width="20"/>
-							<Label title="Camera Orientation"/>
-							<Space width="20"/>
-							<Label title="Field of View Angle"/>
 
-							<define title="X:" param="cameraPosX"><View name="Graphics3DControl"/></define>
-							<Space/>
-							<define title="Yaw:" param="cameraYawAngle"><View name="Graphics3DControl"/></define>
-							<Space/>
-							<define param="cameraFieldOfViewAngle"><View name="Graphics3DControl"/></define>
-
-							<define title="Y:" param="cameraPosY"><View name="Graphics3DControl"/></define>
-							<Space/>
-							<define title="Pitch:" param="cameraPitchAngle"><View name="Graphics3DControl"/></define>
-							<Space/>
-							<Space/>
-												
-							<define title="Z:" param="cameraPosZ"><View name="Graphics3DControl"/></define>
-							<Space/>
-							<define title="Roll:" param="cameraRollAngle"><View name="Graphics3DControl"/></define>
-						</using>
-					</Table>
-					<Space attach="left right"/>
-				</Horizontal>
-			</Vertical>
+					<using controller="DemoSceneComponent">
+						<Label title="Camera Position"/>
+						<define title="X:" param="cameraPosX"><View name="Graphics3DControl" attach="left right"/></define>
+						<define title="Y:" param="cameraPosY"><View name="Graphics3DControl" attach="left right"/></define>
+						<define title="Z:" param="cameraPosZ"><View name="Graphics3DControl" attach="left right"/></define>
+						<Space/>
+						<Label title="Camera Orientation"/>
+						<define title="Yaw:" param="cameraYawAngle"><View name="Graphics3DControl" attach="left right"/></define>
+						<define title="Pitch:" param="cameraPitchAngle"><View name="Graphics3DControl" attach="left right"/></define>
+						<define title="Roll:" param="cameraRollAngle"><View name="Graphics3DControl" attach="left right"/></define>
+						<Space/>
+						<Label title="Field of View"/>
+						<define title="Angle:" param="cameraFieldOfViewAngle"><View name="Graphics3DControl" attach="left right"/></define>
+					</using>
+				</Vertical>
+				<Space attach="left right"/>
+			</Horizontal>
 		</Form>
 
 	</Forms>

@@ -3,7 +3,7 @@
 // CCL Demo Application
 //
 // This file is part of Crystal Class Library (R)
-// Copyright (c) 2025 CCL Software Licensing GmbH.
+// Copyright (c) 2026 CCL Software Licensing GmbH.
 // All Rights Reserved.
 //
 // Licensed for use under either:
@@ -58,7 +58,8 @@ namespace Tag
 		kDemoSourceFileName,
 		kDemoSourceFileLink,
 		kDemoSkinFileName,
-		kDemoSkinFileLink
+		kDemoSkinFileLink,
+		kDemoDocumentationLink
 	};
 }
 
@@ -104,6 +105,9 @@ DemoInfoComponent::DemoInfoComponent (const DemoPageItem& demoItem)
 	skinFileLink.descend (skinFileName);
 
 	paramList.addString ("demoSkinFileLink", Tag::kDemoSkinFileLink)->fromString (UrlFullString (skinFileLink));
+
+	CStringRef link = demoItem.getDocumentationLink ();
+	paramList.addString ("demoDocumentationLink", Tag::kDemoDocumentationLink)->fromString (String () << "documentation:///" << link);
 }
 
 //************************************************************************************************

@@ -161,7 +161,7 @@ private:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("System", "System Info", SystemDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("System", "System Info", SystemDemo, DEMO_PAGE_DEFAULT, DOCLINK_SYSTEMINFO)
 
 //************************************************************************************************
 // AutofillDemo
@@ -185,4 +185,4 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("System", "Autofill", AutofillDemo, DEMO_PAGE_STATIC)
+REGISTER_DEMO ("System", "Autofill", AutofillDemo, DEMO_PAGE_STATIC, DOCLINK_DEFAULT)

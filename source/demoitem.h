@@ -3,7 +3,7 @@
 // CCL Demo Application
 //
 // This file is part of Crystal Class Library (R)
-// Copyright (c) 2025 CCL Software Licensing GmbH.
+// Copyright (c) 2026 CCL Software Licensing GmbH.
 // All Rights Reserved.
 //
 // Licensed for use under either:
@@ -26,6 +26,8 @@
 
 #include "ccl/app/component.h"
 
+#include "doclinks.h"
+
 namespace CCL {
 
 class DemoPageItem;
@@ -34,16 +36,17 @@ class DemoCategory;
 //************************************************************************************************
 // How to add a demo page:
 // - Implement a component derived from DemoComponent
-// - Use macro REGISTER_DEMO (category, title, Class, PageType) to register the component class
-// - Add a <Form> with name "Category.Title" to the skin
+// - Use macro REGISTER_DEMO (category, title, Class, PageType, DocLink) to register the component class
+// - Add <Form> with name "Category.Title" (and "Category.Title.Summary") to the skin
 //************************************************************************************************
 
 #define DEMO_PAGE_STATIC		"DemoPage.Static"
 #define DEMO_PAGE_SCROLLABLE	"DemoPage.Scrollable"
+#define DEMO_PAGE_FULL			"DemoPage.Full"
 #define DEMO_PAGE_DEFAULT		DEMO_PAGE_SCROLLABLE
 
-#define REGISTER_DEMO(category, title, Class, PageType) \
-static RegisterDemoItem<Class> UNIQUE_IDENT (__register##Class) (CCLSTR (category), CCLSTR (title), PageType, __FILE__);
+#define REGISTER_DEMO(category, title, Class, PageType, DocLink) \
+static RegisterDemoItem<Class> UNIQUE_IDENT (__register##Class) (CCLSTR (category), CCLSTR (title), PageType, DocLink, __FILE__);
 
 //************************************************************************************************
 // DemoComponent
@@ -106,11 +109,13 @@ public:
 
 	typedef DemoComponent* (*CreateFunction) ();
 
-	DemoPageItem (CreateFunction createFunction, StringID formName, StringID pageType, StringRef title, StringRef sourceFile)
+	DemoPageItem (CreateFunction createFunction, StringID formName, StringRef title, 
+				  StringID pageType, StringID documentationLink, StringRef sourceFile)
 	: DemoItem (title),
 	  parentCategory (nullptr),
 	  createFunction (createFunction),
 	  pageType (pageType),
+	  documentationLink (documentationLink),
 	  sourceFile (sourceFile)
 	{
 		setFormName (formName);
@@ -118,6 +123,7 @@ public:
 
 	PROPERTY_POINTER (DemoCategory, parentCategory, ParentCategory)
 	PROPERTY_MUTABLE_CSTRING (pageType, PageType)
+	PROPERTY_MUTABLE_CSTRING (documentationLink, DocumentationLink)
 	PROPERTY_STRING (sourceFile, SourceFile)
 	
 	DemoComponent* createComponent () const
@@ -257,13 +263,13 @@ public:
 		return NEW Class;
 	}
 
-	RegisterDemoItem (StringRef category, StringRef title, CStringPtr pageType, CStringPtr sourceFile)
+	RegisterDemoItem (StringRef category, StringRef title, CStringPtr pageType, CStringPtr documentationLink, CStringPtr sourceFile)
 	{
 		MutableCString formName (category);
 		formName.append (".");
 		formName.append (title);
 
-		DemoRegistry::instance ().addDemo (category, NEW DemoPageItem (createInstance, formName, pageType, title, sourceFile));
+		DemoRegistry::instance ().addDemo (category, NEW DemoPageItem (createInstance, formName, title, pageType, documentationLink, sourceFile));
 	}
 };
 

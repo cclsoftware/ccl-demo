@@ -222,4 +222,4 @@ private:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("System", "Store API", StoreDemo, DEMO_PAGE_STATIC)
+REGISTER_DEMO ("System", "Store API", StoreDemo, DEMO_PAGE_STATIC, DOCLINK_DEFAULT)

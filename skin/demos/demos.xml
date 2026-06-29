@@ -50,10 +50,11 @@
 		
 		<Style name="textbox" />
 
-		<Style name="TextEditor" textoptions="wordbreak">
+		<Style name="TextEditor" inherit="Standard.Label">
 			<Font name="textfont" themeid="StandardUI" size="15" linespacing="2"/>
+			<Color name="backcolor"        	color="@Main.EditBoxBackColor"/>
+			<Color name="selectioncolor"   	color="@Main.TextSelectionBackColor"/>
 			<Align name="textalign" align="left top"/>
-			<Color name="selectioncolor" color="hsl(212,100,70,50)"/>
 		</Style>
 
 		<Style name="BlinkTriggers">
@@ -118,7 +119,7 @@
 
     <Form name="Graphics.Composition" attach="all">
 		<Vertical attach="left right">
-			<View name="CompositedView" width="170" height="170"/>
+			<View name="CompositedView" size="40,0,180,180"/>
 			<Label title="Timing Function"/>
 			<Horizontal margin="0" spacing="5" options="unifysizes" attach="hcenter">
 				<Vertical margin="0" spacing="5" attach="left right">
@@ -207,11 +208,11 @@
 					<EditBox name="location" width="400" height="20" options="border" attach="left right" style="TextBoxLeft"/>
 					<TextBox name="title" width="300" height="20" options="border" attach="left right" style="TextBoxLeft"/>
 				</Horizontal>
-				<Horizontal margin="0" attach="left right bottom">
+				<Horizontal attach="left right bottom">
 					<Toggle name="goBack" title="&lt;" tooltip="Back"/>
 					<Toggle name="goForward" title="&gt;" tooltip="Forward"/>
-					<Button name="refresh" title="&lt;&gt;" tooltip="Refresh"/>
-					<Button name="goHome" title="H" tooltip="Home"/>
+					<Button name="refresh" title="&#x21BB;" tooltip="Refresh"/>
+					<Button name="goHome" title="&#x2302;" tooltip="Home"/>
 					<Space attach="left right"/>
 				</Horizontal>
 			</Vertical>
@@ -222,8 +223,10 @@
 		<Label title="Multiline text editor demo."/>
 	</Form>
 
+
+
 	<Form name="Controls.TextEditor" attach="all">
-		<TextEditor name="text" width="400" height="400" options="border vertical dragtext extended" style="TextEditor" attach="all"/>
+		<TextEditor name="text" width="400" height="400" options="hidefocus vertical dragtext extended" style="TextEditor" attach="all"/>
 	</Form>
 	
 	<Form name="ScrollPickerTestView" attach="all">

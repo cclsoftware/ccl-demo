@@ -87,4 +87,4 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Controls", "Slider", SliderDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Controls", "Slider", SliderDemo, DEMO_PAGE_DEFAULT, DOCLINK_SLIDER)

@@ -1,21 +1,49 @@
-# CCL Demo Application
+# CCL Demo
 
-Application demoing features of CCL Cross-platform Framework.
-
+Demo application showcasing UI controls, layouts, 2D/3D graphics, and more available in CCL.
 
 ## How to build
 
-Install CMake from https://cmake.org/download/.
+Building CCL Demo requires a copy of CCL.
+
+You may install the CCL SDK with precompiled binaries or clone the CCL framework repository.
+
+See [Getting Started with CCL - Installation](https://cclsoftware.github.io/ccl-documentation/cclstartguide/installation.html) for additional dependencies.
+
+### Build from framework sources
+
+Create a new directory and clone both, CCL and CCL Demo, into this directory:
+
+```
+mkdir ccl-demo-build && cd ccl-demo-build
+git clone https://github.com/cclsoftware/ccl-demo.git
+git clone --recursive https://github.com/cclsoftware/ccl-framework.git
+```
+
+Then continue with platform-specific build steps (see below), passing the CCL CMake module path as `CMAKE_MODULE_PATH`.
+
+Example:
+
+```
+cd ccl-demo/cmake
+cmake --preset win64 -DCMAKE_MODULE_PATH=../../ccl-framework/build/cmake/modules/shared/
+```
+
+See also [Getting Started with CCL - Building CCL](https://cclsoftware.github.io/ccl-documentation/cclframework/building.html).
+
+### Build using the CCL SDK
+
+Download and install the CCL SDK from the [Releases page](https://github.com/cclsoftware/ccl-framework/releases).
 
 Clone this repository:
 
 ```
-git clone --recursive https://github.com/cclsoftware/ccl-demo.git
+git clone https://github.com/cclsoftware/ccl-demo.git
 ```
 
-### Windows (x86-64)
+Then continue with platform-specific build steps below.
 
-Install Microsoft Visual Studio.
+### Windows (x86-64)
 
 Generate a Visual Studio solution:
 
@@ -24,15 +52,13 @@ cd cmake
 cmake --preset win64
 ```
 
-Open the generated solution in Visual Studio, then build and run the CCL Demo Application:
+Open the generated solution in Visual Studio, then build and run CCL Demo:
 
 ```
 cmake --open build\x64
 ```
 
 ### Windows on Arm
-
-Install Microsoft Visual Studio.
 
 Generate a Visual Studio solution:
 
@@ -41,15 +67,13 @@ cd cmake
 cmake --preset win-arm64
 ```
 
-Open the generated solution in Visual Studio, then build and run the CCL Demo Application:
+Open the generated solution in Visual Studio, then build and run CCL Demo:
 
 ```
 cmake --open build\windows-arm64
 ```
 
-### MacOS
-
-Install Xcode.
+### macOS
 
 Generate an Xcode project:
 
@@ -58,16 +82,32 @@ cd cmake
 cmake --preset mac-default-sdk
 ```
 
-Open the generated project in Xcode, then build and run the CCL Demo Application:
+Open the generated project in Xcode
 
 ```
 cmake --open build/mac-default-sdk
 ```
 
-### Linux (Ubuntu)
+Visit the Signing & Capabilities settings for the ccldemo target and change the team from "None" to your personal team, then build and run CCL Demo.
 
-Install Ninja.
-For more details on dependencies, see the "Getting Started with CCL" guide installed with CCL SDK.
+### iOS
+
+Generate an Xcode project:
+
+```
+cd cmake
+cmake --preset ios
+```
+
+Open the generated project in Xcode
+
+```
+cmake --open build
+```
+
+Visit the Signing & Capabilities settings for the ccldemo target, change the team from "None" to your personal team and change the bundle identifier to an available value. Select a hardware device as destination, then build and run CCL Demo.
+
+### Linux (Ubuntu)
 
 Generate a Ninja project:
 
@@ -76,9 +116,31 @@ cd cmake
 cmake --preset linux-debug
 ```
 
-Build the CCL Demo Application:
+Build CCL Demo:
 
 ```
 cd build/Debug
 cmake --build .
 ```
+
+### Android
+
+Install Ninja as well as Android Studio or Gradle (for command line builds).
+
+Generate an Android Studio/Gradle project:
+
+```
+cd cmake
+cmake --preset android
+```
+
+Open the generated project folder (`build/android` by default) in Android Studio, then build and run CCL Demo.
+
+Alternatively, build CCL Demo using Gradle:
+
+```
+cd build/android
+gradle assembleArm8Debug
+```
+
+The resulting APK will be found in the `ccldemo/build/outputs/apk/arm8/debug` subfolder.

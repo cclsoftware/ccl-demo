@@ -71,12 +71,19 @@ public:
 	  standardFont (getStandardFont ()),
 	  monospacedStandardFont (getMonospacedStandardFont ())
 	{
+		updateTextColor ();
 		System::GetGUI ().addIdleTask (this);
 	}
 
 	~TestView ()
 	{
 		System::GetGUI ().removeIdleTask (this);
+	}
+	
+	// UserControl
+	void onColorSchemeChanged (const ColorSchemeEvent& event) override
+	{
+		updateTextColor ();
 	}
 
 	// ITimerTask
@@ -93,6 +100,7 @@ protected:
 	Vector<double> drawTimes;
 	Font standardFont;
 	Font monospacedStandardFont;
+	SolidBrush textBrush;
 
 	struct PerformanceScope
 	{
@@ -146,6 +154,12 @@ protected:
 		TestView* view;
 		double startTime;
 	};
+
+	void updateTextColor ()
+	{
+		// No, keep it black for now
+		//textBrush.setColor (getTheme ().getThemeColor (ThemeElements::kSelectionTextColor));
+	}
 };
 
 //************************************************************************************************
@@ -179,11 +193,11 @@ public:
 
 		Rect r (0, 0, 78, 28);
 		graphics.drawRect (r, Pen (Colors::kRed));
-		graphics.drawString (r, zeros, f, SolidBrush (Colors::kBlack));
+		graphics.drawString (r, zeros, f, textBrush);
 
 		r.offset (80, 0);
 		graphics.drawRect (r, Pen (Colors::kRed));
-		graphics.drawString (r, CCLSTR ("wwwwww"), f, SolidBrush (Colors::kBlack));
+		graphics.drawString (r, CCLSTR ("wwwwww"), f, textBrush);
 
 		graphics.measureString (s, zeros, f);
 		s.center (r);
@@ -192,7 +206,7 @@ public:
 		f.setSize (16);
 		r.offset (80, 0);
 		graphics.drawRect (r, Pen (Colors::kRed));
-		graphics.drawString (r, zeros, f, SolidBrush (Colors::kBlack), Alignment (Alignment::kCenter));
+		graphics.drawString (r, zeros, f, textBrush, Alignment (Alignment::kCenter));
 
 		graphics.measureString (s, zeros, f);
 		s.center (r);
@@ -201,7 +215,7 @@ public:
 		f.setSize (28);
 		r.offset (80, 0);
 		graphics.drawRect (r, Pen (Colors::kRed));
-		graphics.drawString (r, zeros, f, SolidBrush (Colors::kBlack), Alignment (Alignment::kCenter));
+		graphics.drawString (r, zeros, f, textBrush, Alignment (Alignment::kCenter));
 
 		graphics.measureString (s, zeros, f);
 		s.center (r);
@@ -211,23 +225,23 @@ public:
 		f.setSize (16);
 		r.offset (80, 0);
 		graphics.drawRect (r, Pen (Colors::kRed));
-		graphics.drawString (r.getLeftTop (), zeros, f, SolidBrush (Colors::kBlack));
+		graphics.drawString (r.getLeftTop (), zeros, f, textBrush);
 
 		f.isBold (true);
 		f.setSize (12);
 		r.offset (80, 0);
 		graphics.drawRect (r, Pen (Colors::kRed));
-		graphics.drawString (r, CCLSTR ("Apply"), f, SolidBrush (Colors::kBlack), Alignment (Alignment::kCenter));
+		graphics.drawString (r, CCLSTR ("Apply"), f, textBrush, Alignment (Alignment::kCenter));
 
 		f.setSize (12);
 		r.offset (80, 0);
 		graphics.drawRect (r, Pen (Colors::kRed));
-		graphics.drawString (r, CCLSTR ("Cancel"), f, SolidBrush (Colors::kBlack), Alignment (Alignment::kCenter));
+		graphics.drawString (r, CCLSTR ("Cancel"), f, textBrush, Alignment (Alignment::kCenter));
 
 		f.setSize (12);
 		r.offset (80, 0);
 		graphics.drawRect (r, Pen (Colors::kRed));
-		graphics.drawString (r, CCLSTR ("OK"), f, SolidBrush (Colors::kBlack), Alignment (Alignment::kCenter));
+		graphics.drawString (r, CCLSTR ("OK"), f, textBrush, Alignment (Alignment::kCenter));
 
 		f.setSize (12);
 		f.setLineSpacing (1.1f);
@@ -238,13 +252,13 @@ public:
 		graphics.drawRect (textRect, Pen (Colors::kRed));
 		TextFormat textFormat (Alignment::kLeftTop);
 		textFormat.isWordBreak (true);
-		graphics.drawText (textRect, multiLineText, f, SolidBrush (Colors::kBlack), textFormat);
+		graphics.drawText (textRect, multiLineText, f, textBrush, textFormat);
 		f.setLineSpacing (1.f);
 
 		textRect.offset (0, textRect.getHeight ());
 		multiLineText.truncate (multiLineText.length ()/2);
 		multiLineText << "...";
-		graphics.drawText (textRect, multiLineText, getMonospacedStandardFont (), SolidBrush (Colors::kBlack), textFormat);
+		graphics.drawText (textRect, multiLineText, getMonospacedStandardFont (), textBrush, textFormat);
 
 		float start = 120.f;
 		float range = 300.f;
@@ -301,13 +315,13 @@ public:
 		r = Rect (0, 200, 78, 228);
 		f.isBold (false);
 		graphics.drawRect (r, Pen (Colors::kRed));
-		graphics.drawString (r, zeros, f, SolidBrush (Colors::kBlack), Alignment::kLeft);
+		graphics.drawString (r, zeros, f, textBrush, Alignment::kLeft);
 		r.offset (80, 0);
 		graphics.drawRect (r, Pen (Colors::kRed));
-		graphics.drawString (r, zeros, f, SolidBrush (Colors::kBlack), Alignment::kCenter);
+		graphics.drawString (r, zeros, f, textBrush, Alignment::kCenter);
 		r.offset (80, 0);
 		graphics.drawRect (r, Pen (Colors::kRed));
-		graphics.drawString (r, zeros, f, SolidBrush (Colors::kBlack), Alignment::kRight);
+		graphics.drawString (r, zeros, f, textBrush, Alignment::kRight);
 
 		// digit studies
 		r = Rect (0, 250, 20, 280);
@@ -320,7 +334,7 @@ public:
 			Rect size;
 			graphics.measureString (size, digit, f);
 			graphics.drawRect (size.moveTo (r.getLeftTop ()), Pen (Colors::kGray));
-			graphics.drawString (r, digit, f, SolidBrush (Colors::kBlack), Alignment::kLeftTop);
+			graphics.drawString (r, digit, f, textBrush, Alignment::kLeftTop);
 			r.offset (20, 0);
 		}
 
@@ -345,7 +359,7 @@ public:
 					textLayout->getBounds (bounds);
 					textLayout->getImageBounds (imageBounds);
 
-					graphics.drawTextLayout (r.getLeftTop (), textLayout, SolidBrush (Colors::kBlack));
+					graphics.drawTextLayout (r.getLeftTop (), textLayout, textBrush);
 					graphics.drawRect (bounds.offset (r.getLeftTop ()), Pen (Colors::kBlue));
 					graphics.drawRect (imageBounds.offset (r.getLeftTop ()), Pen (Colors::kRed));
 				}
@@ -362,7 +376,7 @@ public:
 					textLayout->setSubscript ({14, 1});
 
 					Point origin ((Coord)r.left, (Coord)(r.top + r.bottom) / 2);
-					graphics.drawTextLayout (origin, textLayout, SolidBrush (Colors::kBlack), IGraphics::kDrawAtBaseline);
+					graphics.drawTextLayout (origin, textLayout, textBrush, IGraphics::kDrawAtBaseline);
 					graphics.drawLine (Point (origin.x - 2, origin.y), Point (origin.x + 200, origin.y), Pen (Colors::kGreen));
 					graphics.drawLine (Point (origin.x, origin.y - 2), Point (origin.x, origin.y + 2), Pen (Colors::kGreen));
 				}
@@ -382,7 +396,7 @@ public:
 			path->addRect (size.moveTo (rectF.getLeftTop ()));
 			graphics.drawPath (path, Pen (Colors::kBlack));
 
-			graphics.drawString (rectF, x, f, SolidBrush (Colors::kBlack), Alignment::kLeftTop);
+			graphics.drawString (rectF, x, f, textBrush, Alignment::kLeftTop);
 			rectF.offset (size.getWidth (), 0.1f);
 		}
 
@@ -397,7 +411,7 @@ public:
 			path->addRect (size.moveTo (rectF.getLeftTop ()));
 			graphics.drawPath (path, Pen (Colors::kBlack));
 
-			graphics.drawString (rectF, x, f, SolidBrush (Colors::kBlack), Alignment::kLeftTop);
+			graphics.drawString (rectF, x, f, textBrush, Alignment::kLeftTop);
 			rectF.offset (0.1f, size.getHeight ());
 		}
 
@@ -442,7 +456,7 @@ public:
 		AutoPtr<IGraphicsPath> path1 = GraphicsFactory::createPath (IGraphicsPath::kPaintPath);		
 		RectF pathRect (20, 450, PointF (100, 100));
 		makeClipPath (*path1, pathRect);
-		graphics.fillPath (path1, SolidBrush (Colors::kBlack));
+		graphics.fillPath (path1, textBrush);
 
 		pathRect.offset (130, 0);
 		RectF outsideRect = pathRect;
@@ -498,7 +512,7 @@ public:
 
 		RectF rect (1, 1);
 		Font headerFont (standardFont);
-		graphics.drawString (Rect (rect.left, 0, Point (200, 50)), String ("size: ") << font.getSize (), headerFont, SolidBrush (Colors::kBlack), Alignment::kLeftTop);
+		graphics.drawString (Rect (rect.left, 0, Point (200, 50)), String ("size: ") << font.getSize (), headerFont, textBrush, Alignment::kLeftTop);
 
 		texts.forEach ([&] (StringRef text)
 		{
@@ -528,14 +542,14 @@ public:
 					textLayout->getBounds (bounds);
 					textLayout->getImageBounds (imageBounds);
 
-					graphics.drawTextLayout (r.getLeftTop (), textLayout, SolidBrush (Colors::kBlack));
+					graphics.drawTextLayout (r.getLeftTop (), textLayout, textBrush);
 					graphics.drawRect (bounds.offset (r.getLeftTop ()), Pen (Colors::kBlue));
 					graphics.drawRect (imageBounds.offset (r.getLeftTop ()), Pen (Colors::kRed));
 				}
 				else
 				{
 					Point origin (r.left, (r.top + r.bottom) / 2);
-					graphics.drawString (origin, text, font, SolidBrush (Colors::kBlack), IGraphics::kDrawAtBaseline);
+					graphics.drawString (origin, text, font, textBrush, IGraphics::kDrawAtBaseline);
 
 					RectF size;
 					Font::measureStringImage (size, text, font, true);
@@ -680,5 +694,5 @@ protected:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Graphics", "Graphics 2D", GraphicsDemo, DEMO_PAGE_DEFAULT)
-REGISTER_DEMO ("Graphics", "Text Alignment", TextAlignDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Graphics", "Graphics 2D", GraphicsDemo, DEMO_PAGE_DEFAULT, DOCLINK_GRAPHICS_DETAILS)
+REGISTER_DEMO ("Graphics", "Text Alignment", TextAlignDemo, DEMO_PAGE_DEFAULT, DOCLINK_DEFAULT)

@@ -3,7 +3,7 @@
 // CCL Demo Application
 //
 // This file is part of Crystal Class Library (R)
-// Copyright (c) 2025 CCL Software Licensing GmbH.
+// Copyright (c) 2026 CCL Software Licensing GmbH.
 // All Rights Reserved.
 //
 // Licensed for use under either:
@@ -51,7 +51,8 @@
 #define APP_MIME_TYPE		CCL_MIME_TYPE
 
 #define CCLDEMO_GITHUB_URL	"https://github.com/cclsoftware/ccl-demo/blob/main/"
-#define SKINXML_DOCUMENTATION_URL "https://cclsoftware.github.io/ccl-documentation/skinlanguage/reference/"
+#define CCL_DOCUMENTATION_BASE_URL "https://cclsoftware.github.io/ccl-documentation/"
+#define SKINXML_DOCUMENTATION_URL CCL_DOCUMENTATION_BASE_URL "skinlanguage/reference/"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 

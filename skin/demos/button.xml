@@ -45,9 +45,9 @@
   	<Forms>
 
 		<Form name="Controls.Button.Summary" attach="all">
-			<Label title="Overview of button types, options, and modes."/>
+			<Label options="multiline" title="Overview of button types, options, and modes." width="300" attach="left right vfit"/>
 		</Form>
-		
+
 		<Form name="Controls.Button" attach="left right">
 			<Vertical attach="left right" options="unifysizes">
 				<Heading title="Single-state buttons"/>
@@ -73,7 +73,7 @@
 						<Horizontal margin="0" attach="left right">
 							<Space attach="left right"/>
 							<Button title="Very long wrapped button title" width="90" height="80" options="multiline"/>
-							<Button title="Title will be scaled" width="180" height="80" options="scaletext"/>
+							<Button title="Title will be scaled" width="160" height="80" options="scaletext"/>
 							<Space attach="left right"/>
 						</Horizontal>
 					</Vertical>

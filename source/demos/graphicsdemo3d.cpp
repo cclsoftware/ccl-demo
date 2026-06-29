@@ -816,4 +816,4 @@ IView* CCL_API Graphics3DDemo::createView (StringID name, VariantRef data, const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Graphics", "Graphics 3D", Graphics3DDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Graphics", "Graphics 3D", Graphics3DDemo, DEMO_PAGE_DEFAULT, DOCLINK_GRAPHICS_3D)

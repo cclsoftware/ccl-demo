@@ -44,4 +44,4 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-REGISTER_DEMO ("Controls", "Button", ButtonDemo, DEMO_PAGE_DEFAULT)
+REGISTER_DEMO ("Controls", "Button", ButtonDemo, DEMO_PAGE_DEFAULT, DOCLINK_BUTTON)
