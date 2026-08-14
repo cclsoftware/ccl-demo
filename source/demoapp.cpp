@@ -312,7 +312,7 @@ tbool CCL_API DocumentationLinkHandler::openFile (UrlRef path)
 	// Examples: "documentation:///page/skinlanguage/chapter/layouts/index#anchor-layout"
 	//           "documentation:///page/cclframework/details/components#views"
 
-	static const String kProtocol ("documentation");
+	static const String kProtocol (DOC_PROTOCOL);
 
 	if(path.getProtocol () != kProtocol)
 		return false;
@@ -417,14 +417,15 @@ bool DemoApp::startup ()
 	System::GetServiceManager ().registerNotification (this);
 	System::GetServiceManager ().startup ();
 
+	// sort demos
+	DemoRegistry::instance ().finishSorting ();
+
 	#if CCL_PLATFORM_DESKTOP
 	// EULA
 	Url eulaFolder;
 	GET_DEVELOPMENT_FOLDER_LOCATION (eulaFolder, VENDOR_IDENTITY_DIR, "eula")
 	if(!EULAComponent ().startup (&eulaFolder))
 		return false;
-
-	DemoRegistry::instance ().finishSorting ();
 
 	// main window
 	createWindow ();

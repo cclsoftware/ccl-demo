@@ -48,6 +48,8 @@ class DemoCategory;
 #define REGISTER_DEMO(category, title, Class, PageType, DocLink) \
 static RegisterDemoItem<Class> UNIQUE_IDENT (__register##Class) (CCLSTR (category), CCLSTR (title), PageType, DocLink, __FILE__);
 
+#define DEMO_CATEGORY_EXPERIMENTAL "Experimental"
+
 //************************************************************************************************
 // DemoComponent
 //************************************************************************************************
@@ -211,7 +213,7 @@ public:
 	void finishSorting ()
 	{
 		// make experimental category last (if any)
-		const String kExperimental ("Experimental");
+		const String kExperimental (DEMO_CATEGORY_EXPERIMENTAL);
 		if(auto* category = findCategory (kExperimental))
 		{
 			categories.remove (category);

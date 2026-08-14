@@ -21,6 +21,8 @@
 #ifndef _doclinks_h
 #define _doclinks_h
 
+#define DOC_PROTOCOL				"documentation"
+
 #define DOCLINK_DEFAULT				"page/cclstartguide/index"
 
 #define DOCLINK_ANCHOR_LAYOUT		"page/skinlanguage/chapter/layouts/index#anchor-layout"

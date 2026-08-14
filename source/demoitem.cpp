@@ -107,7 +107,7 @@ DemoInfoComponent::DemoInfoComponent (const DemoPageItem& demoItem)
 	paramList.addString ("demoSkinFileLink", Tag::kDemoSkinFileLink)->fromString (UrlFullString (skinFileLink));
 
 	CStringRef link = demoItem.getDocumentationLink ();
-	paramList.addString ("demoDocumentationLink", Tag::kDemoDocumentationLink)->fromString (String () << "documentation:///" << link);
+	paramList.addString ("demoDocumentationLink", Tag::kDemoDocumentationLink)->fromString (String () << DOC_PROTOCOL ":///" << link);
 }
 
 //************************************************************************************************

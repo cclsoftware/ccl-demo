@@ -142,9 +142,10 @@ public:
 				ForEachUnknown (*stylesContainer, unk)
 					if(UnknownPtr<ISkinElement> styleElement = unk)
 					{
-						Variant appStyle;
-						styleElement->getAttributeValue (appStyle, ATTR_APPSTYLE);
-						if(appStyle.parseBool ())
+						//Variant appStyle;
+						//styleElement->getAttributeValue (appStyle, ATTR_APPSTYLE);
+						//if(appStyle.parseBool ())
+						if(styleElement->getName ().startsWith (ThemeNames::kStandard))
 						{
 							auto* item = NEW ListViewItem;
 							item->setTitle (String (styleElement->getName ()));
@@ -170,4 +171,4 @@ protected:
 DEFINE_STRINGID_MEMBER_ (SkinDemo, kCommentID, "comment")
 DEFINE_STRINGID_MEMBER_ (SkinDemo, kColorID, "color")
 
-REGISTER_DEMO ("Experimental", "Skin Content", SkinDemo, DEMO_PAGE_DEFAULT, DOCLINK_DEFAULT)
+REGISTER_DEMO (DEMO_CATEGORY_EXPERIMENTAL, "Skin Content", SkinDemo, DEMO_PAGE_STATIC, DOCLINK_DEFAULT)

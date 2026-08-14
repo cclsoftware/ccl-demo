@@ -9,10 +9,10 @@
 		<Form name="Experimental.Skin Content" attach="all">
 			<Vertical attach="all" options="unifysizes">
 				<Label title="Icons"/>
-				<ListView name="icons" viewtype="icons" options="selection exclusive" scrolloptions="autohideboth" with="250" height="150" attach="all"/>
-				
+				<ListView name="icons" viewtype="icons" options="selection exclusive" scrolloptions="autohideboth" with="250" height="120" attach="all"/>
+
 				<Label title="Colors"/>
-				<ListView name="colors" viewtype="details" options="selection exclusive" scrolloptions="autohideboth" with="250" height="150" attach="all"/>
+				<ListView name="colors" viewtype="details" options="selection exclusive" scrolloptions="autohideboth" with="250" height="180" attach="all"/>
 
 				<Label title="Styles"/>
 				<ListView name="styles" viewtype="details" options="selection exclusive" scrolloptions="autohideboth" with="250" height="150" attach="all"/>
