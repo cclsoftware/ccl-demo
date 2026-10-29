@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <FileFilter filtermode="include">
+	<FileFilter.File name="audioservice.*" key="Application.identity" include="ccldemo"/>
 	<FileFilter.File name="modelimporter3d.*" key="Application.identity" include="ccldemo"/>
 </FileFilter>

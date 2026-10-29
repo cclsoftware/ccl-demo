@@ -636,6 +636,7 @@ void DemoSceneComponent::createCameraParameters ()
 	{
 		IParameter* param = paramList.addFloat (min, max, name, tag);
 		param->setValue (defaultValue);
+		param->setPrecision (max - min);
 		param->setDefaultValue (defaultValue);
 	};
 

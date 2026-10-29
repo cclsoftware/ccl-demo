@@ -173,13 +173,13 @@ public:
 	{
 		if(name == "image1" && !imageView1)
 		{
-			imageView1 = ViewBox (ClassID::ImageView, bounds, StyleFlags (0, Styles::kImageViewAppearanceColorize));
+			imageView1 = ViewBox (ClassID::ImageView, bounds, StyleFlags (0, Styles::kImageViewAppearanceColorize|Styles::kImageViewAppearanceContentFit));
 			loadImage ();
 			return imageView1;
 		}
 		else if(name == "image2" && !imageView2)
 		{
-			imageView2 = ViewBox (ClassID::ImageView, bounds, StyleFlags (0, Styles::kImageViewAppearanceColorize));
+			imageView2 = ViewBox (ClassID::ImageView, bounds, StyleFlags (0, Styles::kImageViewAppearanceColorize|Styles::kImageViewAppearanceContentFit));
 			loadImage ();
 			return imageView2;
 		}

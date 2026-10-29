@@ -39,6 +39,7 @@
 #include "ccl/public/gui/framework/viewbox.h"
 #include "ccl/public/plugins/itypelibregistry.h"
 #include "ccl/public/system/ifileutilities.h"
+#include "ccl/public/audio/iaudioservice.h"
 #include "ccl/public/text/istringdict.h"
 #include "ccl/public/text/stringbuilder.h"
 
@@ -389,6 +390,10 @@ DemoApp::DemoApp ()
 {
 	setBuildInformation (APP_FULL_NAME);
 
+	Url legalFolder;
+	GET_DEVELOPMENT_FOLDER_LOCATION (legalFolder, VENDOR_IDENTITY_DIR, "legal");
+	setLegalInformation (&legalFolder, nullptr, "*3rd*.txt");
+
 	addApplicationMenu ();
 }
 
@@ -500,10 +505,15 @@ tresult CCL_API DemoApp::onServiceNotification (const IServiceDescription& descr
 {
 	if(eventCode == kServiceActivate)
 	{
-		if(description.getServiceName () == CCL_SPY_NAME)
-			return kResultOk;
-		else
-			return kResultFailed; // ignore other services
+		static const String allowList[] = {String (CCL_SPY_NAME), CCL_AUDIOSERVICE_NAME};
+
+		for(auto name : allowList)
+		{
+			if(description.getServiceName () == name)
+				return kResultOk;
+		}
+
+		return kResultFailed; // ignore other services
 	}
 	else
 		return kResultOk;

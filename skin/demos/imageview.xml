@@ -5,9 +5,15 @@
 	</Resources>
 
 	<Styles>
-		<Style name="RedBackground" backcolor="red"/>
-		<Style name="GreenBackground" backcolor="green"/>
-		<Style name="BlueBackground" backcolor="blue"/>
+		<Style name="RedBackground">
+			<Color name="background.color" color="red"/>
+		</Style>
+		<Style name="GreenBackground">
+			<Color name="background.color" color="green"/>
+		</Style>
+		<Style name="BlueBackground">
+			<Color name="background.color" color="blue"/>
+		</Style>
 	</Styles>
 
   	<Forms>
@@ -26,12 +32,12 @@
 				</Horizontal>
 				<Heading title="Image Alignment Options"/>
 				<Table rows="2">
-					<Label title="None"/>
-					<ImageView width="128" height="128" image="Example1"/>
+					<Label title="Stretch"/>
+					<ImageView width="128" height="128" image="Example1" options="contentfill"/>
 					<Label title="Fit"/>
-					<ImageView width="128" height="128" image="Example1" options="fitimage"/>
+					<ImageView width="128" height="128" image="Example1" options="contentfit"/>
 					<Label title="Center"/>
-					<ImageView width="128" height="128" image="Example1" options="centerimage"/>
+					<ImageView width="128" height="128" image="Example1"/>
 				</Table>
 			</Vertical>
 		</Form>

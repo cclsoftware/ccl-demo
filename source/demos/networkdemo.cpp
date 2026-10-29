@@ -91,7 +91,8 @@ namespace Tag
 		kDisconnect = 'disc',
 		kReadyState = 'rdys',
 		kMessageText = 'mtxt',
-		kSendMessage = 'send'
+		kSendMessage = 'send',
+		kIncomingText = 'incm'
 	};
 }
 
@@ -207,6 +208,7 @@ public:
 		paramList.addString ("readyState", Tag::kReadyState);
 		paramList.addString ("messageText", Tag::kMessageText)->fromString ("Hello!");
 		paramList.addParam ("sendMessage", Tag::kSendMessage);
+		paramList.addString ("incomingText", Tag::kIncomingText);
 		
 		ISubject::addObserver (webSocket, this);		
 		updateReadyState ();
@@ -229,7 +231,7 @@ public:
 			paramList.byTag (Tag::kUrl)->toString (urlString);
 			
 			Url url (urlString);
-			webSocket->open (url, CCLSTR (CCL_PACKAGE_DOMAIN ".chat"));
+			webSocket->open (url);
 		}
 		else if(param->getTag () == Tag::kDisconnect)
 		{
@@ -250,7 +252,16 @@ public:
 		CCL_PRINTF ("WebSocket notification %s\n", msg.getID ().str ())
 
 		if(msg == Web::IWebSocket::kOnReadyStateChange)
+		{
 			updateReadyState ();
+		}
+		else if(msg == Web::IWebSocket::kOnMessage)
+		{
+			if(msg[0].isString ())
+			{
+				paramList.byTag (Tag::kIncomingText)->fromString (msg[0].asString ());
+			}
+		}
 	}
 
 	void updateReadyState ()
@@ -273,6 +284,8 @@ public:
 		bool canSend = state == Web::IWebSocket::kOpen;
 		paramList.byTag (Tag::kSendMessage)->enable (canSend);
 
+		paramList.byTag (Tag::kIncomingText)->fromString (String::kEmpty);
+
 		signal (Message (kPropertyChanged));
 	}
 
@@ -283,4 +296,4 @@ protected:
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 REGISTER_DEMO ("Network", "XMLHttpRequest", XMLHttpRequestDemo, DEMO_PAGE_FULL, DOCLINK_XHR)
-//REGISTER_DEMO ("Network", "WebSocket", WebSocketDemo, DEMO_PAGE_DEFAULT, DOCLINK_DEFAULT) work in progress
+REGISTER_DEMO ("Network", "WebSocket", WebSocketDemo, DEMO_PAGE_DEFAULT, DOCLINK_DEFAULT)

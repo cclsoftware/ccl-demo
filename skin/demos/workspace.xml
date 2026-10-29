@@ -7,7 +7,7 @@
 
 	<Styles>
 		<Style name="DemoWorkspaceFrame">
-			<Image name="background" image="DemoWorkspaceImage"/>
+			<Image name="background.image" image="DemoWorkspaceImage"/>
 		</Style>
 	</Styles>
 
@@ -37,22 +37,22 @@
 			</Vertical>
 		</Form>
 
-		<Form name="Workspace.Toolbar" style="DemoWorkspaceFrame" attach="all">
+		<Form name="Workspace.Toolbar" style="DemoWorkspaceFrame" options="contentfill" attach="all">
 			<Horizontal margin="2">
 				<Button title="Tool1"/>
 				<Button title="Tool2"/>
 			</Horizontal>
 		</Form>
 
-		<Form name="Workspace.LowerArea" style="DemoWorkspaceFrame" attach="all" size="0,0,300,30">
+		<Form name="Workspace.LowerArea" style="DemoWorkspaceFrame" options="contentfill" attach="all" size="0,0,300,30">
 			<Label title="LowerArea"/>
 		</Form>
 
-		<Form name="Workspace.ExtraArea" style="DemoWorkspaceFrame" attach="all" size="0,0,150,200">
+		<Form name="Workspace.ExtraArea" style="DemoWorkspaceFrame" options="contentfill" attach="all" size="0,0,150,200">
 			<Label title="ExtraArea"/>
 		</Form>
 
-		<Form name="Workspace.MainArea" style="DemoWorkspaceFrame" attach="all" size="0,0,300,300">
+		<Form name="Workspace.MainArea" style="DemoWorkspaceFrame" options="contentfill" attach="all" size="0,0,300,300">
 			<Label title="MainArea"/>
 		</Form>
 

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skin>
+	<Styles>
+		<Style name="AudioWaveform">
+			<Color name="zerolinecolor" color="@Main.LabelColorPrimary"/>
+			<Color name="peakcolor" color="@Main.LabelColorDimmed"/>
+			<Color name="peakframecolor" color="@Main.LabelColor"/>
+			<Color name="backcolor" color="@Main.DialogBackgroundColor"/>
+			<Color name="forecolor" color="@Main.ActiveColor"/>
+			<String name="peakstyle" value="bargraph"/>
+		</Style>
+		
+		<Style name="AudioMeter">
+			<Color name="backcolor" color="@Main.DialogBackgroundColor"/>
+			<Color name="forecolor" color="@Main.ActiveColor"/>
+		</Style>		
+	</Styles>
+
+	<Forms>
+
+		<Form name="System.Audio.Summary" attach="all">
+			<Label title="Audio service demo."/>
+		</Form>
+
+		<Form name="System.Audio" attach="all">
+			<Vertical attach="all">
+				<View name="System.Audio.DeviceSettings" attach="left right"/>
+				<View name="System.Audio.DeviceInformation" attach="left right"/>
+				<Space/>
+				<Heading level="2" title="Demo Mode"/>
+				<Horizontal margin="0" spacing="0" attach="left right">
+					<RadioButton name="demoMode" value="0" title="Player" height="30" style="Standard.Button" options="left" attach="all"/>
+					<RadioButton name="demoMode" value="1" title="Recorder" height="30" style="Standard.Button" options="middle" attach="all"/>
+					<RadioButton name="demoMode" value="2" title="Oscillator" height="30" style="Standard.Button" options="middle" attach="all"/>
+					<RadioButton name="demoMode" value="3" title="Noise" height="30" style="Standard.Button" options="right" attach="all"/>
+				</Horizontal>				
+				<Variant name="demoMode" width="500" height="500" attach="all">
+					<View name="System.Audio.Player" attach="all"/>
+					<View name="System.Audio.Recorder" attach="all"/>
+					<View name="System.Audio.Oscillator" attach="all"/>
+					<View name="System.Audio.Noise" attach="all"/>
+				</Variant>				
+			</Vertical>
+		</Form>
+
+		<Form name="System.Audio.DeviceSettings">
+			<Vertical margin="0" attach="all">		
+				<Heading level="2" title="Device Settings"/>
+				
+				<using controller="AudioDeviceSetup">
+					<Table columns="2" margin="0" spacing="5">
+						<Label title="Render Device"/>
+						<SelectBox name="renderDeviceList" width="150" options="fittext nowheel"/>
+						
+						<Label title="Capture Device"/>
+						<SelectBox name="captureDeviceList" width="150" options="fittext nowheel"/>
+
+						<Label title="Requested Sample Rate"/>
+						<SelectBox name="../requestedSampleRate" width="150" options="nowheel"/>
+
+						<Label title="Requested Block Size"/>
+						<SelectBox name="requestedBlockSize" width="150" options="nowheel"/>
+					</Table>					
+					<?platform win?>
+					<CheckBox name="exclusiveMode" title="Exclusive Mode" attach="vcenter"/>
+					<?platform?>
+					<Link name="refresh" title="Refresh Devices"/>					
+				</using>
+			</Vertical>
+		</Form>
+		
+		<Form name="System.Audio.DeviceInformation">
+			<Vertical margin="0" attach="all">		
+				<Heading level="2" title="Actual Device Information"/>
+				
+				<using controller="AudioDeviceSetup">
+					<Table columns="2" margin="0" spacing="5">
+						<Label title="Actual Block Size"/>
+						<TextBox name="blockSize" width="150"/>
+
+						<Label title="Actual Sample Rate"/>
+						<TextBox name="sampleRate" width="150"/>
+
+						<Label title="Render Latency"/>
+						<TextBox name="renderLatency" width="150"/>
+
+						<Label title="Capture Latency"/>
+						<TextBox name="captureLatency" width="150"/>
+
+						<Label title="Render Channels"/>
+						<TextBox name="renderChannels" width="150"/>
+
+						<Label title="Capture Channels"/>
+						<TextBox name="captureChannels" width="150"/>
+
+						<Label title="CPU Load" attach="vcenter"/>
+						<Horizontal margin="0" spacing="5">
+							<ValueBar name="../cpuLoad" width="95" height="5" options="horizontal" attach="vcenter"/>
+							<TextBox name="../cpuLoad" width="50"/>
+						</Horizontal>
+					</Table>					
+				</using>
+				
+			</Vertical>
+		</Form>
+		
+		<Form name="System.Audio.Meter">
+			<!--
+			<Vertical margin="0" spacing="1">
+				<ValueBar name="peak0" width="200" height="5" options="horizontal"/>
+				<ValueBar name="peak1" width="200" height="5" options="horizontal"/>
+			</Vertical>
+			-->
+			<View name="MeterView" width="200" height="10" options="horizontal" style="AudioMeter"/>
+		</Form>
+		
+		<Form name="System.Audio.Player" sizelimits="500,800,-1,-1">
+			<Vertical margin="0" attach="all">
+				<Horizontal margin="0">
+					<Button name="openFile" title="Open File..."/>
+					<Button name="closeFile" title="&#xD7;" tooltip="Close File"/>
+				</Horizontal>
+				
+				<Vertical margin="0" spacing="0">
+					<TextBox name="AudioPlayer/fileName" width="270" attach="left right" options="fittext" style="Standard.H3"/>
+					<TextBox name="AudioPlayer/fileInfo" width="270" attach="left right" style="Standard.Label"/>
+				</Vertical>
+				
+				<Slider name="volume" width="270" height="10" options="tooltip horizontal bargraph" tooltip="Volume: @value[]"/>
+				<Slider name="pan" width="270" height="10" options="tooltip horizontal bargraph centered" tooltip="Pan: @value[]"/>
+				
+				<using controller="OutputMeter">
+					<View name="System.Audio.Meter"/>
+				</using>
+									
+				<Horizontal margin="0">
+					<Toggle name="AudioTransport/start" icon="Mdi/Play" title="Start"/>
+					<Toggle name="AudioTransport/stop" icon="Mdi/Stop" title="Stop"/>
+					<Button name="AudioTransport/rewind" icon="Mdi/SkipPrevious" title="Rewind"/>
+				</Horizontal>
+				<Horizontal margin="0">
+					<EditBox name="AudioTransport/time" width="170" attach="vcenter"/>
+					<Toggle name="AudioPlayer/repeat" icon="Mdi/RepeatVariant" title="Repeat"/>
+				</Horizontal>
+				<Slider name="AudioTransport/time" width="500" height="10" options="horizontal"/>
+				
+				<using controller="AudioPlayer">
+					<View name="WaveformView" width="500" height="150" style="AudioWaveform"/>
+				</using>
+			</Vertical>
+		</Form>
+
+		<Form name="System.Audio.Recorder" sizelimits="500,500,-1,-1">
+			<Vertical margin="0" attach="all">
+				<Label title="Recording Settings" attach="vcenter"/>
+				<using controller="AudioRecorder">
+					<Table columns="2" margin="0" spacing="5">
+						<Label title="Name"/>
+						<EditBox name="fileName" width="200"/>
+						
+						<Label title="Channels"/>
+						<SelectBox name="channels" width="75"/>
+
+						<Label title="Bit Depth"/>
+						<SelectBox name="bitDepth" width="75"/>
+					</Table>					
+				</using>
+
+				<using controller="InputMeter">
+					<View name="System.Audio.Meter"/>
+				</using>
+
+				<Toggle name="AudioTransport/record" icon="Mdi/Record" title="Record"/>
+				<EditBox name="AudioTransport/time" width="200"/>
+
+				<using controller="AudioRecorder">
+					<View name="WaveformView" width="500" height="150" style="AudioWaveform"/>
+				</using>
+					
+			</Vertical>
+		</Form>
+		
+		<Form name="System.Audio.Oscillator" sizelimits="500,500,-1,-1">
+			<Vertical margin="0">
+				<using controller="Oscillator">
+					<Horizontal margin="0">
+						<Toggle name="on" title="On"/>
+						<Knob name="amplitude" options="tooltip" tooltip="Amplitude: @value[]"/>
+					</Horizontal>
+					<Horizontal margin="0">
+						<Label title="Waveform" attach="vcenter"/>
+						<SelectBox name="waveType" width="80"/>
+					</Horizontal>
+					<Horizontal margin="0">
+						<Label title="Frequency" attach="vcenter"/>
+						<Knob name="frequency" options="tooltip" tooltip="Frequency: @value[]"/>
+					</Horizontal>
+				</using>
+				<using controller="OutputMeter">
+					<View name="System.Audio.Meter"/>
+				</using>
+			</Vertical>
+		</Form>
+
+		<Form name="System.Audio.Noise" title="Noise" sizelimits="500,500,-1,-1">
+			<Vertical margin="0">
+				<using controller="NoiseGenerator">
+					<Horizontal margin="0">
+						<Toggle name="on" title="On"/>
+						<Knob name="amplitude" options="tooltip" tooltip="Amplitude: @value[]"/>
+					</Horizontal>
+					<Horizontal margin="0">
+						<Label title="Noise Type" attach="vcenter"/>
+						<SelectBox name="noiseType" width="80"/>
+					</Horizontal>
+				</using>
+				<using controller="OutputMeter">
+					<View name="System.Audio.Meter"/>
+				</using>
+			</Vertical>
+		</Form>
+
+	</Forms>
+</Skin>
+

@@ -141,7 +141,7 @@ public:
 	tbool CCL_API drawTextBackground (IGraphics& graphics, const ITextLayout& layout, RectFRef _rect) const override
 	{
 		RectF rect (_rect);
-		rect.contract (2);
+		rect.contract (2.f);
 		graphics.drawEllipse (rect, Colors::kBlue);
 		return true;
 	}

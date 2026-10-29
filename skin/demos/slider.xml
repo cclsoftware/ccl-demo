@@ -4,8 +4,8 @@
 		<Style name="TickScaleStyle" inherit="Standard.Slider">
 			<Metric name="scale.margin.top" value="5" />
 			<Metric name="scale.margin.bottom" value="5" />
-			<Color name="scale.hilitetick" color="@Main.LabelColor.Primary" />
-			<Color name="scale.tickcolor"  color="@Main.LabelColor.Dimmed" />
+			<Color name="scale.hilitetick" color="@Main.LabelColorPrimary" />
+			<Color name="scale.tickcolor"  color="@Main.LabelColorDimmed" />
 		</Style>
 	</Styles>
 

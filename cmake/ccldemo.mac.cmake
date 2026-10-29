@@ -30,7 +30,8 @@ set (ccldemo_FRAMEWORKS
 )
 
 set (ccldemo_PLUGINS
-	modelimporter3d
+	audioservice
+	modelimporter3d	
 )
 
 if (${CCLDEMO_CCLSPY_SUPPORT})
@@ -44,7 +45,6 @@ set_target_properties (ccldemo PROPERTIES
 	XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME "AppIcon"
 
 	XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "Apple Development"
-	XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${entitlements_output_file}"
 )
 
 if (${VENDOR_USE_PUBLISHER_CERTIFICATE})

@@ -34,7 +34,8 @@ endif ()
 
 # Find dependencies
 include (vendor OPTIONAL)
-find_package (ccl ${CCL_VERSION_REQUIREMENT} REQUIRED COMPONENTS cclapp cclbase ccltext cclsystem cclnet cclgui cclsecurity cclextras-stores)
+find_package (ccl ${CCL_VERSION_REQUIREMENT} REQUIRED COMPONENTS cclapp cclbase ccltext cclsystem cclnet cclgui cclsecurity cclextras-audio cclextras-stores)
+find_package (audioservice)
 find_package (modelimporter3d)
 find_package (skins)
 if (${CCLDEMO_CCLSPY_SUPPORT})
@@ -78,6 +79,7 @@ list (APPEND ccldemo_source_files
 	${CMAKE_CURRENT_LIST_DIR}/../source/demoitem.h
 	${CMAKE_CURRENT_LIST_DIR}/../source/demoitem.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../source/doclinks.h
+	${CMAKE_CURRENT_LIST_DIR}/../source/demos/audiodemo.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../source/demos/blockviewdemo.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../source/demos/buttondemo.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../source/demos/coreviewdemo.h
@@ -118,13 +120,14 @@ list (APPEND ccldemo_sources
 
 ccl_add_resources (ccldemo ${ccldemo_resources})
 target_sources (ccldemo PRIVATE ${ccldemo_sources})
-target_link_libraries (ccldemo PRIVATE cclapp cclbase ccltext cclsystem cclnet cclgui cclsecurity corelib cclextras-stores)
+target_link_libraries (ccldemo PRIVATE cclapp cclbase ccltext cclsystem cclnet cclgui cclsecurity corelib cclextras-audio cclextras-stores)
 
 cmake_path (SET applications_root NORMALIZE "${CCL_APPLICATIONS_ROOT}")
 cmake_path (SET repo_root NORMALIZE "${REPOSITORY_ROOT}")
 cmake_path (RELATIVE_PATH applications_root BASE_DIRECTORY "${repo_root}" OUTPUT_VARIABLE ccl_applications_dir)
 target_compile_definitions (ccldemo PRIVATE "CCL_APPLICATIONS_DIRECTORY=\"${ccl_applications_dir}/\"")
 
+ccl_add_dependencies (ccldemo audioservice)
 ccl_add_dependencies (ccldemo modelimporter3d)
 
 if (${CCLDEMO_CCLSPY_SUPPORT})

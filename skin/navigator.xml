@@ -6,8 +6,8 @@
 
 		<LinearGradient name="DemoDividerLinearGradient" start="0,0" end="10,0">
 			<GradientStop position="0" color="hsl(0,0,50,0)"/>
-			<GradientStop position="0.1" color="hsl(0,0,50)"/>
-			<GradientStop position="0.9" color="hsl(0,0,50)"/>
+			<GradientStop position="0.1" color="hsl(0,0,50,80)"/>
+			<GradientStop position="0.9" color="hsl(0,0,50,80)"/>
 			<GradientStop position="1" color="hsl(0,0,50,0)"/>
 		</LinearGradient>
 	</Resources>
@@ -15,12 +15,14 @@
 	<Styles>
 		<Style name="DemoHeaderText" inherit="Standard.TextBox">
 			<Font name="textfont" themeid="StandardUI" size="+6"/>
-			<Metric name="padding.left"	value="1"/>
+			<Color name="textcolor" color="@Main.LabelColor"/>
+			<Metric name="padding.left"     value="1"/>
 		</Style>
 
 		<Style name="DemoButton" inherit="Standard.Button">
-			<Metric name="colorize.icon" value="1"/>
-			<Color name="iconcolor.mouseover" 	color="@Main.LabelColor.Primary"/>
+			<StyleCondition name="mouseover">
+				<Color name="icon.color" color="@Main.LabelColorPrimary"/>
+			</StyleCondition>
 		</Style>
 
 		<Style name="DemoLink" inherit="Standard.Label">
@@ -35,11 +37,11 @@
 
 		<Style name="DemoFooter" inherit="Standard.Label">
 			<Font name="textfont" themeid="StandardUI" size="-1"/>
-			<Color name="textcolor"	color="@Main.LabelColor.Secondary"/>
+			<Color name="textcolor"	color="@Main.LabelColorSecondary"/>
 		</Style>
 
 		<Style name="DemoDividerLine">
-			<Image name="background" image="DemoDividerGradient"/>
+			<Image name="background.image" image="DemoDividerGradient"/>
 		</Style>
 	</Styles>
 
@@ -47,7 +49,6 @@
 		<Shape name="DemoDividerGradientShape" style="scale">
 			<Rectangle size="0,0,10,1" style="fill" Brush.gradient="DemoDividerLinearGradient"/>
 		</Shape>
-
 	</Shapes>
 
 	<Forms>
@@ -58,7 +59,7 @@
 		<Form name="Navigator" attach="all">
 			<Vertical margin="0" spacing="0" options="unifysizes" attach="all">
 				<View name="NavigationBar" attach="left right"/>
-				<ImageView style="DemoDividerLine" height="1" attach="left right"/>
+				<ImageView style="DemoDividerLine" height="1" options="contentfill" attach="left right"/>
 				<View name="contentFrame" width="800" height="600" sizelimits="none" attach="all"/>
 			</Vertical>
 		</Form>

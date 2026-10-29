@@ -9,7 +9,10 @@
     <Styles>
 		<Style name="AboutLabel" inherit="Standard.Label">
 			<Metric name="padding.left"	value="0"/>
-		</Style>
+		</Style>		
+		<Style name="LicenseText" inherit="Standard.Label">
+			<Align name="textalign" align="top left"/>
+		</Style>		
 	</Styles>
 
 	<Forms>
@@ -53,15 +56,21 @@
 				<Anchor url="https://ccl.dev">
 					<Link title="For more information, please visit ccl.dev." width="300" style="AboutLabel" attach="left right"/>
 				</Anchor>
-				<Anchor url="local://$deployment/license/" attach="left right">
-					<Link title="Third-party software used in this product" width="300" height="20" style="AboutLabel" options="fittitle" attach="left right"/>
-				</Anchor>
+				<Link title="Third-party software used in this product" command.category="Help" command.name="Legal Information" width="300" height="20" style="AboutLabel" options="fittitle" attach="left right"/>
 				<Space/>
 				<Space/>
 				<Label title="Made with &hearts; in Hamburg, Germany" width="300" style="AboutLabel"/>
 			</Vertical>
 		</Form>
 		<?xstring?>
+		
+		<!-- ******************************************************************************************** -->
+        <!-- Legal Information -->
+        <!-- ******************************************************************************************** -->
+		
+		<Form name="LegalInformation" title="License Information" size="0,0,400,460" options="transparent translucent windowmovable" attach="all">
+			<TextEditor name="licenseText" options="small multiline transparent" size="10,10,380,440" style="LicenseText" attach="all"/>
+		</Form>		
 		
 	</Forms>
 		

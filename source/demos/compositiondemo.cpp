@@ -282,7 +282,7 @@ void TimingCurveView::draw (const DrawEvent& event)
 			path->lineTo (p);		
 	}
 
-	Pen curvePen (vs.getHiliteColor (), 3.f);
+	Pen curvePen (vs.getHighlightColor (), 3.f);
 	g.drawPath (path, curvePen);
 
 	AnimationControlPoints controlPoints;

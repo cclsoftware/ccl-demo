@@ -2,8 +2,9 @@
 <Skin>
 	<Styles>
 		<Style name="DemoTextEditor" inherit="Standard.Label">
-			<Color name="backcolor"        	color="@Main.EditBoxBackColor"/>
-			<Color name="selectioncolor"   	color="@Main.TextSelectionBackColor"/>
+			<Color name="text.color"       	color="@Main.LabelColor"/>
+			<Color name="background.color" 	color="@Main.EditBoxBackgroundColor"/>
+			<Color name="selection.color"  	color="@Main.TextSelectionBackgroundColor"/>
 			<Align name="textalign" align="left top"/>
 		</Style>
 	</Styles>

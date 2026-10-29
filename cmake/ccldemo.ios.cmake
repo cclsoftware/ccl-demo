@@ -31,7 +31,8 @@ set (ccldemo_FRAMEWORKS
 )
 
 set (ccldemo_PLUGINS
-	modelimporter3d
+	audioservice
+	modelimporter3d	
 )
 
 set_target_properties (ccldemo PROPERTIES	

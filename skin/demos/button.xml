@@ -2,7 +2,7 @@
 <Skin>
 	<Styles>
 		<Style name="Button3State" inherit="Standard.Button">
-			<Image name="background" image="Button3State"/>
+			<Image name="background.image" image="Button3State"/>
 		</Style>
 	</Styles>
 	

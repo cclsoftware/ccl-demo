@@ -21,7 +21,7 @@
     <Forms>
 	
         <Form name="Scroller" attach="all" size="0,0,500,500">
-            <ImageView image="bmShape" size="0,0,500,500"/>
+            <ImageView image="bmShape" size="0,0,500,500" options="contentfill"/>
 		</Form>
 		
 		<Form name="Controls.Views.Summary" attach="all">
@@ -31,33 +31,12 @@
         <Form name="Controls.Views" attach="all">
 			<Vertical spacing="10">
 				<Horizontal spacing="10">
-
-					<ScrollView name="Scroller"
-						size="0,0,166,166"
-						options="vertical horizontal border"/>
-
-					<TabView
-						title="TabView"
-						tooltip="TabView"
-						size="0,0,266,166"
-						options="border"
-						attach="all">
-
-						<TextBox
-							name="string1"
-							title="View 1"
-							size="20,20,80,22"/>
-						<TextBox
-							name="string2"
-							title="View 2"
-							size="20,20,80,22"/>
-						<TextBox
-							name="string3"
-							title="View 3"
-							size="20,20,80,22"/>
-
+					<ScrollView name="Scroller" size="0,0,166,166" options="vertical horizontal border"/>
+					<TabView title="TabView" tooltip="TabView" size="0,0,266,166" options="border" attach="all">
+						<TextBox name="string1" title="View 1" size="20,20,80,22"/>
+						<TextBox name="string2"	title="View 2" size="20,20,80,22"/>
+						<TextBox name="string3" title="View 3" size="20,20,80,22"/>
 					</TabView>
-
 				</Horizontal>
 				
 				<Horizontal spacing="10">

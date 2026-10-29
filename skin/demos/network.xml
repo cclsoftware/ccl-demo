@@ -36,6 +36,10 @@
 					<EditBox name="messageText" attach="left right"/>
 					<Button name="sendMessage" title="Send" attach="right"/>
 				</Horizontal>				
+				<Horizontal attach="left right">
+					<Label title="Incoming"/>
+					<TextBox name="incomingText" attach="left right fill"/>
+				</Horizontal>				
 			</Vertical>
 		</Form>
 		

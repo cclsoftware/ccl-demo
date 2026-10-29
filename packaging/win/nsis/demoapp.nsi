@@ -30,6 +30,8 @@ ManifestDPIAware true
 
 !include "shared.nsh"
 
+!addplugindir "${CCL_BASEDIR}\submodules\nsis-plugins\ccltools\bin\"
+
 ;-----------------------------------------------------------------------
 ; Product Settings
 ;-----------------------------------------------------------------------
@@ -94,6 +96,9 @@ VIAddVersionKey  "ProductVersion" "${PRODUCT_VERSION}.${BUILD_REVISION}"
 !define MUI_LANGDLL_REGISTRY_KEY "Software\${PRODUCT}" 
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_FUNCTION LaunchApp
+
 ;-----------------------------------------------------------------------
 ; Pages
 ;-----------------------------------------------------------------------
@@ -124,10 +129,18 @@ VIAddVersionKey  "ProductVersion" "${PRODUCT_VERSION}.${BUILD_REVISION}"
 !include "${NSIS_INCLUDES_DIR}\localize.nsh"
 
 ;-----------------------------------------------------------------------
+; Variables
+;-----------------------------------------------------------------------
+
+Var RunAppOnExit
+
+;-----------------------------------------------------------------------
 ; Functions
 ;-----------------------------------------------------------------------
 
 Function .onInit
+
+	StrCpy $RunAppOnExit 0
 
 	; Check for supported Windows version
 	Call CheckWindowsVersion
@@ -138,6 +151,17 @@ Function .onInit
 	; Language selection dialog
 	!insertmacro MUI_LANGDLL_DISPLAY
 
+FunctionEnd
+
+Function LaunchApp
+	StrCpy $RunAppOnExit 1
+FunctionEnd
+
+Function .onGUIEnd
+	${if} $RunAppOnExit != 0
+		ccltools::runFromExplorer "$INSTDIR\${EXENAME}"
+		pop $0
+	${EndIf}
 FunctionEnd
 
 ;-----------------------------------------------------------------------
@@ -188,6 +212,7 @@ Section "-All"
 
   SetOutPath "$INSTDIR\Plugins"
   
+  File "${BUILDDIR}\Plugins\audioservice.dll"
   File "${BUILDDIR}\Plugins\modelimporter3d.dll"
 
   ;-----------------------------------------------------------------------

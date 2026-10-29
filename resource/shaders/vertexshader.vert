@@ -2,7 +2,7 @@
 
 layout (location = 0) in vec3 inPosition;
 
-layout (location = 0) out vec4 outColor;
+layout (location = 0) out vec4 fragColor;
 
 void main() 
 {
@@ -10,5 +10,5 @@ void main()
 	#if VULKAN_SHADER
 	gl_Position.y = -gl_Position.y;
 	#endif
-	outColor = gl_Position;
+	fragColor = gl_Position;
 }

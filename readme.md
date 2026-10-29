@@ -144,3 +144,35 @@ gradle assembleArm8Debug
 ```
 
 The resulting APK will be found in the `ccldemo/build/outputs/apk/arm8/debug` subfolder.
+
+### WebAssembly
+
+Install the [Emscripten SDK](https://github.com/emscripten-core/emsdk), as well as `ninja`, `glslc`, `python` and `sed` (all must be in `PATH`):
+
+```
+git clone https://github.com/emscripten-core/emsdk.git
+cd emsdk
+git checkout 4.0.22
+./emsdk install 4.0.22
+./emsdk activate 4.0.22
+source ./emsdk_env.sh
+```
+
+The `EMSDK` environment variable set by `emsdk_env` is used by the CMake presets to locate the Emscripten toolchain file.
+
+Generate a Ninja project and build CCL Demo:
+
+```
+cd cmake
+cmake --preset wasm-release
+cd build/wasm/Release
+cmake --build .
+```
+
+Use `wasm-debug` for a debug build (output in `build/wasm/Debug`).
+
+Build artifacts include `.js`, `.wasm` and `.html` files for the ccldemo executable. Serve the build output folder with a local web server and open the ccldemo `.html` page in a browser:
+
+```
+python -m http.server 8080
+```

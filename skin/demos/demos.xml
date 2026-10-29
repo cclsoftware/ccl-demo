@@ -45,15 +45,16 @@
 		</Style>
 		
 		<Style name="button">
-			<Image name="background"   image="buttonBackBitmap"/>
+			<Image name="background.image" image="buttonBackBitmap"/>
 		</Style>
 		
 		<Style name="textbox" />
 
 		<Style name="TextEditor" inherit="Standard.Label">
 			<Font name="textfont" themeid="StandardUI" size="15" linespacing="2"/>
-			<Color name="backcolor"        	color="@Main.EditBoxBackColor"/>
-			<Color name="selectioncolor"   	color="@Main.TextSelectionBackColor"/>
+			<Color name="text.color"       	color="@Main.LabelColor"/>
+			<Color name="background.color" 	color="@Main.EditBoxBackgroundColor"/>
+			<Color name="selection.color"  	color="@Main.TextSelectionBackgroundColor"/>
 			<Align name="textalign" align="left top"/>
 		</Style>
 
@@ -71,7 +72,7 @@
 		</Style>
 		
 		<Style name="ButtonBlink" inherit="BlinkTriggers">
-			<Image name="background" image="buttonBlink"/>
+			<Image name="background.image" image="buttonBlink"/>
 		</Style>
 		<Style name="WideScrollStyle" inherit="Standard.ScrollPicker">
 			<Metric name="itemSize" value="40"/>
@@ -174,10 +175,10 @@
 			<Table columns="4" margin="2">
 				<foreach variable="$i" count="transitionCount">
 					<View name="Transition$i" data.parameter="fourVariants" size="0,0,60,60">
-						<ImageView image="element0Image" size="0,0,60,60"/>
-						<ImageView image="element1Image" size="0,0,60,60"/>
-						<ImageView image="element2Image" size="0,0,60,60"/>
-						<ImageView image="element3Image" size="0,0,60,60"/>
+						<ImageView image="element0Image" size="0,0,60,60" options="contentfill"/>
+						<ImageView image="element1Image" size="0,0,60,60" options="contentfill"/>
+						<ImageView image="element2Image" size="0,0,60,60" options="contentfill"/>
+						<ImageView image="element3Image" size="0,0,60,60" options="contentfill"/>
 					</View>
 				</foreach>
 			</Table>
@@ -323,7 +324,7 @@
 				<TextBox name="textModel" width="120" height="50"/>
 				
 				<Heading level="2" title="ColorPicker"/>
-				<ImageView style="Standard.EditBox">
+				<ImageView style="Standard.EditBox" options="contentfill">
 					<PopupBox name="ColorPicker" size="0,0,50,50">
 						<ColorBox name="color" radius="2" size="1,1,48,48"/>
 					</PopupBox>
